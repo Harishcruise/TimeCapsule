@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Project Setup">
-      <change afterPath="$PROJECT_DIR$/AuthenticationSystem/migrations/0002_userprofile_phone_number.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthenticationSystem/migrations/0003_alter_userprofile_options_alter_userprofile_managers_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0002_alter_capsule_owner_alter_comment_user_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0003_alter_subscription_capsule_capsulecontent_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capsule_content/2024/02/25/20230501_220748_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1707368965978</updated>
       <workItem from="1707368976001" duration="1200000" />
-      <workItem from="1708894301672" duration="8287000" />
+      <workItem from="1708894301672" duration="9265000" />
     </task>
     <task id="LOCAL-00001" summary="Project Setup">
       <option name="closed" value="true" />

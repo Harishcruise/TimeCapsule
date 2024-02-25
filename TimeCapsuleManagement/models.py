@@ -12,8 +12,11 @@ class Capsule(models.Model):
     description = models.TextField(blank=True, null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
-    unsealing_date = models.DateTimeField()
     is_public = models.BooleanField(default=False)
+    unsealing_date = models.DateTimeField()
+
+    def is_unsealed(self):
+        return timezone.now() >= self.unsealing_date
 
     def __str__(self):
         return self.name
