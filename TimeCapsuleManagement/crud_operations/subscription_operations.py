@@ -105,6 +105,7 @@ def delete_subscription_by_id(subscription_id):
     try:
         subscription = Subscription.objects.get(id=subscription_id)
         subscription.delete()
+        return True
     except ObjectDoesNotExist:
         return None
     except Exception as e:

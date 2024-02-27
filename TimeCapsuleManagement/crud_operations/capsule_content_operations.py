@@ -97,6 +97,7 @@ def delete_capsule_content_by_id(content_id):
     try:
         capsule_content = CapsuleContent.objects.get(id=content_id)
         capsule_content.delete()
+        return True
     except ObjectDoesNotExist:
         return None
     except Exception as e:

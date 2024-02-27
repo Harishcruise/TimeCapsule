@@ -90,6 +90,7 @@ def delete_comment_by_id(comment_id):
     try:
         comment = Comment.objects.get(id=comment_id)
         comment.delete()
+        return True
     except ObjectDoesNotExist:
         return None
     except Exception as e:

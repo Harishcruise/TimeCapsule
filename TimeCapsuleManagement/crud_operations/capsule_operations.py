@@ -102,6 +102,7 @@ def delete_capsule_by_id(capsule_id):
     try:
         capsule = Capsule.objects.get(id=capsule_id)
         capsule.delete()
+        return True
     except ObjectDoesNotExist:
         print(f"Capsule with id {capsule_id} does not exist.")
         return None
