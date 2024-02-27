@@ -46,6 +46,22 @@ def get_capsule_by_id(capsule_id):
         return None
 
 
+def get_all_capsules_for_user(owner_id):
+    """
+    Retrieve all capsules owned by a specific user.
+    Args:
+        owner_id: The ID of the UserProfile who owns the capsules.
+    Returns:
+        A QuerySet of Capsule objects owned by the user, or None if an error occurs.
+    """
+    try:
+        capsules = Capsule.objects.filter(owner=owner_id)
+        return capsules
+    except Exception as e:
+        print(f"An error occurred while retrieving capsules for user {owner_id}: {e}")
+        return None
+
+
 def update_capsule_by_id(capsule_id, name=None, description=None, is_public=None, unsealing_date=None):
     """
     Update an existing capsule.
