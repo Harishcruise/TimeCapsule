@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Project Setup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_operations.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
