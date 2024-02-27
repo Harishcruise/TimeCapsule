@@ -1,4 +1,3 @@
-from django.utils import timezone
 from TimeCapsuleManagement.models import Capsule
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -91,4 +90,21 @@ def update_capsule_by_id(capsule_id, name=None, description=None, is_public=None
         return None
     except Exception as e:
         print(f"An error occurred while updating the capsule {capsule_id}: {e}")
+        return None
+
+
+def delete_capsule_by_id(capsule_id):
+    """
+    Delete a capsule.
+    Args:
+        capsule_id: The ID of the capsule to delete.
+    """
+    try:
+        capsule = Capsule.objects.get(id=capsule_id)
+        capsule.delete()
+    except ObjectDoesNotExist:
+        print(f"Capsule with id {capsule_id} does not exist.")
+        return None
+    except Exception as e:
+        print(f"An error occurred while deleting the capsule {capsule_id}: {e}")
         return None
