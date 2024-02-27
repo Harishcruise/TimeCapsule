@@ -25,23 +25,7 @@ def create_comment(user_id, capsule_id, content):
         return None
 
 
-def get_comments_for_capsule(capsule_id):
-    """
-    Retrieve all comments associated with a specific capsule.
-    Args:
-        capsule_id: The ID of the capsule.
-    Returns:
-        QuerySet of Comment objects related to the specified capsule.
-    """
-    try:
-        return Comment.objects.filter(capsule_id=capsule_id)
-    except Exception as e:
-        # Handle exceptions, such as database errors
-        print(f"An error occurred while retrieving comments for capsule {capsule_id}: {e}")
-        return None
-
-
-def get_specific_comment(comment_id):
+def get_comment_by_id(comment_id):
     """
     Retrieve a specific comment by its ID.
     Args:
@@ -59,7 +43,23 @@ def get_specific_comment(comment_id):
         return None
 
 
-def update_comment(comment_id, content):
+def get_comments_for_capsule(capsule_id):
+    """
+    Retrieve all comments associated with a specific capsule.
+    Args:
+        capsule_id: The ID of the capsule.
+    Returns:
+        QuerySet of Comment objects related to the specified capsule.
+    """
+    try:
+        return Comment.objects.filter(capsule_id=capsule_id)
+    except Exception as e:
+        # Handle exceptions, such as database errors
+        print(f"An error occurred while retrieving comments for capsule {capsule_id}: {e}")
+        return None
+
+
+def update_comment_by_id(comment_id, content):
     """
     Update an existing comment.
     Args:
@@ -81,7 +81,7 @@ def update_comment(comment_id, content):
         return None
 
 
-def delete_comment(comment_id):
+def delete_comment_by_id(comment_id):
     """
     Delete a comment.
     Args:

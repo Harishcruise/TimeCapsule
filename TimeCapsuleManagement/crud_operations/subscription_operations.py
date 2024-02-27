@@ -25,7 +25,7 @@ def create_subscription(user_id, capsule_id, approved=False):
         return None
 
 
-def get_subscription(subscription_id):
+def get_subscription_by_id(subscription_id):
     """
     Retrieve a specific subscription by its ID.
     Args:
@@ -41,46 +41,6 @@ def get_subscription(subscription_id):
         # Handle exceptions, such as database errors
         print(f"An error occurred while retrieving subscription {subscription_id}: {e}")
         return None
-
-
-def update_subscription(subscription_id, approved):
-    """
-    Update an existing subscription.
-    Args:
-        subscription_id: The ID of the subscription to update.
-        approved: Whether the subscription is approved.
-    Returns:
-        The updated Subscription object.
-    """
-    try:
-        subscription = Subscription.objects.get(id=subscription_id)
-        subscription.approved = approved
-        subscription.save()
-        return subscription
-    except ObjectDoesNotExist:
-        return None
-    except Exception as e:
-        # Handle exceptions, such as database errors
-        print(f"An error occurred while updating subscription {subscription_id}: {e}")
-        return None
-
-
-def delete_subscription(subscription_id):
-    """
-    Delete a subscription.
-    Args:
-        subscription_id: The ID of the subscription to delete.
-    """
-    try:
-        subscription = Subscription.objects.get(id=subscription_id)
-        subscription.delete()
-    except ObjectDoesNotExist:
-        return None
-    except Exception as e:
-        # Handle exceptions, such as database errors
-        print(f"An error occurred while deleting subscription {subscription_id}: {e}")
-        return None
-
 
 def get_subscriptions_for_capsule(capsule_id):
     """
@@ -111,4 +71,43 @@ def get_subscriptions_for_user(user_id):
     except Exception as e:
         # Handle exceptions, such as database errors
         print(f"An error occurred while retrieving subscriptions for user {user_id}: {e}")
+        return None
+
+
+def update_subscription_by_id(subscription_id, approved):
+    """
+    Update an existing subscription.
+    Args:
+        subscription_id: The ID of the subscription to update.
+        approved: Whether the subscription is approved.
+    Returns:
+        The updated Subscription object.
+    """
+    try:
+        subscription = Subscription.objects.get(id=subscription_id)
+        subscription.approved = approved
+        subscription.save()
+        return subscription
+    except ObjectDoesNotExist:
+        return None
+    except Exception as e:
+        # Handle exceptions, such as database errors
+        print(f"An error occurred while updating subscription {subscription_id}: {e}")
+        return None
+
+
+def delete_subscription_by_id(subscription_id):
+    """
+    Delete a subscription.
+    Args:
+        subscription_id: The ID of the subscription to delete.
+    """
+    try:
+        subscription = Subscription.objects.get(id=subscription_id)
+        subscription.delete()
+    except ObjectDoesNotExist:
+        return None
+    except Exception as e:
+        # Handle exceptions, such as database errors
+        print(f"An error occurred while deleting subscription {subscription_id}: {e}")
         return None
