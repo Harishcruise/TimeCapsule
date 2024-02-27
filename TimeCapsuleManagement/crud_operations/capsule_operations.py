@@ -28,3 +28,21 @@ def create_capsule(owner_id, name, description, is_public, unsealing_date):
         # Handle exceptions, such as database errors
         print(f"An error occurred while creating the capsule: {e}")
         return None
+
+
+def get_capsule_by_id(capsule_id):
+    """
+    Retrieve a specific capsule by its ID.
+    Args:
+        capsule_id: The ID of the capsule to retrieve.
+    Returns:
+        Capsule object if found, None otherwise.
+    """
+    try:
+        return Capsule.objects.get(id=capsule_id)
+    except ObjectDoesNotExist:
+        return None
+    except Exception as e:
+        # Handle exceptions, such as database errors
+        print(f"An error occurred while retrieving the capsule {capsule_id}: {e}")
+        return None
