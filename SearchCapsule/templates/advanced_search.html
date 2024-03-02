@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adv Search</title>
+</head>
+<body>
+    <form method="post" action="{% url 'advanced_search_view' %}">
+        {% csrf_token %}
+        <!-- Addition of form fields for capsule name, and other filters -->
+        <input type="submit" value="Search">
+    </form>
+
+    <!-- Displaying search results -->
+    {% for capsule in capsules %}
+        {{ capsule.name }} - {{ capsule.description }}
+        <!-- Addition of other capsule details as needed -->
+    {% endfor %}
+</body>
+</html>

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Changes to view">
-      <change afterPath="$PROJECT_DIR$/SearchCapsule/templates/capsule_serach_results.html" afterDir="false" />
+    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Addition of template">
+      <change afterPath="$PROJECT_DIR$/SearchCapsule/templates/advanced_search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SearchCapsule/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SearchCapsule/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SearchCapsule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/views.py" afterDir="false" />
     </list>
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -55,14 +57,14 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging jitali",
+    "git-widget-placeholder": "jitali",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -120,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707370127683</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Addition of template">
+      <option name="closed" value="true" />
+      <created>1709419810221</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709419810221</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project Setup" />
     <MESSAGE value="Changes to view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to view" />
+    <MESSAGE value="Addition of template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition of template" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TimeCapsule$views.coverage" NAME="views Coverage Results" MODIFIED="1709418983109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SearchCapsule" />

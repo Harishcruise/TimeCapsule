@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 
 from .models import SearchableCapsule
+from .models import AdvancedSearchFilter, Capsule
 
 
 def capsule_search(request):
@@ -18,5 +19,17 @@ def capsule_search(request):
     }
 
     return render(request, 'search_capsule/capsule_search_results.html', context)
+
+
+def advanced_search_view(request):
+    if request.method == 'POST':
+        # Process form submission and create/update the filter
+        # Retrieve data based on the filter
+        # Pass data to the template
+        pass
+    else:
+        # Render advance search form
+        filters = AdvancedSearchFilter.objects.all()
+        return render(request, 'search_capsule/advanced_search.html', {'filters': filters})
 
 
