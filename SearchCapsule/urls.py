@@ -3,5 +3,5 @@ from . import views
 
 app_name = 'SearchCapsule'
 urlpatterns = [
-    path('search/', views.test_search, name='test_search'),
+    # path('search/', views.test_search, name='test_search'),
 ]
