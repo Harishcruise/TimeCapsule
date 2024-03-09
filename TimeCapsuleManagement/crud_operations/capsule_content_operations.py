@@ -25,23 +25,7 @@ def create_capsule_content(file_type, file, capsule_id):
         return None
 
 
-def get_capsule_content_for_capsule(capsule_id):
-    """
-    Retrieve all capsule content associated with a specific capsule.
-    Args:
-        capsule_id: The ID of the capsule.
-    Returns:
-        QuerySet of CapsuleContent objects related to the specified capsule.
-    """
-    try:
-        return CapsuleContent.objects.filter(capsule_id=capsule_id)
-    except Exception as e:
-        # Handle exceptions, such as database errors
-        print(f"An error occurred while retrieving capsule content for capsule {capsule_id}: {e}")
-        return None
-
-
-def get_capsule_content(content_id):
+def get_capsule_content_by_id(content_id):
     """
     Retrieve a specific capsule content by its ID.
     Args:
@@ -59,7 +43,23 @@ def get_capsule_content(content_id):
         return None
 
 
-def update_capsule_content(content_id, file_type=None, file=None, capsule_id=None):
+def get_capsule_content_for_capsule(capsule_id):
+    """
+    Retrieve all capsule content associated with a specific capsule.
+    Args:
+        capsule_id: The ID of the capsule.
+    Returns:
+        QuerySet of CapsuleContent objects related to the specified capsule.
+    """
+    try:
+        return CapsuleContent.objects.filter(capsule_id=capsule_id)
+    except Exception as e:
+        # Handle exceptions, such as database errors
+        print(f"An error occurred while retrieving capsule content for capsule {capsule_id}: {e}")
+        return None
+
+
+def update_capsule_content_by_id(content_id, file_type=None, file=None, capsule_id=None):
     """
     Update an existing capsule content.
     Args:
@@ -88,7 +88,7 @@ def update_capsule_content(content_id, file_type=None, file=None, capsule_id=Non
         return None
 
 
-def delete_capsule_content(content_id):
+def delete_capsule_content_by_id(content_id):
     """
     Delete a capsule content.
     Args:
@@ -97,6 +97,7 @@ def delete_capsule_content(content_id):
     try:
         capsule_content = CapsuleContent.objects.get(id=content_id)
         capsule_content.delete()
+        return True
     except ObjectDoesNotExist:
         return None
     except Exception as e:
