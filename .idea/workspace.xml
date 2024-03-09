@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Project Setup">
+      <change afterPath="$PROJECT_DIR$/AuthenticationSystem/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SearchCapsule/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25-02-2024_23_10_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25-02-2024_23_10__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_content_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_content_operations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/capsule_operations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/comment_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/comment_operations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/subscription_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/crud_operations/subscription_operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsule/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsule/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,22 +54,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ismailBranch",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django Server.TimeCapsule.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ismailBranch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TimeCapsule" type="Python.DjangoServer" factoryName="Django server">
       <module name="TimeCapsule" />
@@ -72,6 +79,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="TimeCapsule.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -93,7 +101,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
@@ -106,6 +114,8 @@
       <option name="presentableId" value="Default" />
       <updated>1707368965978</updated>
       <workItem from="1707368976001" duration="1200000" />
+      <workItem from="1710014487817" duration="171000" />
+      <workItem from="1710014706655" duration="1427000" />
     </task>
     <task id="LOCAL-00001" summary="Project Setup">
       <option name="closed" value="true" />
