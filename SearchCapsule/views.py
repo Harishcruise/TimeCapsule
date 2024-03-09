@@ -1,20 +1,17 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-# search_capsule/views.py
-from django.shortcuts import render
-
+from django.views import View
 from .models import SearchableCapsule
 
-def capsule_search(request):
-    query = request.GET.get('q', '')
-    searchable_capsules = SearchableCapsule.objects.filter(capsule__name__icontains=query, capsule__is_public=True)
+class CapsuleSearchView(View):
+    template_name = 'search_capsule/capsule_search_results.html'
 
-    context = {
-        'query': query,
-        'capsules': [searchable_capsule.capsule for searchable_capsule in searchable_capsules],
-    }
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get('q', '')
+        searchable_capsules = SearchableCapsule.objects.filter(capsule__name__icontains=query, capsule__is_public=True)
 
-    return render(request, 'search_capsule/capsule_search_results.html', context)
+        context = {
+            'query': query,
+            'capsules': [searchable_capsule.capsule for searchable_capsule in searchable_capsules],
+        }
 
+        return render(request, self.template_name, context)
