@@ -5,7 +5,7 @@
 {% block content %}
     <div class="my-capsules-content">
         <div>
-            <h1>My Capsules</h1>
+            <h2>My Capsules</h2>
         </div>
 
         <!-- Create Capsule Button -->
@@ -21,26 +21,50 @@
             <div class="modal-right">
                 <div class="modal-form">
                     <div class="modal-heading">
-                        <h3>Create your Time Capsule!</h3>
+                        <h2>Create your Time Capsule!</h2>
                     </div>
                     <div class="modal-content">
                         <span class="close">
-                         {% include 'components/buttons/button.html' with button_text="&times;" button_class="x-button" button_font_size="20px"%}
+                         {% include 'components/buttons/button.html' with button_text="&times;" button_class="x-button" button_font_size="20px" %}
                         </span>
                         <form method="post" enctype="multipart/form-data" id="capsuleForm">
                             {% csrf_token %}
                             <div class="capsule-section">
-                                {{ form.as_p }}
+                                <div>
+                                    {{ form.owner }}
+                                </div>
+                                <div class="form-field-container" id="nameBlock">
+                                    <label for="id_name" class="form-label" id="nameLabel">Name *</label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="form-field-container" id="descriptionBlock">
+                                    <label for="id_description" class="form-label" id="descriptionLabel">Description *</label>
+                                    {{ form.description }}
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-column">
+                                        <div class="form-field-container" id="unsealing_dateBlock">
+                                            <label for="id_unsealing_date" class="form-label">Unsealing Date *</label>
+                                            {{ form.unsealing_date }}
+                                        </div>
+                                    </div>
+                                    <div class="form-column">
+                                        <div class="form-field-container" id="is_publicBlock">
+                                            <label for="id_is_public" class="form-label">Visibility</label>
+                                            {{ form.is_public }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="capsule-content-section">
                                 <div id="dropZone" class="drop-zone">
                                     <p>Drag and drop files here, or click to select files</p>
-                                    <input type="file" name="capsule_contents" id="capsule_contents" multiple hidden accept=".csv, .jpg, .png, .txt, .pdf" />
+                                    <input type="file" name="capsule_contents" id="capsule_contents" multiple hidden accept=".jpg, .png, .txt, .pdf, .docx, .xlsx, .csv, .mp3, .mp4, .zip" />
                                 </div>
                             </div>
                             <div class="uploaded-capsule-content-section"></div>
                             <div class="button-section">
-                                {% include 'components/buttons/button.html' with button_text="Submit" button_type="submit" button_class="primary-button"%}
+                                {% include 'components/buttons/button.html' with button_text="Submit" button_type="submit" button_class="primary-button" %}
                             </div>
                         </form>
                     </div>
@@ -48,8 +72,8 @@
             </div>
         </div>
 
-    <!-- Success message -->
-    {% include "components/messages/messages.html" with message_length=5%}
+        <!-- Success message -->
+        {% include "components/messages/messages.html" with message_length=5 %}
 
     </div>
 {% endblock %}

@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.form-input').forEach(input => {
+        const blockId = input.parentElement.id;
+        const label = input.previousElementSibling;
+
+        input.addEventListener('focus', () => {
+            document.getElementById(blockId).classList.add('active');
+            label.classList.add('active');
+        });
+
+        input.addEventListener('blur', () => {
+            if (!input.value) {
+                document.getElementById(blockId).classList.remove('active');
+                label.classList.remove('active');
+            }
+        });
+    });
+
     let modal = document.getElementById("capsuleFormModal"); // Get the modal
     let btn = document.querySelector("button[data-target='#capsuleFormModal']");  // Get the button that opens the modal
     let span = document.getElementsByClassName("close")[0];  // Get the <span> element that closes the modal

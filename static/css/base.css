@@ -5,10 +5,13 @@
     --background-color: #F4F7F5;
     --file-background-color: #f0f0f0;
     --dropzone-background-color: #cadbfb;
+    --form-label-blue-color: #1976d2;
+    --form-label-grey-color: #cccccc;
     --text-black-color: #333333;
     --text-white-color: #ffffff;
     --text-red-color: #DC143C;
     --text-blue-color: #2c71f0;
+    --text-grey-color: #9da3a8;
     --hover-color: #f5f5f5;
     --error-message-background: #f44336;
     --success-message-background: #4caf50;
