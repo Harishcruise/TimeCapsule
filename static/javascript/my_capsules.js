@@ -25,22 +25,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update the displayed file list
     function updateFileListDisplay() {
         fileListContainer.innerHTML = ''; // Clear current list
+        if (selectedFiles.length < 0) {
+            // Reset styles if no files are selected
+            fileListContainer.style.background = 'none';
+            fileListContainer.style.padding = '0';
+        }
         selectedFiles.forEach((file, index) => {
             const fileElement = document.createElement('div');
-            fileElement.textContent = file.name;
+            fileElement.className = 'file-item';
+
+            const fileName = document.createElement('span');
+            fileName.textContent = file.name;
+            fileName.className = 'file-item'; // Add a class for styling
 
             const deleteIcon = document.createElement('span');
-            deleteIcon.textContent = ' X';
-            deleteIcon.style.color = 'black';
-            deleteIcon.style.cursor = 'pointer';
-            deleteIcon.onmouseover = () => deleteIcon.style.color = 'red';
-            deleteIcon.onmouseout = () => deleteIcon.style.color = 'black';
-
+            deleteIcon.textContent = 'X';
+            deleteIcon.className = 'delete-icon';
             deleteIcon.addEventListener('click', () => {
                 selectedFiles = selectedFiles.filter((_, i) => i !== index); // Remove the file from the array
                 updateFileListDisplay(); // Refresh the displayed file list
-            });
+             });
 
+            fileElement.appendChild(fileName);
             fileElement.appendChild(deleteIcon);
             fileListContainer.appendChild(fileElement);
         });

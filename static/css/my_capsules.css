@@ -50,9 +50,9 @@
 .drop-zone {
   padding: 5px 20px;
   border-radius: 5px;
-  border: 2px dashed #2c71f0;
-  color: #2c71f0;
-  background-color: #cadbfb;
+  border: 2px dashed var(--text-blue-color);
+  color: var(--text-blue-color);
+  background-color: var(--dropzone-background-color);
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -62,7 +62,7 @@
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 4px solid #2c71f0;
+  border-top: 4px solid var(--text-blue-color);
   width: 14px;
   height: 14px;
   -webkit-animation: spin 1s linear infinite;
@@ -79,41 +79,34 @@
   }
 }
 
-/*.drop-zone p {*/
-/*  margin: 0;*/
-/*  font-weight: bold;*/
-/*}*/
-
 .file-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.file-list div {
-  margin-top: 10px;
-  background-color: #e9ecef;
-  padding: 10px;
-  border-radius: 5px;
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--file-background-color);
 }
 
-button {
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin-left: 10px;
+div.file-item{
+  padding: 10px 20px 10px 10px;
+  margin-bottom: 10px;
 }
 
-.delete-file {
+.file-name {
+    flex-grow: 1;
+}
+
+.delete-icon {
   cursor: pointer;
-  color: black;
+  color: var(--text-black-color);
   font-weight: bold;
-  margin-left: 10px;
 }
 
-.delete-file:hover {
-  color: red;
+.delete-icon:hover {
+  color: var(--text-red-color);
 }
