@@ -10,4 +10,4 @@ def home(request):
 
 
 def my_capsules(request):
-    return render(request, 'mycapsules.html')
+    return render(request, 'my_capsules.html')
