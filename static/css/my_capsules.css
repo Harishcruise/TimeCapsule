@@ -28,7 +28,7 @@
 
 .modal-form {
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--text-white-color);
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   width: 50%;
@@ -47,6 +47,3 @@
   top: 15px;
 }
 
-.close:hover {
-  color: #000;
-}
