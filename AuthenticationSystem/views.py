@@ -5,9 +5,5 @@ from .models import UserProfile
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the Test Home page")
-
-
 def login(request):
     return HttpResponse("Hello, world. You're at the Test Login page")
