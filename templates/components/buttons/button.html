@@ -1,3 +1,9 @@
-<link rel="stylesheet" href="../../../static/css/button/button.css">
-
-<button class="button"> {{ button_text }} </button>
+<button
+            type="{{ button_type|default:'button' }}"
+            class="{{ button_class }}"
+            {% if button_data_toggle %}data-toggle="{{ button_data_toggle }}"{% endif %}
+            {% if button_data_target %}data-target="{{ button_data_target }}"{% endif %}
+            {% if button_font_size %} style="font-size: {{ button_font_size }}" {% endif %}
+    >
+        {{ button_text }}
+</button>

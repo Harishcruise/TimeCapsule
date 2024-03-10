@@ -5,7 +5,11 @@
   --background-color: #F4F7F5;
     --text-black-color: #333333;
     --text-white-color: #ffffff;
+    --text-red-color: #DC143C;
   --hover-color: #f5f5f5;
+    --error-message-background: #f44336;
+    --success-message-background: #4caf50;
+
 }
 
 body{
