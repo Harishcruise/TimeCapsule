@@ -3,6 +3,41 @@
 {% block title %}Search - TimeCapsule{% endblock %}
 
 {% block content %}
+    <style>
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+    
+        .search-form input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 8px;
+            outline: none;
+        }
+    
+        .search-form button {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+
     <h1>Search</h1>
-    <!-- Add more content here -->
+
+    <form method="get" action="" class="search-form">
+        {{ form.q }}
+        <button type="submit" >Search</button>
+    </form>
+    
+    <!-- Display search results below the form -->
+    {% for capsule in capsules %}
+        <!-- Display capsule information here -->
+    {% endfor %}
+
 {% endblock %}
