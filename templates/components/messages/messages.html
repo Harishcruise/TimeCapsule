@@ -1,0 +1,16 @@
+{% if messages %}
+    <div id="messages">
+        {% for message in messages %}
+            <div
+                    class="toast {{ message.tags }}"
+                    {% if message_length %}
+                        style="animation: slideIn 0.5s, fadeOut {{ message_length }}s forwards;"
+                    {% else %}
+                        style="animation: slideIn 0.5s, fadeOut 3s forwards;"
+                    {% endif %}
+            >
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
