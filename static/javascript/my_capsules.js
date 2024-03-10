@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    const minDate = `${yyyy}-${mm}-${dd}T00:00`; // Template literal for clarity
+    const dateInput = document.getElementById('id_unsealing_date');
+
+    if (dateInput) {
+        dateInput.setAttribute("min", minDate);
+    }
+
     let modal = document.getElementById("capsuleFormModal"); // Get the modal
     let btn = document.querySelector("button[data-target='#capsuleFormModal']");  // Get the button that opens the modal
     let span = document.getElementsByClassName("close")[0];  // Get the <span> element that closes the modal
