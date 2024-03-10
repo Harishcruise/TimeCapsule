@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteIcon.addEventListener('click', () => {
                 selectedFiles = selectedFiles.filter((_, i) => i !== index); // Remove the file from the array
                 updateFileListDisplay(); // Refresh the displayed file list
+                // fileInput.value = ''; // Reset the file input to ensure change event can trigger again for the same file
              });
 
             fileElement.appendChild(fileName);
@@ -57,10 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropZoneText = document.getElementById('dropZone').querySelector('p'); // Assuming your dropzone has a <p> tag for text
         const originalText = dropZoneText.textContent; // Save the original text
         dropZoneText.innerHTML = '<div class="spinner"></div>'; // Add your spinner HTML here
+        selectedFiles = selectedFiles.concat(Array.from(files)); // Add new files to the array
         setTimeout(() => {
-            selectedFiles = selectedFiles.concat(Array.from(files)); // Add new files to the array
             updateFileListDisplay(); // Update the list display
             dropZoneText.textContent = originalText;
+            fileInput.value = '';
         }, 1000); // Adjust the delay as necessary
     }
 
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update selected files when user selects files
     fileInput.addEventListener('change', function() {
         handleFiles(this.files);
-        // this.value = ''; // Clear the selection after files are handled
+        // fileInput.value = ''; // Clear the file input to allow re-uploading the same file
     });
 
     // Handle file drop

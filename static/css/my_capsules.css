@@ -110,3 +110,8 @@ div.file-item{
 .delete-icon:hover {
   color: var(--text-red-color);
 }
+
+.button-section {
+  text-align: center;
+  padding: 15px 0;
+}
