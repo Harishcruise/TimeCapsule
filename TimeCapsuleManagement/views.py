@@ -5,6 +5,8 @@ from .models import Capsule, CapsuleContent, Comment, Subscription
 from AuthenticationSystem.models import UserProfile
 from .forms import CapsuleForm
 import mimetypes
+from django.http import HttpResponse
+from django.urls import reverse
 
 
 # Create your views here.
@@ -36,7 +38,14 @@ def my_capsules(request):
                     file_type=file_type,  # Use the determined file type
                 )
             messages.success(request, 'Time Capsule created successfully!')
-            return redirect('TimeCapsuleManagement:my_capsules')
+            # return redirect('TimeCapsuleManagement:my_capsules')
+            redirect_url = reverse('TimeCapsuleManagement:my_capsules')
+            return HttpResponse(f'success|{redirect_url}')
+        else:
+            messages.error(request, 'An error occurred while creating the capsule, please try again.')
+            # return render(request, 'my_capsules.html', {'form': form})
+            redirect_url = reverse('TimeCapsuleManagement:my_capsules')
+            return HttpResponse(f'error|{redirect_url}')
     else:
         form = CapsuleForm()
     return render(request, 'my_capsules.html', {'form': form})
