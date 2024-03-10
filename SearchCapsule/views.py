@@ -3,7 +3,7 @@ from django.views import View
 from .models import SearchableCapsule
 
 class CapsuleSearchView(View):
-    template_name = 'search_capsule/capsule_search_results.html'
+    template_name = 'search.html'
 
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get('q', '')
