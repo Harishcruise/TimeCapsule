@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="added CRUD operations for subscription model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/my_capsules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my_capsules.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_capsules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_capsules.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +97,7 @@
         <env name="DJANGO_SETTINGS_MODULE" value="TimeCapsule.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -130,6 +134,7 @@
       <workItem from="1710014706655" duration="1427000" />
       <workItem from="1710018793088" duration="7000" />
       <workItem from="1710038586679" duration="16366000" />
+      <workItem from="1710084954357" duration="1325000" />
     </task>
     <task id="LOCAL-00001" summary="Project Setup">
       <option name="closed" value="true" />
