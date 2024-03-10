@@ -1,0 +1,13 @@
+{% extends 'components/navBar.html' %}
+
+{% block title %}My TimeCapsules{% endblock %}
+
+{% block content %}
+    <h1>My Capsules</h1>
+    <!-- Add more content here -->
+    <div class="button-position">
+        <a href="{% url 'TimeCapsuleManagement:home' %}">
+            {% include 'components/buttons/button.html' with button_text="Create Capsule" %}
+        </a>
+    </div>
+{% endblock %}
