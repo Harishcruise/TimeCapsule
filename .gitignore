@@ -1,0 +1,19 @@
+# Django project
+*.pyc
+_pycache_/
+*.pyo
+*.pyd
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Compiled Python bytecode
+*.pyc
+_pycache_/
+
+# Logs
+*.log
+logs/
