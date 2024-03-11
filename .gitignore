@@ -10,10 +10,6 @@ _pycache_/
 *.iws
 *.ipr
 
-# Compiled Python bytecode
-*.pyc
-_pycache_/
-
 # Logs
 *.log
 logs/
