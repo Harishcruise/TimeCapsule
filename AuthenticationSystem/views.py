@@ -12,7 +12,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'components/../start.html', {})
+            return render(request, 'components/../home.html', {})
         else:
             messages.success(request, "There Was An Error Logging In, Try Again...")
             print("There Was An Error")
@@ -39,7 +39,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "Registration Successful!")
-            return render(request, 'components/../start.html', {})
+            return render(request, 'components/../home.html', {})
     else:
         form = RegisterUserForm()
 

@@ -1,13 +1,13 @@
 from django.db import models
-# from django.contrib.auth.models import User
-from AuthenticationSystem.models import UserProfile
+from django.contrib.auth.models import User
+#from AuthenticationSystem.models import UserProfile
 from django.utils import timezone
 
 # Create your models here.
 
 
 class Capsule(models.Model):
-    owner = models.ForeignKey(UserProfile, related_name='capsules', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='capsules', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
@@ -38,7 +38,7 @@ class CapsuleContent(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey(UserProfile, related_name='subscriptions', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='subscriptions', on_delete=models.CASCADE)
     capsule = models.ForeignKey(Capsule, related_name='subscribers', on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)  # For private capsules, approval needed
     subscribed_on = models.DateTimeField(auto_now_add=True)
@@ -49,7 +49,7 @@ class Subscription(models.Model):
 
 class Comment(models.Model):
     capsule = models.ForeignKey(Capsule, related_name='comments', on_delete=models.CASCADE)
-    user = models.ForeignKey(UserProfile, related_name='comments_on_capsules', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='comments_on_capsules', on_delete=models.CASCADE)
     content = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
 
