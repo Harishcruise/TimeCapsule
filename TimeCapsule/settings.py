@@ -134,4 +134,4 @@ LOGIN_REDIRECT_URL = 'TimeCapsuleManagement:home'
 
 LOGIN_URL = 'AuthenticationSystem:signin'
 
-# AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'
+AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'
