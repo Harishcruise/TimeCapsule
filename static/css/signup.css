@@ -1,0 +1,49 @@
+/* signup.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.p-4 {
+  padding: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.bg-body {
+  background-color: #ffffff;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-right: 20px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #495057;
+}

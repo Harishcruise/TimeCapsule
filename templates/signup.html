@@ -1,6 +1,13 @@
-
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="../static/css/signup.css"> <!-- This is the line to link to your CSS file -->
+</head>
+<body>
+    
 {% if form.errors %}
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
             There was an error with your form...
@@ -32,4 +39,5 @@
 		
 </div>
 <br/><br/>	
-{% endblock %}
+</body>
+</html>
