@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
 
-class UserProfile(User):
+class UserProfile(AbstractUser):
     bio = models.TextField(null=True, blank=True)
 
     def __str__(self):

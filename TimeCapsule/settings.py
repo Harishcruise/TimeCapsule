@@ -129,3 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+LOGIN_REDIRECT_URL = 'TimeCapsuleManagement:home'
+
+LOGIN_URL = 'AuthenticationSystem:signin'
+
+AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'

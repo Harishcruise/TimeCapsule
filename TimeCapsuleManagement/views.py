@@ -7,6 +7,7 @@ from .forms import CapsuleForm
 import mimetypes
 from django.http import HttpResponse
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -16,11 +17,15 @@ def home(request):
     return render(request, 'home.html')
 
 
+@login_required
 def my_capsules(request):
     if request.method == 'POST':
-        form = CapsuleForm(request.POST, request.FILES)
+        data = request.POST.copy()
+        data['owner'] = request.user.id
+        form = CapsuleForm(data, request.FILES)
         if form.is_valid():
             capsule = form.save()
+
             # Handle the uploaded files for CapsuleContent
             files = request.FILES.getlist('capsule_contents')
             for file in files:
