@@ -30,9 +30,9 @@
                         <form method="post" enctype="multipart/form-data" id="capsuleForm">
                             {% csrf_token %}
                             <div class="capsule-section">
-                                <div>
-                                    {{ form.owner }}
-                                </div>
+{#                                <div>#}
+{#                                    {{ form.owner }}#}
+{#                                </div>#}
                                 <div class="form-field-container" id="nameBlock">
                                     <label for="id_name" class="form-label" id="nameLabel">Name *</label>
                                     {{ form.name }}
