@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Page Title</title>
-    <link rel="stylesheet" href="../static/css/signup.css"> <!-- This is the line to link to your CSS file -->
+    <link rel="stylesheet" href="../static/css/signup.css">
 </head>
 <body>
-    
+    <div class="box">
+    <h1>Time Capsule Register</h1>
 {% if form.errors %}
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
             There was an error with your form...
@@ -18,9 +19,9 @@
 
 {% endif %}	
 
-	<div class="shadow p-4 mb-5 bg-body rounded">
-	<h1>Register</h1>
-<br/>
+{#	<div class="shadow p-4 mb-5 bg-body rounded">#}
+{#	<h1>Register</h1>#}
+{#<br/>#}
 
 
 		<form action="{% url 'register_user' %}" method=POST>
@@ -38,6 +39,7 @@
 		</form>
 		
 </div>
+    </div>
 <br/><br/>	
 </body>
 </html>
