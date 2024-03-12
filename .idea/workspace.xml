@@ -5,57 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="added CRUD operations for subscription model">
+      <change afterPath="$PROJECT_DIR$/AuthenticationSystem/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/signin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/migrations/0002_userprofile_phone_number.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/migrations/0003_alter_userprofile_options_alter_userprofile_managers_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/migrations/0004_remove_userprofile_phone_number.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SearchCapsule/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0002_alter_capsule_owner_alter_comment_user_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0003_alter_subscription_capsule_capsulecontent_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0004_alter_capsulecontent_capsule.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0005_alter_capsulecontent_capsule.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/02/25/20230501_220748_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/20230501_220748_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/GreenerFleetLayout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/GreenerFleetLayout_6f15fYa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/GreenerFleetLayout_Ffjt15l.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5_1_IDtI4eE.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5_1_m7CqWPn.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5_mPzN1E3.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/ISMAIL_SADIQ_110122554_LAB5_tBRCZ9n.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume_GYwxQPh.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume_bJU2h4P.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume_dOM8qph.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume_q55b5ir.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_Manual_QA_Engineer_Resume_zG7MbHt.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_QA.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabi_-_QA_BZKrVKh.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV_OnWbwSY.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV_X4wzZA7.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV_YmOExew.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV_hRbXvgp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ibrahim_Alabis_CV_pfiEjkg.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Ismail_Sadiq_-_110122554_-_Innovation_Blueprint_Summary.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Picture1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Picture1_DktdiJf.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Picture2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Picture2_sPfCnTI.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Screenshot_2024-03-09_at_7.47.02PM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Screenshot_2024-03-10_at_5.55.51PM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/Screenshot_2024-03-10_at_5.55.51PM_bSpVKZY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/forkPuzzle4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/lab5Networking.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capsule_content/2024/03/10/lab5Networking_dn3uiaq.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsule/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsule/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,10 +25,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -105,7 +62,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "dbreset",
+    "git-widget-placeholder": "manjuBranch",
     "ignore.virus.scanning.warn.message": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
