@@ -1,0 +1,12 @@
+<!-- carousel.html -->
+<div class="carousel" id="{{ carousel_id }}">
+  <div class="carousel-inner">
+    {% for item in items %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ item.file.url }}" alt="Slide">
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" onclick="prevSlide('{{ carousel_id }}')">&#10094;</button>
+  <button class="carousel-control-next" onclick="nextSlide('{{ carousel_id }}')">&#10095;</button>
+</div>
