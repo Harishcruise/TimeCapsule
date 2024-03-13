@@ -28,3 +28,12 @@ function nextSlide(carouselId) {
 function prevSlide(carouselId) {
   showSlide(carouselId, carouselState[carouselId] - 1);
 }
+
+// Show the first slide for each carousel when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(carousel => {
+    const carouselId = carousel.getAttribute('id');
+    showSlide(carouselId, 0);
+  });
+});
