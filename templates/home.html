@@ -5,4 +5,14 @@
 {% block content %}
     <h1>Home</h1>
     <!-- Add more content here -->
+
+    <div class="left-container">
+        {% for post in posts %}
+            {% include 'components/card/capsule_card.html' with post=post %}
+        {% endfor %}
+    </div>
+
+    <div class="right-container">
+
+    </div>
 {% endblock %}
