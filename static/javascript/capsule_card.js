@@ -1,5 +1,5 @@
 // carousel.js
-let carouselState = {};
+let carouselStates = {};
 
 function showSlide(carouselId, slideIndex) {
   const carousel = document.getElementById(carouselId);
