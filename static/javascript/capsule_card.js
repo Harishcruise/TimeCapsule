@@ -20,3 +20,11 @@ function showSlide(carouselId, slideIndex) {
   }
   slides[carouselState[carouselId]].style.display = 'block';
 }
+
+function nextSlide(carouselId) {
+  showSlide(carouselId, carouselState[carouselId] + 1);
+}
+
+function prevSlide(carouselId) {
+  showSlide(carouselId, carouselState[carouselId] - 1);
+}
