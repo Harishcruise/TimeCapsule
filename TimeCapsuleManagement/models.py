@@ -29,7 +29,7 @@ class CapsuleContent(models.Model):
         ('text', 'Text'),
     )
     file_type = models.CharField(max_length=20, choices=FILE_TYPES)
-    file = models.FileField(upload_to='capsule_content/%Y/%m/%d/')
+    file = models.FileField(upload_to='static/capsule_content/%Y/%m/%d/', max_length=500)
     capsule = models.ForeignKey(Capsule, related_name='media', on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

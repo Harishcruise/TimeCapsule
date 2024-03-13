@@ -14,7 +14,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'home.html')
+    posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+    users = UserProfile.objects.all()
+    return render(request, 'home.html', {'posts': posts,'users': users})
 
 
 @login_required
