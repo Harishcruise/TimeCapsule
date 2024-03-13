@@ -3,6 +3,33 @@
 {% block title %}Home - TimeCapsule{% endblock %}
 
 {% block content %}
-    <h1>Home</h1>
+    <div class="header">
+        <h1>Home</h1>
+    </div>
+    
     <!-- Add more content here -->
+
+    <div class="home-container">
+        <div class="left-container">
+            {% for post in posts %}
+                {% include 'components/card/capsule_card.html' with post=post %}
+            {% endfor %}
+        </div>
+
+        <div class="right-container">
+            <p>Suggested User for you</p>
+
+            {% for user in users %}
+                <div class="post-head" style="width: 100%">
+                    <div >
+                        <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile icon">
+                        <p>{{ user.username }}</p>
+                    </div>
+
+                    {% include 'components/buttons/button.html' with button_text="Subscribe" button_class="primary-button" %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
 {% endblock %}
