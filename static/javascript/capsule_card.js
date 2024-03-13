@@ -8,4 +8,15 @@ function showSlide(carouselId, slideIndex) {
   if (!carouselState[carouselId]) {
     carouselState[carouselId] = 0;
   }
+  carouselState[carouselId] = slideIndex;
+  if (carouselState[carouselId] >= slides.length) {
+    carouselState[carouselId] = 0;
+  }
+  if (carouselState[carouselId] < 0) {
+    carouselState[carouselId] = slides.length - 1;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slides[carouselState[carouselId]].style.display = 'block';
 }
