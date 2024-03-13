@@ -1,0 +1,22 @@
+/* styles.css */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Adjust the width as needed */
+  margin: auto;
+}
+
+.carousel-inner {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
