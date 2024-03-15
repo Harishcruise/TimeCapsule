@@ -59,3 +59,13 @@ def my_capsules(request):
         form = CapsuleForm()
     return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list})
 
+
+def delete_capsule(request, capsule_id):
+    if request.method == "POST":  # Ensure the action is only allowed through POST request for safety
+        capsule = get_object_or_404(Capsule, id=capsule_id)
+        capsule.delete()
+        messages.success(request, "Capsule deleted successfully!")
+        return redirect('TimeCapsuleManagement:my_capsules')
+    else:
+        messages.error(request, "An error occurred, please try again.")
+        return redirect('TimeCapsuleManagement:my_capsules')
