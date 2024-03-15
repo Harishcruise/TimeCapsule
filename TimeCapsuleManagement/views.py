@@ -58,3 +58,4 @@ def my_capsules(request):
     else:
         form = CapsuleForm()
     return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list})
+
