@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="my-capsules-content">
+    <div class="my-capsules-first-row">
         <div>
             <h2>My Capsules</h2>
         </div>
@@ -74,6 +75,13 @@
 
         <!-- Success message -->
         {% include "components/messages/messages.html" with message_length=5 %}
+    </div>
+
+    <div class="my-capsules-second-row">
+        {% for capsules in capsule_list %}
+                {% include 'components/card/capsule_card.html' with post=capsules %}
+        {% endfor %}
+    </div>
 
     </div>
 {% endblock %}

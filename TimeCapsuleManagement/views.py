@@ -16,11 +16,13 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
     users = UserProfile.objects.all()
-    return render(request, 'home.html', {'posts': posts,'users': users})
+    return render(request, 'home.html', {'posts': posts, 'users': users})
 
 
 @login_required
 def my_capsules(request):
+    owner = UserProfile.objects.get(id=request.user.id)
+    capsule_list = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(owner=owner)
     if request.method == 'POST':
         data = request.POST.copy()
         data['owner'] = request.user.id
@@ -55,4 +57,4 @@ def my_capsules(request):
             return HttpResponse(f'error|{redirect_url}')
     else:
         form = CapsuleForm()
-    return render(request, 'my_capsules.html', {'form': form})
+    return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list})
