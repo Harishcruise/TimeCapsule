@@ -1,12 +1,9 @@
-/*.button-position {*/
-/*  margin-left: 10px;*/
-/*}*/
 .my-capsules-first-row {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Adjusted to space-between to push the button to the left */
     padding: 20px;
-    background-color: white;
+    background-color: var(--text-white-color);
     border-radius: 5px;
 }
 
