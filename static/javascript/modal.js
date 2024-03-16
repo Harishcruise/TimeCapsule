@@ -1,4 +1,3 @@
-
 function closeModal(modal_id){
   const modal = document.getElementById(modal_id)
   modal.style.display='none';

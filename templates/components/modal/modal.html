@@ -11,7 +11,7 @@
             <div class="post-head" style="width: 100%;border-bottom: 1px solid #ccc;">
                     <div >
                         <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile icon">
-                        <p>{{ owner }}</p>
+                        <p>{{ post.owner }}</p>
                     </div>
 
                     <button id="close" onclick="closeModal('id-modal-{{ modal_id }}')" class="modal-2-close x-button">&times;</button>
@@ -43,10 +43,11 @@
                 
             </div>
         
-            <div class="post-comment-container">
-                <textarea placeholder="Add comments"></textarea>
-                {% include 'components/buttons/button.html' with button_text="Post" button_class="primary-button" %}
-            </div>
+                <form class="post-comment-container" method="POST" action="{% url 'TimeCapsuleManagement:post_comment' post.id %}">
+                  {% csrf_token %}
+                  {{ comment_form.content }}
+                  <button type="submit" class="primary-button">Post</button>
+                </form>
 
         </div>
     </div>
