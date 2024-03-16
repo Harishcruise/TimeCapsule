@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="minor changes">
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/3_FJ8bKM8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/3_ZpVFBOd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/4_dAOQvdX.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/4_dmP04UH.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/5_NMgRRBi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/15/5_OITtnEa.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/messages/messages.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/messages/messages.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/card/capsule_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/card/capsule_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_capsules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_capsules.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
