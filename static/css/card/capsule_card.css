@@ -6,6 +6,7 @@
     border-radius: 5px;
     background-color: var(--text-white-color);
     /* Add other styling properties as needed */
+    position: relative;
 }
 
 .post-media img,
@@ -86,5 +87,30 @@
     cursor: pointer;
 }
 
+.margin-top-10px {
+  margin-top: 10px;
+}
 
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-icon, .delete-icon {
+    margin: 0 10px 10px 10px;
+
+}
+
+.edit-icon svg, .delete-icon svg {
+    color: black; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.edit-icon:hover svg {
+    color: var(--primary-color); /* Color on hover for edit icon */
+}
+
+.delete-icon:hover svg {
+    color: var(--text-red-color); /* Color on hover for delete icon */
+}
 
