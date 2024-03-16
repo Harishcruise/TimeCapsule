@@ -132,6 +132,12 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'TimeCapsuleManagement:home'
 
-LOGIN_URL = 'AuthenticationSystem:signin'
+LOGIN_URL = 'AuthenticationSystem:user_login'
 
 AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'
+
+SESSION_COOKIE_AGE = 600
+
+SESSION_SAVE_EVERY_REQUEST = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False

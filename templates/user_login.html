@@ -10,7 +10,7 @@
 {% include "components/messages/messages.html" with message_length=5 %}
 <div class="login-form-container">
     <h2>Login</h2>
-    <form method="post" action="{% url 'AuthenticationSystem:signin' %}">
+    <form method="post" action="{% url 'AuthenticationSystem:user_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
