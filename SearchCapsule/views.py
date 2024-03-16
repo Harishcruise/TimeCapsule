@@ -1,27 +1,23 @@
 from django.shortcuts import render
-from django.views import View
-from .models import SearchableCapsule
+from .forms import SearchForm
+from django.db.models import Q
+from TimeCapsuleManagement.models import Capsule
 
-class CapsuleSearchView(View):
-    template_name = 'search_capsule/capsule_search_results.html'
+def search(request):
+    # Initialize your form with request.GET to capture query parameters
+    form = SearchForm(request.GET)
+    # Check if the form is submitted with valid data
+    if form.is_valid():
+        query = form.cleaned_data.get('q', '')  # Get the search query from the form
+        # If a query exists, filter the posts based on the query; otherwise, retrieve all posts
+        if query:
+            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(
+                Q(name__icontains=query) | Q(description__icontains=query)
+            )
+        else:
+            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+    else:
+        # If form is not valid or no form is submitted, display all posts
+        posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
 
-    def get(self, request, *args, **kwargs):
-        query = self.request.GET.get('q', '')
-        searchable_capsules = SearchableCapsule.objects.filter(capsule__name__icontains=query, capsule__is_public=True)
-
-        context = {
-            'query': query,
-            'capsules': [searchable_capsule.capsule for searchable_capsule in searchable_capsules],
-        }
-
-        return render(request, self.template_name, context)
-
-
-
-
-
-
-
-
-
-
+    return render(request, 'search.html', {'form': form, 'posts': posts})

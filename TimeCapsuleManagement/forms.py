@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import DateTimeInput
-from .models import Capsule, CapsuleContent
+from .models import Capsule, CapsuleContent, Comment
 
 
 class CapsuleForm(forms.ModelForm):
@@ -26,3 +26,16 @@ class CapsuleForm(forms.ModelForm):
                 attrs={'type': 'datetime-local', 'class': 'form-input'}
             ),
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        label_suffix = ''
+        widgets = {
+            'content': forms.Textarea(attrs={'rows':0})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].widget.attrs['placeholder'] = 'Add comments'

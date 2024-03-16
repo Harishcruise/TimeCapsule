@@ -1,6 +1,6 @@
 /* instagram_styles.css */
 .post-card {
-    width: 500px;
+    width: 600px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -112,5 +112,9 @@
 
 .delete-icon:hover svg {
     color: var(--text-red-color); /* Color on hover for delete icon */
+}
+
+.sealed-capsule{
+
 }
 

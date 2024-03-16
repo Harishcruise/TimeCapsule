@@ -4,7 +4,10 @@
 
 {% block content %}
     <div class="header">
-        <h1>Home</h1>
+        <div>
+            <h2>Home</h2>
+        </div>
+
     </div>
     
     <!-- Add more content here -->
@@ -29,7 +32,6 @@
                     {% include 'components/buttons/button.html' with button_text="Subscribe" button_class="primary-button" %}
                 </div>
             {% endfor %}
-
         </div>
     </div>
 {% endblock %}

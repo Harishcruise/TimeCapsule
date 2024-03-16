@@ -208,7 +208,7 @@ div.file-item{
     flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start; /* This will push the right capsule to the far right */
-    padding: 20px 0;
+    padding: 20px;
 }
 
 .my-capsules-second-row > div {

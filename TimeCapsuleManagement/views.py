@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib import messages
 from .models import Capsule, CapsuleContent, Comment, Subscription
 from AuthenticationSystem.models import UserProfile
-from .forms import CapsuleForm
+from .forms import CapsuleForm, CommentForm
 import mimetypes
 from django.http import HttpResponse
 from django.urls import reverse
@@ -13,14 +13,17 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@login_required
 def home(request):
     posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
     users = UserProfile.objects.all()
-    return render(request, 'home.html', {'posts': posts, 'users': users})
+    comment_form = CommentForm()
+    return render(request, 'home.html', {'posts': posts, 'users': users, 'comment_form': comment_form})
 
 
 @login_required
 def my_capsules(request):
+    comment_form = CommentForm()
     owner = UserProfile.objects.get(id=request.user.id)
     capsule_list = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(owner=owner)
     if request.method == 'POST':
@@ -57,7 +60,7 @@ def my_capsules(request):
             return HttpResponse(f'error|{redirect_url}')
     else:
         form = CapsuleForm()
-    return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list})
+    return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list,'comment_form': comment_form})
 
 
 def delete_capsule(request, capsule_id):
@@ -69,3 +72,17 @@ def delete_capsule(request, capsule_id):
     else:
         messages.error(request, "An error occurred, please try again.")
         return redirect('TimeCapsuleManagement:my_capsules')
+
+def post_comment(request, capsule_id):
+    capsule = Capsule.objects.get(pk=capsule_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.capsule = capsule
+            comment.user = request.user  # Assuming user is logged in
+            comment.save()
+            return redirect('TimeCapsuleManagement:home')
+    else:
+        form = CommentForm()
+        return redirect('TimeCapsuleManagement:home')
