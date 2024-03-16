@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Time Capsule - Login</title>
-    <link rel="stylesheet" href="../static/css/messages/messages.css">
     <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/messages/messages.css">
+    <link rel="stylesheet" href="../static/css/button/button.css">
+    <link rel="stylesheet" href="../static/css/user_login.css">
+    <script src="../static/javascript/my_capsules.js"></script>
 </head>
 <body>
-{% include "components/messages/messages.html" with message_length=5 %}
-<div class="login-form-container">
-    <h2>Login</h2>
-    <form method="post" action="{% url 'AuthenticationSystem:user_login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</div>
+    <div class="modal-form-container">
+        <div class="container">
+            <div class="left-content">
+                <!-- Left side content (if any, like images or text) -->
+            </div>
+            <div class="right-content">
+                <div class="login-form">
+                    <div class="modal-heading">
+                        <h2>Time Capsule</h2>
+                    </div>
+                    <div class="form-style">
+                        <form method="post" action="{% url 'AuthenticationSystem:user_login' %}">
+                            {% csrf_token %}
+                            <div class="form-field-container" id="usernameBlock">
+                                <label for="id_username" class="form-label">Username *</label>
+                                {{ form.username }}
+                            </div>
+                            <div class="form-field-container" id="passwordBlock">
+                                <label for="id_password" class="form-label">Password *</label>
+                                {{ form.password }}
+                            </div>
+                             <div class="button-section">
+                                {% include 'components/buttons/button.html' with button_text="Login" button_type="submit" button_id="login-button" button_class="primary-button" %}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="division">
+                        <div class="line"></div>
+                        <span class="or-text">OR</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="forgot-password">
+                        <p>
+                            <a href="https://localhost:8080/forgot-password"> Forgot password?</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="sign-up">
+                    <p>Don't have an account? <a href="{% url 'AuthenticationSystem:user_signup' %}">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

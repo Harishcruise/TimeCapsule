@@ -24,3 +24,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('SearchCapsule:capsule_search')
+
+
+def user_signup(request):
+    return redirect('AuthenticationSystem:user_login:')
