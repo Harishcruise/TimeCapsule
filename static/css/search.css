@@ -1,0 +1,71 @@
+.header{
+    width: 100%;
+    background-color: var(--background-color); /* Assuming this variable is defined elsewhere */
+    z-index: 10;
+}
+
+.search-bar{
+    width: 100%;
+    padding: 10px 0; /* Gives some vertical space around the form */
+    background-color: #f8f9fa; /* Light grey background, adjust as necessary */
+    border-bottom: 1px solid #eaeaea; /* Slight separation from content below */
+}
+
+.home-container{
+    display: flex;
+    justify-content: center; /* Center the .left-container if there's room */
+    padding-top: 20px; /* Space between search bar and content */
+}
+
+.left-container{
+    width: 80%; /* Adjust based on your design preference */
+    margin: 0 auto; /* Center the container if it doesn't take full width */
+}
+
+
+/* Add this to your styles.css or within a <style> tag in the head of your base template */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 640px; /* Adjust based on your design preference */
+    background: #FFFFFF;
+    border: 2px solid #dddddd; /* Slight border for definition */
+    border-radius: 50px; /* Rounded corners for modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px; /* Adjust font size as needed */
+    border-radius: 50px;
+    outline: none; /* Removes the outline to keep the design clean */
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    border: none;
+    background: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    outline: none; /* Keeps the button seamlessly integrated */
+}
+
+.search-button svg {
+    color: #707070; /* Icon color, adjust as needed */
+}
+
+.search-button:hover svg {
+    color: #333333; /* Darker color on hover for feedback */
+}
+
+
