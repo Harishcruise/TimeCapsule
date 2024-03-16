@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CustomSigninForm
 
@@ -19,3 +19,8 @@ def user_login(request):
     else:
         form = CustomSigninForm()
     return render(request, 'user_login.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('SearchCapsule:capsule_search')
