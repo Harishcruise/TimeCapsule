@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import CustomSigninForm
 
 
-def signin(request):
+def user_login(request):
     if request.method == 'POST':
         form = CustomSigninForm(request.POST)
         if form.is_valid():
@@ -18,4 +18,4 @@ def signin(request):
                 messages.error(request, 'Invalid username or password')
     else:
         form = CustomSigninForm()
-    return render(request, 'signin.html', {'form': form})
+    return render(request, 'user_login.html', {'form': form})

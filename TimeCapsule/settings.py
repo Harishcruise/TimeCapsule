@@ -132,6 +132,6 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'TimeCapsuleManagement:home'
 
-LOGIN_URL = 'AuthenticationSystem:signin'
+LOGIN_URL = 'AuthenticationSystem:user_login'
 
 AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'

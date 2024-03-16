@@ -3,6 +3,7 @@ from .forms import SearchForm
 from django.db.models import Q
 from TimeCapsuleManagement.models import Capsule
 
+
 def search(request):
     # Initialize your form with request.GET to capture query parameters
     form = SearchForm(request.GET)
