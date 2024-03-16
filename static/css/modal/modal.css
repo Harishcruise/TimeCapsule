@@ -108,3 +108,23 @@
   flex-direction: column;
   width: 100%;
 }
+
+.post-comment-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.post-comment-container textarea{
+  font-family: "Space Grotesk", sans-serif;
+  outline: none;
+  resize: none;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 50px;
+}
