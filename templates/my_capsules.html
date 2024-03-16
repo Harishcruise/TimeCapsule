@@ -39,9 +39,6 @@
                     <form method="post" enctype="multipart/form-data" id="capsuleForm">
                         {% csrf_token %}
                         <div class="capsule-section">
-{#                                <div>#}
-{#                                    {{ form.owner }}#}
-{#                                </div>#}
                             <div class="form-field-container" id="nameBlock">
                                 <label for="id_name" class="form-label" id="nameLabel">Name *</label>
                                 {{ form.name }}
@@ -53,7 +50,7 @@
                             <div class="form-row">
                                 <div class="form-column">
                                     <div class="form-field-container" id="unsealing_dateBlock">
-                                        <label for="id_unsealing_date" class="form-label">Unsealing Date *</label>
+                                        <label for="id_unsealing_date" id="unsealing_dateLabel" class="form-label">Unsealing Date *</label>
                                         {{ form.unsealing_date }}
                                     </div>
                                 </div>
@@ -73,7 +70,7 @@
                         </div>
                         <div class="uploaded-capsule-content-section"></div>
                         <div class="button-section">
-                            {% include 'components/buttons/button.html' with button_text="Submit" button_type="submit" button_class="primary-button" %}
+                            {% include 'components/buttons/button.html' with button_text="Submit" button_type="submit" button_id="form-button" button_class="primary-button" %}
                         </div>
                     </form>
                 </div>

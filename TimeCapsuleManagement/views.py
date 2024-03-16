@@ -5,7 +5,7 @@ from .models import Capsule, CapsuleContent, Comment, Subscription
 from AuthenticationSystem.models import UserProfile
 from .forms import CapsuleForm, CommentForm
 import mimetypes
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -63,6 +63,40 @@ def my_capsules(request):
     return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list,'comment_form': comment_form})
 
 
+@login_required
+def edit_capsule(request, capsule_id):
+    capsule = get_object_or_404(Capsule, id=capsule_id, owner=request.user)
+
+    if request.method == 'GET':
+        # Serialize the capsule data for the form
+        data = {
+            'name': capsule.name,
+            'description': capsule.description,
+            'unsealing_date': capsule.unsealing_date.strftime('%Y-%m-%dT%H:%M'),  # Adjust formatting as necessary
+            'is_public': capsule.is_public,
+            # Add any other fields as necessary
+        }
+        return JsonResponse(data)
+
+    elif request.method == 'POST':
+        data = request.POST.copy()
+        data['owner'] = request.user.id
+        # form = CapsuleForm(data, request.FILES)
+        form = CapsuleForm(data, request.FILES, instance=capsule)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Capsule updated successfully!')
+            redirect_url = reverse('TimeCapsuleManagement:my_capsules')
+            return HttpResponse(f'success|{redirect_url}')
+        else:
+            # Handle form errors
+            messages.error(request, 'An error occurred while updating the capsule.')
+            # return redirect('TimeCapsuleManagement:my_capsules')
+            redirect_url = reverse('TimeCapsuleManagement:my_capsules')
+            return HttpResponse(f'error|{redirect_url}')
+
+
+@login_required
 def delete_capsule(request, capsule_id):
     if request.method == "POST":  # Ensure the action is only allowed through POST request for safety
         capsule = get_object_or_404(Capsule, id=capsule_id)
@@ -73,6 +107,8 @@ def delete_capsule(request, capsule_id):
         messages.error(request, "An error occurred, please try again.")
         return redirect('TimeCapsuleManagement:my_capsules')
 
+
+@login_required
 def post_comment(request, capsule_id):
     capsule = Capsule.objects.get(pk=capsule_id)
     if request.method == 'POST':
