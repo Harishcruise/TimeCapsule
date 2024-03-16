@@ -11,7 +11,7 @@ class CapsuleForm(forms.ModelForm):
     is_public = forms.ChoiceField(
         choices=VISIBILITY_CHOICES,
         widget=forms.Select(
-            attrs={'class': 'form-input', 'onfocus': 'adjustLabel(this.id)', 'onblur': 'resetLabel(this.id)'}
+            attrs={'class': 'form-input'}
         ),
         initial=False
     )
@@ -26,6 +26,7 @@ class CapsuleForm(forms.ModelForm):
                 attrs={'type': 'datetime-local', 'class': 'form-input'}
             ),
         }
+
 
 class CommentForm(forms.ModelForm):
     class Meta:

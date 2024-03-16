@@ -31,9 +31,28 @@ document.addEventListener('DOMContentLoaded', function() {
     let modal = document.getElementById("capsuleFormModal"); // Get the modal
     let btn = document.querySelector("button[data-target='#capsuleFormModal']");  // Get the button that opens the modal
     let span = document.getElementsByClassName("close")[0];  // Get the <span> element that closes the modal
+    function resetFormFields() {
+        document.getElementById('id_name').value = '';
+        document.getElementById('nameBlock').classList.remove('active');
+        document.getElementById('nameLabel').classList.remove('active');
+
+        document.getElementById('id_description').value = '';
+        document.getElementById('descriptionBlock').classList.remove('active');
+        document.getElementById('descriptionLabel').classList.remove('active');
+
+        document.getElementById('id_unsealing_date').value = ''; // Set to today's date or leave blank
+        document.getElementById('unsealing_dateBlock').classList.remove('active');
+        document.getElementById('unsealing_dateLabel').classList.remove('active');
+
+        document.getElementById('id_is_public').value = 'False'; // Adjust based on your default
+
+        // Change the button text to "Update"
+        document.getElementById('form-button').textContent = 'Submit'; //
+    }
     // When the user clicks the button, open the modal
     if(btn != null) { // Check if the button was found
         btn.onclick = function() {
+            resetFormFields();
             modal.style.display = "flex";
         }
     }
@@ -132,9 +151,43 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.text())
         .then(data => {
+            console.log(data); // For debugging
             const [status, message] = data.split('|');
                 window.location.href = message;  // Redirect to the given URL
         })
         .catch(error => console.error('Error:', error));
+    });
+
+    // Function to open and populate the modal for editing
+    document.querySelectorAll('.edit-icon').forEach(button => {
+        button.addEventListener('click', function() {
+            const capsuleId = this.getAttribute('data-capsule-id');
+            fetch(`/edit/${capsuleId}/`, { method: 'GET', credentials: 'include' })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    document.getElementById('form-button').textContent = 'Update';
+                    // Populate the form fields with the capsule data
+                    document.getElementById('nameBlock').classList.add('active');
+                    document.getElementById('nameLabel').classList.add('active');
+                    document.getElementById('id_name').value = data.name;
+
+                    document.getElementById('descriptionBlock').classList.add('active');
+                    document.getElementById('descriptionLabel').classList.add('active');
+                    document.getElementById('id_description').value = data.description;
+
+                    document.getElementById('unsealing_dateBlock').classList.add('active');
+                    document.getElementById('unsealing_dateLabel').classList.add('active');
+                    document.getElementById('id_unsealing_date').value = data.unsealing_date;
+
+                    let is_public = data.is_public ? 'True' : 'False';
+                    document.getElementById('id_is_public').value = is_public;
+
+                    // Change the form action to update the capsule
+                    document.querySelector('#capsuleForm').action = `/edit/${capsuleId}/`;
+                    modal.style.display = "flex";  // Open the modal
+                })
+                .catch(error => console.error('Error:', error));
+        });
     });
 });
