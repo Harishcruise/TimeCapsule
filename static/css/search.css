@@ -1,20 +1,8 @@
-.header{
-    width: 100%;
-    background-color: var(--background-color); /* Assuming this variable is defined elsewhere */
-    z-index: 10;
-}
-
 .search-bar{
     width: 100%;
     padding: 10px 0; /* Gives some vertical space around the form */
     background-color: #f8f9fa; /* Light grey background, adjust as necessary */
     border-bottom: 1px solid #eaeaea; /* Slight separation from content below */
-}
-
-.home-container{
-    display: flex;
-    justify-content: center; /* Center the .left-container if there's room */
-    padding-top: 20px; /* Space between search bar and content */
 }
 
 .left-container{
@@ -27,7 +15,7 @@
 .search-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 120px;
 }
 
 .search-form {
