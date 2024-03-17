@@ -10,8 +10,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*height: 100vh;*/
-    background-color: var(--background-color)
+    min-height: 100vh;
+    background-color: var(--background-color);
+    overflow-y: auto;
 }
 
 .right-content {
@@ -22,7 +23,6 @@ body {
 #login-button{
     width: 100%;
 }
-
 
 .left-content, .right-content {
     height: 600px;
@@ -39,7 +39,7 @@ body {
     padding: 20px;
     background-color: white;
     border-radius: 1px;
-    border: 1px solid var(--text-grey-color);
+    border: 1px solid var(--line-grey-color);
     margin-bottom: 20px;
 }
 
@@ -48,16 +48,13 @@ body {
     padding: 20px;
     background-color: white;
     border-radius: 1px;
-    border: 1px solid var(--text-grey-color);
+    border: 1px solid var(--line-grey-color);
     text-align: center;
-}
-
-.sign-up p{
-    margin: 0;
+    margin-bottom: 50px;
 }
 
 .modal-heading{
-    padding: 40px 40px;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -133,4 +130,19 @@ body {
 
 .forgot-password{
     text-align: center;
+}
+
+.forgot-password a {
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--text-blue-color);
+}
+
+.sign-up p{
+    margin: 0;
+}
+
+.sign-up a{
+    text-decoration: none;
+    color: var(--text-blue-color);
 }
