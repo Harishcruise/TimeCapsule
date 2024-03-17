@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone
 from django.contrib import messages
 from .models import Capsule, CapsuleContent, Comment, Subscription
 from AuthenticationSystem.models import UserProfile
 from .forms import CapsuleForm, CommentForm
 import mimetypes
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -86,7 +85,7 @@ def edit_capsule(request, capsule_id):
             files = request.FILES.getlist('capsule_contents')
             for file in files:
                 mime_type, _ = mimetypes.guess_type(file.name)
-                file_type = 'text'  # Default file type
+                file_type = 'photo'  # Default file type
                 if mime_type:
                     if mime_type.startswith('image/'):
                         file_type = 'photo'
@@ -140,7 +139,12 @@ def post_comment(request, capsule_id):
             comment.capsule = capsule
             comment.user = request.user
             comment.save()
-            return redirect('TimeCapsuleManagement:home')
+            messages.success(request, "Comment saved successfully!")
+            # return redirect('TimeCapsuleManagement:home')
+            referer_url = request.META.get('HTTP_REFERER', '/')
+            return HttpResponseRedirect(referer_url)
     else:
         form = CommentForm()
-        return redirect('TimeCapsuleManagement:home')
+        # return redirect('TimeCapsuleManagement:home')
+        referer_url = request.META.get('HTTP_REFERER', '/')
+        return HttpResponseRedirect(referer_url)
