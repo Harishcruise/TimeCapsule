@@ -48,24 +48,33 @@
                                 {{ form.description }}
                             </div>
                             <div class="form-row">
-                                <div class="form-column">
+                                <div class="form-column-one">
                                     <div class="form-field-container" id="unsealing_dateBlock">
                                         <label for="id_unsealing_date" id="unsealing_dateLabel" class="form-label">Unsealing Date *</label>
                                         {{ form.unsealing_date }}
                                     </div>
                                 </div>
-                                <div class="form-column">
+                                <div class="form-column-two">
                                     <div class="form-field-container" id="is_publicBlock">
                                         <label for="id_is_public" class="form-label">Visibility</label>
                                         {{ form.is_public }}
                                     </div>
                                 </div>
+                                <div class="form-column-three">
+                                    <div class="form-field-container" id="statusBlock">
+                                        <label for="id_status" class="form-label">Status</label>
+                                        {{ form.status }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-row">
+                                <p> <b> NOTE:</b> A sealed capsule cannot be edited or unsealed. </p>
                             </div>
                         </div>
                         <div class="capsule-content-section">
                             <div id="dropZone" class="drop-zone">
                                 <p>Drag and drop files here, or click to select files</p>
-                                <input type="file" name="capsule_contents" id="capsule_contents" multiple hidden accept=".jpg, .png, .txt, .pdf, .docx, .xlsx, .csv, .mp3, .mp4, .zip" />
+                                <input type="file" name="capsule_contents" id="capsule_contents" multiple hidden accept=".jpg, .png, .hpeg, .mp4" />
                             </div>
                         </div>
                         <div class="uploaded-capsule-content-section"></div>

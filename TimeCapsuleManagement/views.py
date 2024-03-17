@@ -50,12 +50,10 @@ def my_capsules(request):
                     file_type=file_type,  # Use the determined file type
                 )
             messages.success(request, 'Time Capsule created successfully!')
-            # return redirect('TimeCapsuleManagement:my_capsules')
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'success|{redirect_url}')
         else:
             messages.error(request, 'An error occurred while creating the capsule, please try again.')
-            # return render(request, 'my_capsules.html', {'form': form})
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'error|{redirect_url}')
     else:
@@ -68,20 +66,18 @@ def edit_capsule(request, capsule_id):
     capsule = get_object_or_404(Capsule, id=capsule_id, owner=request.user)
 
     if request.method == 'GET':
-        # Serialize the capsule data for the form
         data = {
             'name': capsule.name,
             'description': capsule.description,
-            'unsealing_date': capsule.unsealing_date.strftime('%Y-%m-%dT%H:%M'),  # Adjust formatting as necessary
+            'unsealing_date': capsule.unsealing_date.strftime('%Y-%m-%dT%H:%M'),
             'is_public': capsule.is_public,
-            # Add any other fields as necessary
+            'status': capsule.status,
         }
         return JsonResponse(data)
 
     elif request.method == 'POST':
         data = request.POST.copy()
         data['owner'] = request.user.id
-        # form = CapsuleForm(data, request.FILES)
         form = CapsuleForm(data, request.FILES, instance=capsule)
         if form.is_valid():
             form.save()
@@ -89,16 +85,14 @@ def edit_capsule(request, capsule_id):
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'success|{redirect_url}')
         else:
-            # Handle form errors
             messages.error(request, 'An error occurred while updating the capsule.')
-            # return redirect('TimeCapsuleManagement:my_capsules')
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'error|{redirect_url}')
 
 
 @login_required
 def delete_capsule(request, capsule_id):
-    if request.method == "POST":  # Ensure the action is only allowed through POST request for safety
+    if request.method == "POST":
         capsule = get_object_or_404(Capsule, id=capsule_id)
         capsule.delete()
         messages.success(request, "Capsule deleted successfully!")
@@ -116,7 +110,7 @@ def post_comment(request, capsule_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.capsule = capsule
-            comment.user = request.user  # Assuming user is logged in
+            comment.user = request.user
             comment.save()
             return redirect('TimeCapsuleManagement:home')
     else:

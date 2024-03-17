@@ -66,10 +66,28 @@
     justify-content: space-between;
 }
 
-.form-column {
+.text-row{
+    margin: 0 0 20px 0;
+    padding: 0 5px;
+}
+
+.text-row p{
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-grey-color);
+}
+
+.form-column-one {
+    flex: 2;
+}
+
+.form-column-two {
     flex: 1;
 }
 
+.form-column-three {
+    flex: 1;
+}
 .form-field-container {
     position: relative;
     margin-bottom: 20px;
@@ -92,18 +110,14 @@
     color: var(--form-label-blue-color);
 }
 
-#is_publicBlock .form-label {
+#is_publicBlock .form-label, #statusBlock .form-label {
     top: -8px;
     font-size: 0.75em;
     color: var(--form-label-blue-color);
 }
 
-#unsealing_dateBlock {
+#unsealing_dateBlock, #is_publicBlock {
     margin-right: 10px;
-}
-
-#is_publicBlock {
-     margin-left: 10px;
 }
 
 .form-input {
@@ -189,19 +203,6 @@ div.file-item{
   text-align: center;
   padding: 15px 0;
 }
-
-/*.my-capsules-second-row {*/
-/*    display: flex;*/
-/*    padding: 20px;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.my-capsules-second-row {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(2, 1fr); !* Creates 2 columns of equal width *!*/
-/*    gap: 20px; !* Adjust the gap size as needed *!*/
-/*    padding: 20px;*/
-/*}*/
 
 .my-capsules-second-row {
     display: flex;
