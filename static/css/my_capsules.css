@@ -120,10 +120,6 @@
     margin-right: 10px;
 }
 
-/*#is_publicBlock {*/
-/*     margin-left: 10px;*/
-/*}*/
-
 .form-input {
     width: 100%;
     padding: 10px 12px;
@@ -207,19 +203,6 @@ div.file-item{
   text-align: center;
   padding: 15px 0;
 }
-
-/*.my-capsules-second-row {*/
-/*    display: flex;*/
-/*    padding: 20px;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.my-capsules-second-row {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(2, 1fr); !* Creates 2 columns of equal width *!*/
-/*    gap: 20px; !* Adjust the gap size as needed *!*/
-/*    padding: 20px;*/
-/*}*/
 
 .my-capsules-second-row {
     display: flex;

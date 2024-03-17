@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added Data">
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0002_capsule_seal_capsule_alter_capsulecontent_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0003_rename_seal_capsule_capsule_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0004_rename_status_capsule_capsule_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TimeCapsuleManagement/migrations/0005_rename_capsule_status_capsule_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/17/5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/card/capsule_card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/card/capsule_card.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/my_capsules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my_capsules.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascript/my_capsules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/my_capsules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/card/capsule_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/card/capsule_card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/my_capsules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_capsules.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
