@@ -86,7 +86,7 @@ def edit_capsule(request, capsule_id):
             files = request.FILES.getlist('capsule_contents')
             for file in files:
                 mime_type, _ = mimetypes.guess_type(file.name)
-                file_type = 'text'  # Default file type
+                file_type = 'photo'  # Default file type
                 if mime_type:
                     if mime_type.startswith('image/'):
                         file_type = 'photo'
