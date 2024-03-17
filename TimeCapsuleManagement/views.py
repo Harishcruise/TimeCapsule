@@ -80,7 +80,24 @@ def edit_capsule(request, capsule_id):
         data['owner'] = request.user.id
         form = CapsuleForm(data, request.FILES, instance=capsule)
         if form.is_valid():
-            form.save()
+            updated_capsule = form.save()
+            contents_to_delete = request.POST.getlist('filesToDelete', [])
+            CapsuleContent.objects.filter(id__in=contents_to_delete).delete()
+            files = request.FILES.getlist('capsule_contents')
+            for file in files:
+                mime_type, _ = mimetypes.guess_type(file.name)
+                file_type = 'text'  # Default file type
+                if mime_type:
+                    if mime_type.startswith('image/'):
+                        file_type = 'photo'
+                    elif mime_type.startswith('video/'):
+                        file_type = 'video'
+                CapsuleContent.objects.create(
+                    file=file,
+                    capsule=updated_capsule,
+                    file_type=file_type
+                )
+
             messages.success(request, 'Capsule updated successfully!')
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'success|{redirect_url}')
@@ -88,6 +105,17 @@ def edit_capsule(request, capsule_id):
             messages.error(request, 'An error occurred while updating the capsule.')
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'error|{redirect_url}')
+
+
+@login_required
+def get_capsule_contents(request, capsule_id):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        try:
+            contents = CapsuleContent.objects.filter(capsule_id=capsule_id).values('id', 'file', 'file_type')
+            return JsonResponse(list(contents), safe=False)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
 @login_required

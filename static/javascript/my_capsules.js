@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('id_status').value = 'False';
 
+        // Clear the uploaded files list UI and the arrays tracking the files
+        const fileListContainer = document.querySelector('.uploaded-capsule-content-section');
+        fileListContainer.innerHTML = '';
+        selectedFiles = [];
+        filesToDelete = [];
+
         // Change the button text to "Update"
         document.getElementById('form-button').textContent = 'Submit'; //
     }
@@ -94,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteIcon.addEventListener('click', () => {
                 selectedFiles = selectedFiles.filter((_, i) => i !== index); // Remove the file from the array
                 updateFileListDisplay(); // Refresh the displayed file list
-                // fileInput.value = ''; // Reset the file input to ensure change event can trigger again for the same file
              });
 
             fileElement.appendChild(fileName);
@@ -109,11 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalText = dropZoneText.textContent; // Save the original text
         dropZoneText.innerHTML = '<div class="spinner"></div>'; // Add your spinner HTML here
         selectedFiles = selectedFiles.concat(Array.from(files)); // Add new files to the array
+
         setTimeout(() => {
             updateFileListDisplay(); // Update the list display
             dropZoneText.textContent = originalText;
             fileInput.value = '';
-        }, 1000); // Adjust the delay as necessary
+        }, 500); // Adjust the delay as necessary
     }
 
     // Open file dialog when dropZone is clicked
@@ -143,6 +149,11 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('capsule_contents', file);
         });
 
+        // Append files marked for deletion
+        filesToDelete.forEach(fileId => {
+            formData.append('filesToDelete', fileId);
+        });
+
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
         fetch(this.action, {
@@ -155,15 +166,69 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log(data); // For debugging
             const [status, message] = data.split('|');
+            if(status === 'success') {
                 window.location.href = message;  // Redirect to the given URL
+                filesToDelete = [];
+            } else {
+                console.error('Error:', message)
+            }
         })
         .catch(error => console.error('Error:', error));
     });
+
+    let filesToDelete = [];
+
+    function markForDeletion(fileId, element) {
+        // Add the fileId to the list of files to be deleted
+        filesToDelete.push(fileId);
+
+        // Remove the file element from the UI as visual feedback
+        element.parentNode.remove();
+    }
+
+    function populateExistingFiles(capsuleId) {
+        fetch(`/capsule-contents/${capsuleId}/`, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const fileListContainer = document.querySelector('.new-uploaded-capsule-content-section');
+                fileListContainer.innerHTML = ''; // Clear current list
+                data.forEach((content) => {
+                    const fileElement = document.createElement('div');
+                    fileElement.className = 'file-item';
+                    const fileName = document.createElement('span');
+                    fileName.textContent = content.file.split('/').pop(); // Adjust according to your response structure
+                    const deleteIcon = document.createElement('span');
+                    deleteIcon.textContent = 'del';
+                    deleteIcon.className = 'delete-icon';
+                    deleteIcon.onclick = () => markForDeletion(content.id, deleteIcon); // Implement this function
+                    fileElement.appendChild(fileName);
+                    fileElement.appendChild(deleteIcon);
+                    fileListContainer.appendChild(fileElement);
+                });
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
     // Function to open and populate the modal for editing
     document.querySelectorAll('.edit-icon').forEach(button => {
         button.addEventListener('click', function() {
             const capsuleId = this.getAttribute('data-capsule-id');
+            // Reset any previous state
+            resetFormFields();
+            selectedFiles = [];
+            filesToDelete = [];
+
             fetch(`/edit/${capsuleId}/`, { method: 'GET', credentials: 'include' })
                 .then(response => response.json())
                 .then(data => {
@@ -191,6 +256,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Change the form action to update the capsule
                     document.querySelector('#capsuleForm').action = `/edit/${capsuleId}/`;
                     modal.style.display = "flex";  // Open the modal
+
+                    populateExistingFiles(capsuleId);
                 })
                 .catch(error => console.error('Error:', error));
         });
