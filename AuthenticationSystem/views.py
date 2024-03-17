@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomSigninForm
+from .forms import CustomLoginForm
 
 
 def user_login(request):
     if request.method == 'POST':
-        form = CustomSigninForm(request.POST)
+        form = CustomLoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -16,8 +16,9 @@ def user_login(request):
                 return redirect('TimeCapsuleManagement:home')
             else:
                 messages.error(request, 'Invalid username or password')
+                return redirect('AuthenticationSystem:user_login')
     else:
-        form = CustomSigninForm()
+        form = CustomLoginForm()
     return render(request, 'user_login.html', {'form': form})
 
 

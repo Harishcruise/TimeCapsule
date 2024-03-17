@@ -81,6 +81,10 @@ body {
     color: var(--text-grey-color);
 }
 
+#passwordBlock .form-label {
+    top: 16px;
+}
+
 .form-input {
     width: 100%;
     padding: 10px 12px;
@@ -99,6 +103,13 @@ body {
 .form-field-container.active .form-label,
 .form-input:focus + .form-label {
     top: -8px;
+    font-size: 0.75em;
+    color: var(--form-label-blue-color);
+}
+
+.password-container.active .form-label,
+.password-container .form-input:focus + .form-label {
+    top: 0 !important;
     font-size: 0.75em;
     color: var(--form-label-blue-color);
 }
@@ -145,4 +156,24 @@ body {
 .sign-up a{
     text-decoration: none;
     color: var(--text-blue-color);
+}
+
+/* Ensure the container is positioned relatively to position the icon inside it */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Style the password input to take up the full width minus some space for the icon */
+.password-container input[type="password"] {
+    width: calc(100% - 30px); /* Adjust the subtracted value based on the size of your icon */
+    flex-grow: 1;
+}
+
+/* Position the icon within the container, to the right */
+.password-container .toggle-password {
+    position: absolute;
+    right: 12px; /* Adjust based on your design needs */
+    cursor: pointer;
 }
