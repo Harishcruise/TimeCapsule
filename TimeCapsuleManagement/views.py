@@ -74,7 +74,7 @@ def edit_capsule(request, capsule_id):
             'description': capsule.description,
             'unsealing_date': capsule.unsealing_date.strftime('%Y-%m-%dT%H:%M'),  # Adjust formatting as necessary
             'is_public': capsule.is_public,
-            # Add any other fields as necessary
+            'status': capsule.status,
         }
         return JsonResponse(data)
 

@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('unsealing_dateBlock').classList.remove('active');
         document.getElementById('unsealing_dateLabel').classList.remove('active');
 
-        document.getElementById('id_is_public').value = 'False'; // Adjust based on your default
+        document.getElementById('id_is_public').value = 'False';
+
+        document.getElementById('id_status').value = 'False';
 
         // Change the button text to "Update"
         document.getElementById('form-button').textContent = 'Submit'; //
@@ -182,6 +184,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     let is_public = data.is_public ? 'True' : 'False';
                     document.getElementById('id_is_public').value = is_public;
+
+                    let status = data.status ? 'True' : 'False';
+                    document.getElementById('id_status').value = status;
 
                     // Change the form action to update the capsule
                     document.querySelector('#capsuleForm').action = `/edit/${capsuleId}/`;

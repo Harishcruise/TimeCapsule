@@ -5,11 +5,23 @@ from .models import Capsule, CapsuleContent, Comment
 
 class CapsuleForm(forms.ModelForm):
     VISIBILITY_CHOICES = [
-        (False, 'Private'),  # The stored value is False for "Private"
-        (True, 'Public'),  # The stored value is True for "Public"
+        (False, 'Private'),
+        (True, 'Public'),
     ]
     is_public = forms.ChoiceField(
         choices=VISIBILITY_CHOICES,
+        widget=forms.Select(
+            attrs={'class': 'form-input'}
+        ),
+        initial=False
+    )
+
+    STATUS = [
+        (True, 'Sealed'),
+        (False, 'Unsealed')
+    ]
+    status = forms.ChoiceField(
+        choices=STATUS,
         widget=forms.Select(
             attrs={'class': 'form-input'}
         ),

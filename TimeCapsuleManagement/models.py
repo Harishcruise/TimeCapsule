@@ -13,6 +13,7 @@ class Capsule(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
     is_public = models.BooleanField(default=False)
+    status = models.BooleanField(default=False)
     unsealing_date = models.DateTimeField()
 
     def is_unsealed(self):
