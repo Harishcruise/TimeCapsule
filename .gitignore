@@ -15,3 +15,7 @@ _pycache_/
 # Logs
 *.log
 logs/
+
+.idea/workspace.xml
+
+db.sqlite3
