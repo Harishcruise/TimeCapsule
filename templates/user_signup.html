@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Capsule - Signup</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/messages/messages.css">
+    <link rel="stylesheet" href="../static/css/button/button.css">
+</head>
+<body>
+<!-- message -->
+{% include "components/messages/messages.html" with message_length=3 %}
+
+ <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
+    {% csrf_token %}
+     {{ form }}
+    <div class="button-section">
+        {% include 'components/buttons/button.html' with button_text="Sign Up" button_type="submit" button_id="login-button" button_class="primary-button" %}
+    </div>
+</form>
+</body>
+</html>

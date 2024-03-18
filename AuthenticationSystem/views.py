@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomLoginForm
+from .forms import CustomLoginForm, CustomSignupForm
+from AuthenticationSystem.crud_operations.auth_operations import create_user
 
 
 def user_login(request):
@@ -28,4 +29,18 @@ def user_logout(request):
 
 
 def user_signup(request):
-    return redirect('AuthenticationSystem:user_login:')
+    if request.method == 'POST':
+        form = CustomSignupForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            bio = form.cleaned_data['bio']
+            create_user(username, password, first_name, last_name, email, bio)
+            messages.success(request, 'User created successfully')
+            return redirect('AuthenticationSystem:user_login')
+    else:
+        form = CustomSignupForm()
+    return render(request, 'user_signup.html', {'form': form})
