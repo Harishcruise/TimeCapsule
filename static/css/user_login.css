@@ -9,6 +9,7 @@ body {
 .container {
     display: flex;
     justify-content: center;
+    gap: 30px;
     align-items: center;
     min-height: 100vh;
     background-color: var(--background-color);
@@ -31,6 +32,10 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 10px;
+}
+
+.left-content img{
+    width: 150%;
 }
 
 .login-form{

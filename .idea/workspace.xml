@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added Data">
-      <change afterPath="$PROJECT_DIR$/static/LOGO.gif" afterDir="false" />
+    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added LOGO">
+      <change afterPath="$PROJECT_DIR$/static/COVER.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/navBar/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/navBar/navBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/navBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/navBar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/user_login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/user_login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +122,15 @@
       <workItem from="1710707528992" duration="3077000" />
       <workItem from="1710781324352" duration="4162000" />
     </task>
+    <task id="LOCAL-00001" summary="Added LOGO">
+      <option name="closed" value="true" />
+      <created>1710789665158</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710789665158</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +138,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Data" />
+    <MESSAGE value="Added LOGO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added LOGO" />
   </component>
 </project>
