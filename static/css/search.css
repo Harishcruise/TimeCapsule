@@ -6,8 +6,11 @@
 }
 
 .left-container{
-    width: 80%; /* Adjust based on your design preference */
-    margin: 0 auto; /* Center the container if it doesn't take full width */
+    /*width: 80%; !* Adjust based on your design preference *!*/
+    /*margin: 0 auto; !* Center the container if it doesn't take full width *!*/
+    display: flex;
+    flex-direction: column; /* Stacks the posts vertically */
+    align-items: center;
 }
 
 
@@ -24,7 +27,7 @@
     width: 100%;
     max-width: 640px; /* Adjust based on your design preference */
     background: #FFFFFF;
-    border: 2px solid #dddddd; /* Slight border for definition */
+    border: 1px solid var(--line-grey-color); /* Slight border for definition */
     border-radius: 50px; /* Rounded corners for modern look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
@@ -58,11 +61,20 @@
 
 /* Filter & Sort Buttons */
 .filter-button, .sort-button {
+    min-width: fit-content;
+    width: 70px;
+    background-color: var(--text-white-color);
+    color: var(--text-black-color);
+    border: 1px solid var(--line-grey-color);
     margin-left: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-button:hover, .sort-button:hover {
+    background-color: var(--text-black-color);
+    color: var(--text-white-color);
 }
 
 .sort-container {
@@ -115,28 +127,33 @@
 
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.search-close {
+    position: absolute;
+    right: 530px;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+/*.close {*/
+/*    color: #aaa;*/
+/*    float: right;*/
+/*    font-size: 28px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.close:hover,*/
+/*.close:focus {*/
+/*    color: black;*/
+/*    text-decoration: none;*/
+/*    cursor: pointer;*/
+/*}*/
 
 /* Sort options dropdown */
 .sort-options {
-    display: none; /* Hidden by default */
+    /*display: none; !* Hidden by default *!*/
     position: absolute;
-    right: 0; /* Align to the right */
-    background-color: #f9f9f9;
+    right: 50px; /* Align to the right */
+    /*background-color: #f9f9f9;*/
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
     z-index: 1000; /* High z-index to be on top */
 }
 
@@ -156,21 +173,28 @@
 
 /* Styling for the 'Apply Filters' button */
 .apply-filters-btn {
-    background-color: #007bff; /* Example: blue background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding around the text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor indicates it's clickable */
-    display: block; /* Make the button block to occupy the full width */
-    width: 30%; /* Full width */
-    margin-top: 20px;
+    /*background-color: #007bff; !* Example: blue background *!*/
+    /*color: white; !* White text *!*/
+    /*padding: 10px 20px; !* Padding around the text *!*/
+    /*border: none; !* No border *!*/
+    /*border-radius: 5px; !* Rounded corners *!*/
+    /*cursor: pointer; !* Cursor indicates it's clickable *!*/
+    /*display: block; !* Make the button block to occupy the full width *!*/
+    /*width: 30%; !* Full width *!*/
+    /*margin-top: 20px;*/
     margin-left: 35%;
     /* Space from the last filter option */
 }
 
-.apply-filters-btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+/*.apply-filters-btn:hover {*/
+/*    background-color: #0056b3; !* Darker shade on hover *!*/
+/*}*/
+
+.search-results-container{
+    padding: 40px;
+    display: flex;
+    justify-content: center; /* This centers the child horizontally */
+    align-items: center;
 }
 
 .filter-option-1,.filter-option-2,.filter-option-3{
@@ -183,9 +207,3 @@
 .modal h3{
     text-align: center;
 }
-
-
-
-
-
-
