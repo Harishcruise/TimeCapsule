@@ -11,6 +11,7 @@ def search(request):
         unsealed_date = form.cleaned_data.get('unsealed_date', None)
         sealed_date = form.cleaned_data.get('sealed_date', None)
         is_public = form.cleaned_data.get('is_public', None)
+        sort_by = request.GET.get('sort_by')
 
         filters = Q()
         if query:
@@ -27,7 +28,12 @@ def search(request):
         if is_public is not None:
             filters &= Q(is_public=is_public)
 
-        posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(filters)
+        if sort_by == 'date':
+            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(filters).order_by('-creation_date')
+        elif sort_by == 'username':
+            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(filters).order_by('owner__username')
+        else:
+            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(filters)
     else:
         posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
 
