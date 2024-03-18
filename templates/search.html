@@ -15,16 +15,21 @@
         </button>
     </form>
     <!-- Filter Button -->
-    <button id="filter-btn" class="filter-button">Filters</button>
+{#    <button id="filter-btn" class="filter-button">Filters</button>#}
+     {% include 'components/buttons/button.html' with button_text="Filter" button_id="filter-btn" button_class="primary-button filter-button" %}
     <!-- Sort Dropdown Button -->
-    <button id="sort-btn" class="sort-button">Sort By</button>
+{#    <button id="sort-btn" class="sort-button">Sort By</button>#}
+    {% include 'components/buttons/button.html' with button_text="Sort By" button_id="sort-btn" button_class="primary-button sort-button" %}
 </div>
 
 <!-- Filter Modal -->
 <!-- Filter Modal -->
 <div id="filter-modal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="search-close">
+{#            &times;#}
+            {% include 'components/buttons/button.html' with button_text="&times;" button_class="x-button" button_font_size="20px" %}
+        </span>
         <form id="filter-form" method="get" action=".">
             <h3>Filter Options</h3>
             <div class="filter-option-1">
@@ -64,7 +69,8 @@
                 </div>
             <!-- Include query in the filter form -->
             <input type="hidden" name="q" value="{{ request.GET.q }}">
-            <button type="submit" class="apply-filters-btn">Apply Filters</button>
+{#            <button type="submit" class="apply-filters-btn">Apply Filters</button>#}
+             {% include 'components/buttons/button.html' with button_text="Apply Filters" button_type="submit" button_class="primary-button apply-filters-btn" %}
         </form>
     </div>
 </div>
@@ -77,7 +83,7 @@
 </div>
 
 <!-- Search Results -->
-<div class="home-container">
+<div class="search-results-container">
     <div class="left-container">
         {% for post in posts %}
             {% include 'components/card/capsule_card.html' with post=post %}
@@ -92,7 +98,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var filterModal = document.getElementById('filter-modal');
     var filterBtn = document.getElementById('filter-btn');
-    var closeFilter = document.getElementsByClassName('close')[0];
+    var closeFilter = document.getElementsByClassName('search-close')[0];
     var sortBtn = document.getElementById('sort-btn');
     var sortOptions = document.getElementById('sort-options');
 

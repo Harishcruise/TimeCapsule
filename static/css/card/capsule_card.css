@@ -12,7 +12,8 @@
 .post-media img,
 .post-media video {
     width: 100%;
-    height: auto;
+    /*height: auto;*/
+    height: 400px;
 }
 
 .post-head{

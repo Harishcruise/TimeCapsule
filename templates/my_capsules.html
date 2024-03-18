@@ -3,7 +3,7 @@
 {% block title %}My TimeCapsules{% endblock %}
 
 {% block content %}
-    <div class="my-capsules-content">
+<div class="my-capsules-content">
 
     <div class="my-capsules-first-row">
         <div>
@@ -25,14 +25,14 @@
     </div>
 
     <!-- Form Modal -->
-    <div id="capsuleFormModal" class="modal">
-        <div class="modal-left"></div>
-        <div class="modal-right">
-            <div class="modal-form">
-                <div class="modal-heading">
+    <div id="capsuleFormModal" class="capsule-modal">
+        <div class="capsule-modal-left"></div>
+        <div class="capsule-modal-right">
+            <div class="capsule-modal-form">
+                <div class="capsule-modal-heading">
                     <h2>Create your Time Capsule!</h2>
                 </div>
-                <div class="modal-content">
+                <div class="capsule-modal-content">
                     <span class="close">
                      {% include 'components/buttons/button.html' with button_text="&times;" button_class="x-button" button_font_size="20px" %}
                     </span>
@@ -91,5 +91,5 @@
     <!-- message -->
     {% include "components/messages/messages.html" with message_length=3 %}
 
-    </div>
+</div>
 {% endblock %}

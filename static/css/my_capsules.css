@@ -5,6 +5,9 @@
     padding: 20px;
     background-color: var(--text-white-color);
     border-radius: 5px;
+    z-index: 10;
+    position: sticky;
+    top: 0;
 }
 
 .my-capsules-first-row h2{
@@ -15,7 +18,7 @@
     margin-left: 0; /* Ensure there's no additional margin pushing it away from the left */
 }
 
-.modal {
+.capsule-modal {
   display: none;
   position: fixed;
   z-index: 2;
@@ -26,12 +29,12 @@
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-left {
+.capsule-modal-left {
   width: 245px;
   height: 100%;
 }
 
-.modal-right {
+.capsule-modal-right {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -39,7 +42,7 @@
   position: relative;
 }
 
-.modal-form {
+.capsule-modal-form {
   padding: 20px;
   background-color: var(--text-white-color);
   border-radius: 5px;
@@ -50,7 +53,7 @@
     max-height: 80%;
 }
 
-.modal-heading {
+.capsule-modal-heading {
   text-align: center;
   width: 100%;
 }
