@@ -1,24 +1,34 @@
-from django.shortcuts import render
-from .forms import SearchForm
 from django.db.models import Q
+from .forms import SearchForm
 from TimeCapsuleManagement.models import Capsule
+from django.shortcuts import render
 
 
 def search(request):
-    # Initialize your form with request.GET to capture query parameters
     form = SearchForm(request.GET)
-    # Check if the form is submitted with valid data
     if form.is_valid():
-        query = form.cleaned_data.get('q', '')  # Get the search query from the form
-        # If a query exists, filter the posts based on the query; otherwise, retrieve all posts
+        query = form.cleaned_data.get('q', '')
+        unsealed_date = form.cleaned_data.get('unsealed_date', None)
+        sealed_date = form.cleaned_data.get('sealed_date', None)
+        is_public = form.cleaned_data.get('is_public', None)
+
+        filters = Q()
         if query:
-            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(
-                Q(name__icontains=query) | Q(description__icontains=query)
-            )
-        else:
-            posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+            filters &= (Q(name__icontains=query) |
+                        Q(description__icontains=query) |
+                        Q(owner__username__icontains=query))
+
+        if unsealed_date:
+            filters &= Q(unsealed_date=unsealed_date)
+
+        if sealed_date:
+            filters &= Q(sealed_date=sealed_date)
+
+        if is_public is not None:
+            filters &= Q(is_public=is_public)
+
+        posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(filters)
     else:
-        # If form is not valid or no form is submitted, display all posts
         posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
 
     return render(request, 'search.html', {'form': form, 'posts': posts})
