@@ -19,7 +19,7 @@ def search(request):
                         Q(owner__username__icontains=query))
 
         if unsealed_date:
-            filters &= Q(unsealed_date=unsealed_date)
+            filters &= Q(unsealing_date=unsealed_date)
 
         if sealed_date:
             filters &= Q(sealed_date=sealed_date)
