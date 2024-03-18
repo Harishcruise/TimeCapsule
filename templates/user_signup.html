@@ -1,22 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Time Capsule - Signup</title>
+    <title>Time Capsule - Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/messages/messages.css">
     <link rel="stylesheet" href="../static/css/button/button.css">
+    <link rel="stylesheet" href="../static/css/user_signup.css">
+    <script src="../static/javascript/my_capsules.js"></script>
+    <script src="../static/javascript/user_login.js"></script>
 </head>
 <body>
-<!-- message -->
-{% include "components/messages/messages.html" with message_length=3 %}
-
- <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
+    <!-- message -->
+    {% include "components/messages/messages.html" with message_length=3 %}
+    <div class="modal-form-container">
+        <div class="container">
+            <div class="left-content">
+                <!-- Left side content (if any, like images or text) -->
+            </div>
+            <div class="right-content">
+                <div class="login-form">
+                    <div class="modal-heading">
+                        <h2>Time Capsule</h2>
+                    </div>
+                    <div class="form-style">
+                    <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
     {% csrf_token %}
      {{ form }}
     <div class="button-section">
         {% include 'components/buttons/button.html' with button_text="Sign Up" button_type="submit" button_id="login-button" button_class="primary-button" %}
     </div>
 </form>
+
+                    </div>
+                    </div>
+                     <div class="sign-up">
+                    <p>Have an account? <a href="{% url 'AuthenticationSystem:user_login' %}">Log In</a></p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
