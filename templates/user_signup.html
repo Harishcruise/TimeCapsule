@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -15,31 +16,33 @@
     <!-- message -->
     {% include "components/messages/messages.html" with message_length=3 %}
     <div class="modal-form-container">
+
         <div class="container">
             <div class="left-content">
-                <!-- Left side content (if any, like images or text) -->
+                <img src="{% static 'COVER.gif' %}" style="scale: 50%">
             </div>
-            <div class="right-content">
-                <div class="login-form">
+
+            <div class="right-content" style="padding-top: 20px; padding-left: 50px">
+                <div class="boxedd">
+                <div class="login-form" style="scale: 70%">
                     <div class="modal-heading">
                         <h2>Time Capsule</h2>
                     </div>
                     <div class="form-style">
-                    <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
-    {% csrf_token %}
-     {{ form }}
-    <div class="button-section">
-        {% include 'components/buttons/button.html' with button_text="Sign Up" button_type="submit" button_id="login-button" button_class="primary-button" %}
-    </div>
-</form>
-
+                        <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
+                            {% csrf_token %}
+                            {{ form }}
+                            <div class="button-section">
+                                {% include 'components/buttons/button.html' with button_text="Sign Up" button_type="submit" button_id="login-button" button_class="primary-button" %}
+                            </div>
+                        </form>
                     </div>
-                    </div>
-                     <div class="sign-up">
-                    <p>Have an account? <a href="{% url 'AuthenticationSystem:user_login' %}">Log In</a></p>
+                    <div class="sign-up" style="scale: 70%">
+                    <p style="font-size: 22px">Have an account? <a href="{% url 'AuthenticationSystem:user_login' %}">Log In</a></p>
                 </div>
-
-
+                </div>
+                
+            </div>
             </div>
         </div>
     </div>
