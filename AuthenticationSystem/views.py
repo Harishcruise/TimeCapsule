@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
@@ -53,17 +54,39 @@ def user_signup(request):
 def profile(request):
     if request.method == 'POST':
         owner = UserProfile.objects.get(id=request.user.id)
-        form = EditProfileForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'{owner} profile updated')
-            return redirect('AuthenticationSystem:profile')
+        # form = EditProfileForm(request.POST, instance=request.user)
+        # if form.is_valid():
+        #     form.save()
+        #     messages.success(request, f'{owner} profile updated')
+        #     return redirect('AuthenticationSystem:profile')
+
+        if 'profile_submit' in request.POST:  # Check if profile form is submitted
+            profile_form = EditProfileForm(request.POST, instance=request.user)
+            if profile_form.is_valid():
+                profile_form.save()
+                messages.success(request, f'{owner} profile updated')
+                return redirect('AuthenticationSystem:profile')
+        elif 'password_submit' in request.POST:  # Check if password form is submitted
+            password_form = PasswordChangeForm(request.user, request.POST)
+            print("hjje", password_form.is_valid())
+            print(password_form.cleaned_data)
+
+            if password_form.is_valid():
+                user = password_form.save()
+                update_session_auth_hash(request, user)  # Important for keeping the user logged in
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect('AuthenticationSystem:profile')
+            else:
+                print(password_form.errors)
+                messages.success(request, f'Meet the requirements for password change {password_form.errors}')
+                return redirect('AuthenticationSystem:profile')
+
     else:
 
         owner = UserProfile.objects.get(id=request.user.id)
         posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(owner=owner)
         users = UserProfile.objects.all()
         comment_form = CommentForm()
-        password_form = PasswordChangeForm(owner)
-        form = EditProfileForm(instance = request.user)
+        password_form = PasswordChangeForm(request.user)
+        form = EditProfileForm(instance=request.user)
         return render(request, 'profile.html', {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form})
