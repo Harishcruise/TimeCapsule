@@ -65,3 +65,18 @@
         </form>
     </div>
 </div>
+
+document.getElementById('editProfileBtn').onclick = function() {
+    document.getElementById('editProfileModal').style.display = "block";
+}
+
+document.getElementById('changePasswordBtn').onclick = function() {
+    document.getElementById('changePasswordModal').style.display = "block";
+}
+
+var closeButtons = document.getElementsByClassName('profile-close');
+for (var i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = function() {
+        this.parentElement.parentElement.style.display = "none";
+    }
+}
