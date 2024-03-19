@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import update_session_auth_hash
@@ -52,6 +54,7 @@ def user_signup(request):
 
 
 def profile(request):
+    update_user_history(request)
     if request.method == 'POST':
         owner = UserProfile.objects.get(id=request.user.id)
         # form = EditProfileForm(request.POST, instance=request.user)
@@ -89,4 +92,13 @@ def profile(request):
         comment_form = CommentForm()
         password_form = PasswordChangeForm(request.user)
         form = EditProfileForm(instance=request.user)
-        return render(request, 'profile.html', {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form})
+        user_history = UserVisit.objects.filter(user=request.user)
+
+        return render(request, 'profile.html',
+                      {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form,
+                       'password_form': password_form, 'user_history': user_history})
+
+
+def update_user_history(request):
+    if request.user.is_authenticated:
+        UserVisit.objects.create(user=request.user, page=request.path)
