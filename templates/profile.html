@@ -1,8 +1,82 @@
 {% extends 'components/navBar.html' %}
 
-{% block title %}Profile - TimeCapsule{% endblock %}
+{% block title %}Home - TimeCapsule{% endblock %}
 
 {% block content %}
-    <h1>Profile</h1>
-    <!-- Add more content here -->
-{% endblock %}
+<div class="profile-header">
+ <!-- User History Modal Trigger -->
+<button id="userHistoryBtn">User History</button>
+
+<!-- User History Modal -->
+<div id="userHistoryModal" class="profile-modal" style="display:none;">
+    <div class="profile-modal-content">
+        <span class="profile-close">&times;</span>
+        <h2>User History</h2>
+        <div class="user-history-content">
+            <ul>
+              {% for visit in user_history %}
+                <li>
+                    {{ visit.page }} - {{ visit.timestamp }}
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="profile-container">
+    <div class="profile-left-container">
+        {% for post in posts %}
+            {% include 'components/card/capsule_card.html' with post=post %}
+        {% endfor %}
+    </div>
+
+    <div class="profile-right-container">
+        <!-- Edit Profile Modal Trigger -->
+        <button id="editProfileBtn">Edit Profile</button>
+        <!-- Password Change Modal Trigger -->
+        <button id="changePasswordBtn">Change Password</button>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="profile-modal" style="display:none;">
+    <div class="profile-modal-content">
+        <span class="profile-close">&times;</span>
+        <h2>Edit Profile</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="profile_submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="changePasswordModal" class="profile-modal" style="display:none;">
+    <div class="profile-modal-content">
+        <span class="profile-close">&times;</span>
+        <h2>Password change</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ password_form.as_p }}
+            <button type="submit" name="password_submit">Change Password</button>
+        </form>
+    </div>
+</div>
+
+document.getElementById('editProfileBtn').onclick = function() {
+    document.getElementById('editProfileModal').style.display = "block";
+}
+
+document.getElementById('changePasswordBtn').onclick = function() {
+    document.getElementById('changePasswordModal').style.display = "block";
+}
+
+var closeButtons = document.getElementsByClassName('profile-close');
+for (var i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = function() {
+        this.parentElement.parentElement.style.display = "none";
+    }
+}
