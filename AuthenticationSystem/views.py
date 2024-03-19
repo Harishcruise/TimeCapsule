@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from TimeCapsuleManagement.models import Capsule
-from AuthenticationSystem.models import UserProfile
+from AuthenticationSystem.models import UserProfile, UserVisit
 from TimeCapsuleManagement.forms import CommentForm
 from AuthenticationSystem.crud_operations.auth_operations import create_user
 
@@ -92,13 +92,18 @@ def profile(request):
         comment_form = CommentForm()
         password_form = PasswordChangeForm(request.user)
         form = EditProfileForm(instance=request.user)
-        user_history = UserVisit.objects.filter(user=request.user)
+        user_history_session = request.session.get('user_history', [])
+        user_history_database = UserVisit.objects.filter(user=request.user)
 
         return render(request, 'profile.html',
                       {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form,
-                       'password_form': password_form, 'user_history': user_history})
+                       'password_form': password_form, 'user_history': user_history_database})
 
 
 def update_user_history(request):
     if request.user.is_authenticated:
+        # Store visit history in the session
+        user_history = request.session.get('user_history', [])
+        user_history.append({'page': request.path, 'timestamp': datetime.now().isoformat()})
+        request.session['user_history'] = user_history
         UserVisit.objects.create(user=request.user, page=request.path)
