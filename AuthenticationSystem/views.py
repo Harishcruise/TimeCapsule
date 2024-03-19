@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm
+from TimeCapsuleManagement.models import Capsule
+from AuthenticationSystem.models import UserProfile
+from TimeCapsuleManagement.forms import CommentForm
 from AuthenticationSystem.crud_operations.auth_operations import create_user
 
 
@@ -44,3 +47,10 @@ def user_signup(request):
     else:
         form = CustomSignupForm()
     return render(request, 'user_signup.html', {'form': form})
+
+
+def profile(request):
+    posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+    users = UserProfile.objects.all()
+    comment_form = CommentForm()
+    return render(request, 'profile.html', {'posts': posts, 'users': users, 'comment_form': comment_form})
