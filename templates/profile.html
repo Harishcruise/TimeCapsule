@@ -25,6 +25,7 @@
 </div>
 
 </div>
+
 <div class="profile-container">
     <div class="profile-left-container">
         {% for post in posts %}
@@ -65,7 +66,7 @@
         </form>
     </div>
 </div>
-
+    <script>
 document.getElementById('editProfileBtn').onclick = function() {
     document.getElementById('editProfileModal').style.display = "block";
 }
@@ -80,3 +81,28 @@ for (var i = 0; i < closeButtons.length; i++) {
         this.parentElement.parentElement.style.display = "none";
     }
 }
+
+document.getElementById('userHistoryBtn').onclick = function() {
+    var history = document.getElementById('userHistory');
+    if (history.style.display === "none") {
+        history.style.display = "block";
+    } else {
+        history.style.display = "none";
+    }
+}
+
+document.getElementById('userHistoryBtn').onclick = function() {
+    document.getElementById('userHistoryModal').style.display = "block";
+}
+
+var closeButtons = document.getElementsByClassName('profile-close');
+for (var i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = function() {
+        this.parentElement.parentElement.style.display = "none";
+    }
+}
+
+</script>
+{% include "components/messages/messages.html" with message_length=3 %}
+{% endblock %}
+
