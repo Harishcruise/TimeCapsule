@@ -52,3 +52,16 @@
         </form>
     </div>
 </div>
+
+<!-- Change Password Modal -->
+<div id="changePasswordModal" class="profile-modal" style="display:none;">
+    <div class="profile-modal-content">
+        <span class="profile-close">&times;</span>
+        <h2>Password change</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ password_form.as_p }}
+            <button type="submit" name="password_submit">Change Password</button>
+        </form>
+    </div>
+</div>
