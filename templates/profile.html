@@ -25,3 +25,17 @@
 </div>
 
 </div>
+<div class="profile-container">
+    <div class="profile-left-container">
+        {% for post in posts %}
+            {% include 'components/card/capsule_card.html' with post=post %}
+        {% endfor %}
+    </div>
+
+    <div class="profile-right-container">
+        <!-- Edit Profile Modal Trigger -->
+        <button id="editProfileBtn">Edit Profile</button>
+        <!-- Password Change Modal Trigger -->
+        <button id="changePasswordBtn">Change Password</button>
+    </div>
+</div>
