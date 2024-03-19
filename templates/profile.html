@@ -25,7 +25,14 @@
                 {% csrf_token %}
                 {{ form.as_p }}
             
-                <button type="submit">Save Changes</button>
+                <button type="submit" name="profile_submit">Save Changes</button>
+              </form>
+            <h2>Password change</h2>
+              <form method="post">
+                {% csrf_token %}
+                {{ password_form.as_p }}
+            
+                <button type="submit" name="password_submit">Change Password</button>
               </form>
         </div>
     </div>

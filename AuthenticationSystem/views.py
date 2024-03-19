@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
+from django.contrib.auth.forms import PasswordChangeForm
 from TimeCapsuleManagement.models import Capsule
 from AuthenticationSystem.models import UserProfile
 from TimeCapsuleManagement.forms import CommentForm
@@ -51,20 +52,18 @@ def user_signup(request):
 
 def profile(request):
     if request.method == 'POST':
-        print("enter post request")
         owner = UserProfile.objects.get(id=request.user.id)
-        print(owner, " profile updated")
-        form = EditProfileForm(request.POST, user=owner)
-        print(form.data)
+        form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
-            print("helloooo = ", form.cleaned_data)
-            return redirect('TimeCapsuleManagement:home')
+            form.save()
+            messages.success(request, f'{owner} profile updated')
+            return redirect('AuthenticationSystem:profile')
     else:
 
         owner = UserProfile.objects.get(id=request.user.id)
         posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').filter(owner=owner)
-        # posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
         users = UserProfile.objects.all()
         comment_form = CommentForm()
-        form = EditProfileForm(user=owner, initial={'bio': owner.bio, 'first_name': owner.first_name, 'last_name': owner.last_name})
-        return render(request, 'profile.html', {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form})
+        password_form = PasswordChangeForm(owner)
+        form = EditProfileForm(instance = request.user)
+        return render(request, 'profile.html', {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form})
