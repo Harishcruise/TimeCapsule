@@ -3,10 +3,16 @@
 {% block title %}Home - TimeCapsule{% endblock %}
 
 {% block content %}
-    <div class="header">
-        <div>
-            <h2>Profile of {{ cur_user.username }}</h2>
-            <h2>User History</h2>
+<div class="profile-header">
+ <!-- User History Modal Trigger -->
+<button id="userHistoryBtn">User History</button>
+
+<!-- User History Modal -->
+<div id="userHistoryModal" class="profile-modal" style="display:none;">
+    <div class="profile-modal-content">
+        <span class="profile-close">&times;</span>
+        <h2>User History</h2>
+        <div class="user-history-content">
             <ul>
               {% for visit in user_history %}
                 <li>
@@ -15,36 +21,7 @@
               {% endfor %}
             </ul>
         </div>
-
     </div>
-    
-    <!-- Add more content here -->
+</div>
 
-    <div class="home-container">
-        <div class="left-home-container">
-            {% for post in posts %}
-                {% include 'components/card/capsule_card.html' with post=post %}
-            {% endfor %}
-        </div>
-
-        <div class="right-container">
-            <h2>Edit Profile</h2>
-              <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-            
-                <button type="submit" name="profile_submit">Save Changes</button>
-              </form>
-            <h2>Password change</h2>
-              <form method="post">
-                {% csrf_token %}
-                {{ password_form.as_p }}
-            
-                <button type="submit" name="password_submit">Change Password</button>
-              </form>
-        </div>
-    </div>
-    
-    <!-- message -->
-    {% include "components/messages/messages.html" with message_length=3 %}
-{% endblock %}
+</div>
