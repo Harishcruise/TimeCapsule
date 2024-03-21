@@ -41,13 +41,17 @@ def user_signup(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            bio = form.cleaned_data['bio']
-            create_user(username, password, first_name, last_name, email, bio)
+            create_user(username, password, email)
             messages.success(request, 'User created successfully')
             return redirect('AuthenticationSystem:user_login')
+        else:
+            for error in form.non_field_errors():
+                messages.error(request, error)
+            for field in form.errors:
+                for error in form.errors[field]:
+                    messages.error(request, f"{error}")
+            # return redirect('AuthenticationSystem:user_signup')
     else:
         form = CustomSignupForm()
     return render(request, 'user_signup.html', {'form': form})
