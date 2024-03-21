@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 from django.shortcuts import render, redirect
@@ -111,3 +112,15 @@ def update_user_history(request):
         user_history.append({'page': request.path, 'timestamp': datetime.now().isoformat()})
         request.session['user_history'] = user_history
         UserVisit.objects.create(user=request.user, page=request.path)
+
+
+def update_profile_picture(request):
+    if request.method == "POST" and request.FILES.get('profilepic'):
+        user_profile = request.user
+        old_profilepic_path = user_profile.profilepic.path if user_profile.profilepic else None
+        # user_profile.profilepic.upload_to = f"static/images/{user_profile.id}/"
+        user_profile.profilepic = request.FILES['profilepic']
+        user_profile.save()
+        if old_profilepic_path and os.path.exists(old_profilepic_path):
+            os.remove(old_profilepic_path)
+    return render(request, 'profile.html')
