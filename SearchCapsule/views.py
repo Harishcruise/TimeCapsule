@@ -8,25 +8,32 @@ from django.db.models.functions import Lower
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+
+
 def search(request):
-    # Handle the toggle subscription action
-    if 'toggle_subscription' in request.GET:
+    # Handle the toggle subscription action within the search request
+    if 'toggle_subscription' in request.GET and request.user.is_authenticated:
         capsule_id = request.GET.get('capsule_id')
         if capsule_id:
             capsule = get_object_or_404(Capsule, pk=capsule_id)
-            # Replace the following line with your method of getting the current user's profile
-            user_profile = request.user.userprofile
+            user_profile = request.user  # Direct use since UserProfile is the user model
 
+            # Toggle the subscription status
             subscription, created = Subscription.objects.get_or_create(
                 user=user_profile,
                 capsule=capsule,
             )
+
             if not created:
-                subscription.delete()  # If the subscription already exists, delete it (unsubscribe)
+                # If the subscription exists, delete it (unsubscribe)
+                subscription.delete()
+
+            # Redirect to avoid processing the toggle action again if the page is refreshed
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+    # Continue with search functionality if not toggling a subscription
     form = SearchForm(request.GET)
-    capsules = Capsule.objects.prefetch_related('media', 'comments', 'subscribers')
+    capsules = Capsule.objects.prefetch_related('media', 'comments', 'subscribers').all()
 
     if form.is_valid():
         query = form.cleaned_data.get('q', '')
@@ -64,12 +71,10 @@ def search(request):
 
     # Check subscription status for each capsule for the current user (if logged in)
     if request.user.is_authenticated:
-        user_profile = request.user.username
+        user_profile = request.user  # Direct use since UserProfile is the user model
         for capsule in capsules:
-            capsule.is_subscribed = capsule.subscribers.filter(user=user_profile).exists()
-    else:
-        for capsule in capsules:
-            capsule.is_subscribed = False
+            capsule.is_subscribed = Subscription.objects.filter(user=user_profile, capsule=capsule).exists()
+            print(capsule.is_subscribed)
 
     context = {
         'form': form,
@@ -78,13 +83,13 @@ def search(request):
 
     return render(request, 'search.html', context)
 
-
-
-
+@login_required
 def toggle_subscription(request, capsule_id):
     # Fetch the capsule object based on the provided capsule_id
     capsule = get_object_or_404(Capsule, pk=capsule_id)
-    user_profile = request.user.username  # Assuming you have a userprofile attribute
+
+    # Use request.user directly since it is an instance of UserProfile
+    user_profile = request.user
 
     # Check if a subscription already exists for this user and capsule
     subscription, created = Subscription.objects.get_or_create(
@@ -95,7 +100,7 @@ def toggle_subscription(request, capsule_id):
     if not created:
         # If the subscription exists, delete it (unsubscribe)
         subscription.delete()
+
     # Redirect to the previous page or a specific page after toggling the subscription
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
 
