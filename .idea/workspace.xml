@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added Cover Image">
-      <change afterPath="$PROJECT_DIR$/static/javascript/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/crud_operations/auth_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/crud_operations/auth_operations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/button/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/button/button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/my_capsules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my_capsules.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/user_login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/authentication.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascript/my_capsules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/my_capsules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascript/user_login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/buttons/button.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/buttons/button.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/my_capsules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_capsules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user_signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
