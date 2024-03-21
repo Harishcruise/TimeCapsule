@@ -11,10 +11,14 @@
            {% if request.path != '/' %}
                 {% if post.is_subscribed %}
                     <!-- User is subscribed, offer to unsubscribe -->
-                    <a href="{% url 'SearchCapsule:toggle_subscription' post.id %}?toggle_subscription=True" class="btn btn-secondary">Subscribed</a>
+                    <div class="subscribe-btn">
+                        <a href="{% url 'SearchCapsule:toggle_subscription' post.id %}?toggle_subscription=True" class="btn btn-secondary">Subscribed</a>
+                    </div>
                 {% else %}
-                    <!-- User is not subscribed, offer to subscribe -->
-                    <a href="{% url 'SearchCapsule:toggle_subscription' post.id %}?toggle_subscription=True" class="btn btn-primary">Subscribe</a>
+                     <div class="subscribe-btn">
+                        <!-- User is not subscribed, offer to subscribe -->
+                        <a href="{% url 'SearchCapsule:toggle_subscription' post.id %}?toggle_subscription=True" class="btn btn-primary">Subscribe</a>
+                    </div>
                 {% endif %}
             {% endif %}
         </div>
