@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added Cover Image">
+    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added deployment files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsule/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsule/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710790768387</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added deployment files">
+      <option name="closed" value="true" />
+      <created>1710989602625</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710989602625</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +152,8 @@
     <MESSAGE value="Added Data" />
     <MESSAGE value="Added LOGO" />
     <MESSAGE value="Added Cover Image" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Cover Image" />
+    <MESSAGE value="Added deployment files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added deployment files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
