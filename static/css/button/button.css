@@ -38,3 +38,7 @@ button:disabled:hover {
     color: var(--text-white-color);
     cursor: not-allowed;
 }
+
+#welcome-button {
+  font-size: 20px !important;
+}

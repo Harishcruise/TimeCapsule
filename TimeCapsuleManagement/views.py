@@ -7,6 +7,7 @@ import mimetypes
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 # Create your views here.
@@ -17,7 +18,38 @@ def home(request):
     posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
     users = UserProfile.objects.all()
     comment_form = CommentForm()
-    return render(request, 'home.html', {'posts': posts, 'users': users, 'comment_form': comment_form})
+    show_welcome = None
+    message = None
+    if request.user.is_authenticated:
+        welcome_cookie = f'show_welcome_message_{request.user}'
+        cookie_name = f'last_visit_{request.user.username}'
+        show_welcome = request.COOKIES.get(welcome_cookie, 'false') == 'true'
+        last_visit = request.COOKIES.get(cookie_name)
+        if show_welcome:
+            if last_visit:
+                last_visit_time = datetime.strptime(last_visit, '%Y-%m-%d %H:%M:%S')
+                message = f"Welcome back {request.user.username}! Your last visit today was: {last_visit_time.strftime('%I:%M %p')}"
+            else:
+                message = "Welcome to our site!"
+
+    response = render(request, 'home.html',
+                      {'posts': posts, 'users': users,
+                       'comment_form': comment_form, 'message': message})
+
+    if show_welcome:
+        welcome_cookie = f'show_welcome_message_{request.user}'
+        response.delete_cookie(welcome_cookie)
+
+        # Calculate max_age for the cookie to expire at the end of the day
+        now = datetime.now()
+        end_of_day = datetime(now.year, now.month, now.day, 23, 59, 59)
+        max_age = (end_of_day - now).total_seconds()
+
+        last_visit_cookie_name = f'last_visit_{request.user}'
+        response.set_cookie(last_visit_cookie_name, datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                            max_age=int(max_age))     # Expires at the end of the day
+
+    return response
 
 
 @login_required
