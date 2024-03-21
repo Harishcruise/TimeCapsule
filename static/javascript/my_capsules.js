@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const blockId = input.parentElement.id;
         const label = input.previousElementSibling;
 
+        if(input.value) {
+            document.getElementById(blockId).classList.add('active');
+            label.classList.add('active');
+        }
+
         input.addEventListener('focus', () => {
             document.getElementById(blockId).classList.add('active');
             label.classList.add('active');
@@ -49,12 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('id_status').value = 'False';
 
         // Clear the uploaded files list UI and the arrays tracking the files
-        const fileListContainer = document.querySelector('.uploaded-capsule-content-section');
+        const fileListContainer = document.querySelector('.new-uploaded-capsule-content-section');
         fileListContainer.innerHTML = '';
         selectedFiles = [];
         filesToDelete = [];
 
-        // Change the button text to "Update"
+        updateFileListDisplay();
+
+        // Change the button text to "Submit"
         document.getElementById('form-button').textContent = 'Submit'; //
     }
     // When the user clicks the button, open the modal
@@ -75,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('capsuleForm');
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('capsule_contents');
+    const submitButton = document.getElementById('form-button');
     const fileListContainer = document.querySelector('.uploaded-capsule-content-section');
     let selectedFiles = []; // To keep track of the selected files
 
@@ -86,6 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
             fileListContainer.style.background = 'none';
             fileListContainer.style.padding = '0';
         }
+       if (selectedFiles.length > 0) {
+           submitButton.disabled = false;
+       } else {
+           submitButton.disabled = true;
+       }
+       updateSubmitButtonState();
         selectedFiles.forEach((file, index) => {
             const fileElement = document.createElement('div');
             fileElement.className = 'file-item';
@@ -100,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteIcon.addEventListener('click', () => {
                 selectedFiles = selectedFiles.filter((_, i) => i !== index); // Remove the file from the array
                 updateFileListDisplay(); // Refresh the displayed file list
-             });
+                // checkFileInput();
+            });
 
             fileElement.appendChild(fileName);
             fileElement.appendChild(deleteIcon);
@@ -181,9 +196,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function markForDeletion(fileId, element) {
         // Add the fileId to the list of files to be deleted
         filesToDelete.push(fileId);
-
         // Remove the file element from the UI as visual feedback
         element.parentNode.remove();
+        updateSubmitButtonState();
+    }
+
+    let initialExistingFilesCount = 0;
+
+    function updateSubmitButtonState() {
+        const totalValidFileCount = initialExistingFilesCount - filesToDelete.length + selectedFiles.length;
+        submitButton.disabled = totalValidFileCount <= 0;
     }
 
     function populateExistingFiles(capsuleId) {
@@ -202,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const fileListContainer = document.querySelector('.new-uploaded-capsule-content-section');
                 fileListContainer.innerHTML = ''; // Clear current list
+                initialExistingFilesCount = data.length;
                 data.forEach((content) => {
                     const fileElement = document.createElement('div');
                     fileElement.className = 'file-item';
@@ -215,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     fileElement.appendChild(deleteIcon);
                     fileListContainer.appendChild(fileElement);
                 });
+                updateSubmitButtonState();
                 console.log(data);
             })
             .catch(error => console.error('Error:', error));

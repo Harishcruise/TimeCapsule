@@ -1,7 +1,8 @@
-from datetime import datetime
-
+import os
+from datetime import datetime, timedelta
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
@@ -21,7 +22,17 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('TimeCapsuleManagement:home')
+                # return redirect('TimeCapsuleManagement:home')
+                response = redirect('TimeCapsuleManagement:home')
+
+                # Calculate max_age for the cookie to expire at the end of the day
+                now = datetime.now()
+                end_of_day = datetime(now.year, now.month, now.day, 23, 59, 59)
+                max_age = (end_of_day - now).total_seconds()
+
+                new_visit_cookie_name = f'show_welcome_message_{user.username}'
+                response.set_cookie(new_visit_cookie_name, 'true', max_age=int(max_age))  # Expires at the end of the day
+                return response
             else:
                 messages.error(request, 'Invalid username or password')
                 return redirect('AuthenticationSystem:user_login')
@@ -41,13 +52,17 @@ def user_signup(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            bio = form.cleaned_data['bio']
-            create_user(username, password, first_name, last_name, email, bio)
+            create_user(username, password, email)
             messages.success(request, 'User created successfully')
             return redirect('AuthenticationSystem:user_login')
+        else:
+            for error in form.non_field_errors():
+                messages.error(request, error)
+            for field in form.errors:
+                for error in form.errors[field]:
+                    messages.error(request, f"{error}")
+            # return redirect('AuthenticationSystem:user_signup')
     else:
         form = CustomSignupForm()
     return render(request, 'user_signup.html', {'form': form})
@@ -107,3 +122,15 @@ def update_user_history(request):
         user_history.append({'page': request.path, 'timestamp': datetime.now().isoformat()})
         request.session['user_history'] = user_history
         UserVisit.objects.create(user=request.user, page=request.path)
+
+
+def update_profile_picture(request):
+    if request.method == "POST" and request.FILES.get('profilepic'):
+        user_profile = request.user
+        old_profilepic_path = user_profile.profilepic.path if user_profile.profilepic else None
+        # user_profile.profilepic.upload_to = f"static/images/{user_profile.id}/"
+        user_profile.profilepic = request.FILES['profilepic']
+        user_profile.save()
+        if old_profilepic_path and os.path.exists(old_profilepic_path):
+            os.remove(old_profilepic_path)
+    return render(request, 'profile.html')
