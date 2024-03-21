@@ -1,10 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SearchForm
 from django.db.models import Q
-from TimeCapsuleManagement.models import Capsule
+from TimeCapsuleManagement.models import Capsule, Subscription, UserProfile
 from django.utils import timezone
 from django.db.models.functions import Lower
+
+
 def search(request):
+    # Check if the request is to toggle a subscription
+    if 'toggle_subscription' in request.GET:
+        capsule_id = request.GET.get('capsule_id')
+        if capsule_id:
+            capsule = get_object_or_404(Capsule, pk=capsule_id)
+            # Assuming you have a way to identify the current user's profile
+            # For demonstration, let's fetch the first UserProfile as a placeholder
+            user_profile = UserProfile.objects.first()
+
+            # Toggle the subscription status
+            subscription, created = Subscription.objects.get_or_create(
+                user=user_profile,
+                capsule=capsule,
+            )
+            if not created:
+                subscription.delete()
+            # Redirect to avoid the toggle action being repeated on refresh
+            return redirect('SearchCapsule:capsule_search')
+
     form = SearchForm(request.GET)
     capsules = Capsule.objects.prefetch_related('media').prefetch_related('comments')
 
@@ -17,7 +38,7 @@ def search(request):
                 Q(owner__username__icontains=query)
             )
 
-    # Filtering logic
+    # Filtering logic (unchanged from your original code)
     status = request.GET.get('status')
     sealed = request.GET.get('sealed')
     date = request.GET.get('date')
@@ -35,14 +56,12 @@ def search(request):
     if date:
         capsules = capsules.filter(unsealing_date__date=date)
 
-    # Sorting logic
+    # Sorting logic (unchanged from your original code)
     sort = request.GET.get('sort')
     if sort == 'date':
         capsules = capsules.order_by('unsealing_date')
     elif sort == 'name':
         capsules = capsules.annotate(lower_name=Lower('name')).order_by('lower_name')
-        for capsule in capsules:
-            print(capsule)
 
     context = {
         'form': form,
