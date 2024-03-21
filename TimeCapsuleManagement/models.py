@@ -9,7 +9,7 @@ from django.utils import timezone
 class Capsule(models.Model):
     owner = models.ForeignKey(UserProfile, related_name='capsules', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
     is_public = models.BooleanField(default=False)

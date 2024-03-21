@@ -8,49 +8,50 @@
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/messages/messages.css">
     <link rel="stylesheet" href="../static/css/button/button.css">
-    <link rel="stylesheet" href="../static/css/user_signup.css">
+    <link rel="stylesheet" href="../static/css/authentication.css">
     <script src="../static/javascript/my_capsules.js"></script>
-    <script src="../static/javascript/user_login.js"></script>
+    <script src="../static/javascript/authentication.js"></script>
 </head>
 <body>
     <!-- message -->
-    {% include "components/messages/messages.html" with message_length=3 %}
+    {% include "components/messages/messages.html" with message_length=5 %}
     <div class="modal-form-container">
-
         <div class="container">
-            <div class="left-content">
-                <img src="{% static 'COVER.gif' %}" style="scale: 40%">
-            </div>
-
-            <div class="right-content" style=" padding-left: 110px">
-                <div class="boxedd">
-                <div class="login-form" style="
-                scale: 70%;
-                 padding: 20px;
-                 height: max-content;
-                 background-color: white;
-                 border-radius: 1px;
-                 border: 1px solid var(--line-grey-color);
-
-">
+             <div class="right-content">
+                <div class="login-form">
                     <div class="modal-heading">
                         <h2>Time Capsule</h2>
                     </div>
                     <div class="form-style">
                         <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
                             {% csrf_token %}
-                            {{ form }}
-                            <div class="button-section">
-                                {% include 'components/buttons/button.html' with button_text="Sign Up" button_type="submit" button_id="login-button" button_class="primary-button" %}
+                            <div class="form-field-container" id="usernameBlock">
+                                <label for="id_username" class="form-label" id="usernameLabel">Username *</label>
+                                {{ form.username }}
+                            </div>
+                            <div class="form-field-container" id="emailBlock">
+                                <label for="id_email" class="form-label" id="emailLabel">Email *</label>
+                                {{ form.email }}
+                            </div>
+                            <div class="form-field-container password-container" id="passwordBlock">
+                                <label for="id_password" class="form-label" id="passwordLabel">Password *</label>
+                                {{ form.password }}
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-field-container confirm-password-container" id="confirmPasswordBlock">
+                                <label for="id_confirm_password" class="form-label" id="confirmPasswordLabel">Confirm password *</label>
+                                {{ form.confirm_password }}
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                             <div class="button-section">
+                                {% include 'components/buttons/button.html' with button_text="Sign up" button_type="submit" button_id="signup-button" button_class="primary-button" button_disabled=True %}
                             </div>
                         </form>
                     </div>
-                    <div class="sign-up" style="scale: 70%">
-                    <p style="font-size: 22px">Have an account? <a href="{% url 'AuthenticationSystem:user_login' %}">Log In</a></p>
                 </div>
+                <div class="log-in">
+                    <p>Have an account? <a href="{% url 'AuthenticationSystem:user_login' %}">Log in</a></p>
                 </div>
-                
-            </div>
             </div>
         </div>
     </div>

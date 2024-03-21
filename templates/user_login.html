@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/messages/messages.css">
     <link rel="stylesheet" href="../static/css/button/button.css">
-    <link rel="stylesheet" href="../static/css/user_login.css">
+    <link rel="stylesheet" href="../static/css/authentication.css">
     <script src="../static/javascript/my_capsules.js"></script>
-    <script src="../static/javascript/user_login.js"></script>
+    <script src="../static/javascript/authentication.js"></script>
 </head>
 <body>
     <!-- message -->
@@ -39,7 +39,7 @@
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                              <div class="button-section">
-                                {% include 'components/buttons/button.html' with button_text="Login" button_type="submit" button_id="login-button" button_class="primary-button" %}
+                                {% include 'components/buttons/button.html' with button_text="Log in" button_type="submit" button_id="login-button" button_class="primary-button" %}
                             </div>
                         </form>
                     </div>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="sign-up">
-                    <p>Don't have an account? <a href="{% url 'AuthenticationSystem:user_signup' %}">Sign Up</a></p>
+                    <p>Don't have an account? <a href="{% url 'AuthenticationSystem:user_signup' %}">Sign up</a></p>
                 </div>
             </div>
         </div>
