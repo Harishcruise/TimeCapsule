@@ -16,9 +16,20 @@
  
 {#    {% if post.is_unsealed == True or request.path == '/my-capsules/' %}#}
 {#    	<div class="post-media {% if request.path == '/my-capsules/' %} margin-top-10px {% endif %}">#}
-<div class="{% if request.path == '/my-capsules/'%} margin-top-10px post-media {% elif post.is_unsealed == False and post.is_public == False %} post-media-blur {% else %} post-media {% endif %}">
+<div class="{% if request.path == '/my-capsules/'%} margin-top-10px post-media {% elif post.is_unsealed == False and post.is_public == False %} post-media-blur {% elif post.is_unsealed == True and post.is_public == False %} post-media-blur {% else %} post-media {% endif %}">
             {% include 'components/carousel/carousel.html' with items=post.media.all carousel_id=post.pk %}
             {% if post.is_unsealed == False and post.is_public == False and request.path != '/my-capsules/' %}
+<div class="eye-icon">
+{#                &#128065;#}
+&#x1F440;
+                {% if post.is_subscribed == False %}
+<p style="font-size: 12px">Please subscribe to view the content</p>
+<button class="subscribe-button">Subscribe</button>
+                    {% elif post.is_unsealed == False %}
+<p style="font-size: 12px">The content will be revealed soon!</p>
+                    {% endif %}
+</div>
+            {% elif post.is_unsealed == True and post.is_public == False and request.path != '/my-capsules/' %}
 <div class="eye-icon">
 {#                &#128065;#}
 &#x1F440;
