@@ -135,3 +135,7 @@ def update_profile_picture(request):
 
 
 def edit_profile(request):
+
+def testView(request):
+    return render(request, '')
+
