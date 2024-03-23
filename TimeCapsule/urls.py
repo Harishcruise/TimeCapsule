@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('AuthenticationSystem.urls')),
     path('', include('TimeCapsuleManagement.urls')),
-    path('', include('SearchCapsule.urls'))
+    path('', include('SearchCapsule.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

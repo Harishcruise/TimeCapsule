@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Toronto'
 
 USE_I18N = True
 
@@ -147,8 +147,13 @@ LOGIN_URL = 'AuthenticationSystem:user_login'
 
 AUTH_USER_MODEL = 'AuthenticationSystem.UserProfile'
 
-SESSION_COOKIE_AGE = 600
-
+SESSION_COOKIE_AGE = 86400  # 1 day, in seconds
 SESSION_SAVE_EVERY_REQUEST = True
-
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'timecapsulecomp8347@gmail.com'
+EMAIL_HOST_PASSWORD = 'toah jatc jvpp ezyh'
