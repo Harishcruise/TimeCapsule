@@ -3,10 +3,9 @@
 {% block title %}Home - TimeCapsule{% endblock %}
 
 {% block content %}
-
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     <div class="profile-container">
-
-
         {#    Top content#}
         <div style="flex: 0.7;display: flex;flex-direction: column;gap: 20px">
         <div class="profile-card">
@@ -14,25 +13,29 @@
           </div>
           <div class="profile-content">
             <div class="profile-picture">
-              <img src="https://img.freepik.com/premium-photo/memoji-beautiful-girl-woman-white-background-emoji_826801-6872.jpg" alt="Profile Picture">
+              {% if request.user.profilepic %}
+                  <img src="{{ request.user.profilepic }}" alt="Profile Picture">
+{% else %}
+   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile Picture">
+{% endif %}
             </div>
+              
             <div class="profile-info">
                 <h3>Your Photo</h3>
                 <p>This will be displayed on your profile</p>
             </div>
 
               <div class="button-container">
-            <button class="upload-button" type="button">Upload New</button>
-
+{#            <button class="upload-button" type="button">Upload New</button>#}
+{#                  <input type="file" accept="image/png,image/jpg,image/jpeg" id="fileInput" style="display: none;" />#}
+                  {{ form.profilepic }}
+                <label for="fileInput" id="fileInputLabel" style="cursor: pointer;">Upload File</label>
               </div>
           </div>
         </div>
 
             <div class="user-info-container">
                 <h2>Personal Information</h2>
-
-                <form method="post">
-                    {% csrf_token %}
                 <div class="form-field-container" id="firstnameBlock">
                                 <label for="id_username" class="form-label" id="firstLabel">First Name </label>
                                 {{ form.first_name }}
@@ -58,18 +61,29 @@
                                 {{ form.bio }}
                 </div>
 
-                 <button class="primary-button" type="submit" style="width: 10%" name="profile_submit">Save</button>
-                </form>
+                 <button class="primary-button" type="submit" name="profile_submit" style="width: 10%">Save</button>
+
             </div>
         </div>
 
         <div class="user-history-container">
-
+            <h2 style="margin-left: 20px">User History</h2>
+            <div class="user-history-content">
+            <ul>
+              {% for visit in user_history %}
+                <li>
+                    {{ visit.page }} - {{ visit.timestamp }}
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
         </div>
 
 
 
     </div>
-
+</form>
+    
+    {% include "components/messages/messages.html" with message_length=5 %}
 
 {% endblock %}
