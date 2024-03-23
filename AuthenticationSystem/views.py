@@ -132,3 +132,6 @@ def update_profile_picture(request):
         if old_profilepic_path and os.path.exists(old_profilepic_path):
             os.remove(old_profilepic_path)
     return render(request, 'profile.html')
+
+
+def edit_profile(request):
