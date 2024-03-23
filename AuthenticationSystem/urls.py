@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from .views import (
     PasswordResetView,
+    PasswordResetDoneView,
 )
 
 app_name = 'AuthenticationSystem'
@@ -12,4 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.update_profile_picture, name='update_profile_picture'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
 ]

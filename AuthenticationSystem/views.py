@@ -145,3 +145,9 @@ class PasswordResetView(auth_views.PasswordResetView):
     subject_template_name = 'registration/password_reset_subject.txt'
     success_url = '/accounts/password_reset/done/'
     form_class = CustomPasswordResetForm
+
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'registration/password_reset_done.html'
+
+
