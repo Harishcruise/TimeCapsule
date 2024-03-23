@@ -1,16 +1,19 @@
 import os
-from datetime import datetime, timedelta
+from django.utils import timezone
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
+from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
 from django.contrib.auth.forms import PasswordChangeForm
 from TimeCapsuleManagement.models import Capsule
 from AuthenticationSystem.models import UserProfile, UserVisit
 from TimeCapsuleManagement.forms import CommentForm
 from AuthenticationSystem.crud_operations.auth_operations import create_user
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 
 
 def user_login(request):
@@ -22,16 +25,17 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                # return redirect('TimeCapsuleManagement:home')
                 response = redirect('TimeCapsuleManagement:home')
 
                 # Calculate max_age for the cookie to expire at the end of the day
-                now = datetime.now()
-                end_of_day = datetime(now.year, now.month, now.day, 23, 59, 59)
+                now = timezone.now()
+                end_of_day = timezone.datetime(now.year, now.month, now.day, 23, 59, 59,
+                                               tzinfo=timezone.get_default_timezone())
                 max_age = (end_of_day - now).total_seconds()
 
                 new_visit_cookie_name = f'show_welcome_message_{user.username}'
-                response.set_cookie(new_visit_cookie_name, 'true', max_age=int(max_age))  # Expires at the end of the day
+                response.set_cookie(new_visit_cookie_name, 'true',
+                                    max_age=int(max_age))  # Expires at the end of the day
                 return response
             else:
                 messages.error(request, 'Invalid username or password')
@@ -41,6 +45,7 @@ def user_login(request):
     return render(request, 'user_login.html', {'form': form})
 
 
+@login_required
 def user_logout(request):
     logout(request)
     return redirect('SearchCapsule:capsule_search')
@@ -62,12 +67,12 @@ def user_signup(request):
             for field in form.errors:
                 for error in form.errors[field]:
                     messages.error(request, f"{error}")
-            # return redirect('AuthenticationSystem:user_signup')
     else:
         form = CustomSignupForm()
     return render(request, 'user_signup.html', {'form': form})
 
 
+@login_required
 def profile(request):
     update_user_history(request)
     if request.method == 'POST':
@@ -113,15 +118,17 @@ def profile(request):
         return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:7]})
 
 
+@login_required
 def update_user_history(request):
     if request.user.is_authenticated:
         # Store visit history in the session
         user_history = request.session.get('user_history', [])
-        user_history.append({'page': request.path, 'timestamp': datetime.now().isoformat()})
+        user_history.append({'page': request.path, 'timestamp': timezone.now().isoformat()})
         request.session['user_history'] = user_history
         UserVisit.objects.create(user=request.user, page=request.path)
 
 
+@login_required
 def update_profile_picture(request):
     if request.method == "POST" and request.FILES.get('profilepic'):
         user_profile = request.user
@@ -132,3 +139,24 @@ def update_profile_picture(request):
         if old_profilepic_path and os.path.exists(old_profilepic_path):
             os.remove(old_profilepic_path)
     return render(request, 'profile.html')
+
+
+class PasswordResetView(auth_views.PasswordResetView):
+    template_name = 'registration/password_reset_form.html'
+    email_template_name = 'registration/password_reset_email.html'
+    subject_template_name = 'registration/password_reset_subject.txt'
+    success_url = '/accounts/password_reset/done/'
+    form_class = CustomPasswordResetForm
+
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'registration/password_reset_done.html'
+
+
+class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('AuthenticationSystem:password_reset_complete')
+
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'registration/password_reset_complete.html'

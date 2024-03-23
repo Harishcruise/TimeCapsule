@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth.models import User
 from .models import UserProfile
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import PasswordResetForm
 
 
 class CustomLoginForm(forms.Form):
@@ -50,3 +50,9 @@ class EditProfileForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class': 'form-input'}),
             'profilepic': forms.FileInput(attrs={'id': 'fileInput', 'style': 'display: none;', 'accept': 'image/png,image/jpg,image/jpeg,image/avif'})
         }
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'form-input'})
