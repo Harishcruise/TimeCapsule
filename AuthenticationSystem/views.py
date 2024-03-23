@@ -1,8 +1,8 @@
 import os
-from datetime import datetime
-
+from datetime import datetime, timedelta
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
@@ -22,7 +22,17 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('TimeCapsuleManagement:home')
+                # return redirect('TimeCapsuleManagement:home')
+                response = redirect('TimeCapsuleManagement:home')
+
+                # Calculate max_age for the cookie to expire at the end of the day
+                now = datetime.now()
+                end_of_day = datetime(now.year, now.month, now.day, 23, 59, 59)
+                max_age = (end_of_day - now).total_seconds()
+
+                new_visit_cookie_name = f'show_welcome_message_{user.username}'
+                response.set_cookie(new_visit_cookie_name, 'true', max_age=int(max_age))  # Expires at the end of the day
+                return response
             else:
                 messages.error(request, 'Invalid username or password')
                 return redirect('AuthenticationSystem:user_login')
@@ -69,7 +79,7 @@ def profile(request):
         #     return redirect('AuthenticationSystem:profile')
 
         if 'profile_submit' in request.POST:  # Check if profile form is submitted
-            profile_form = EditProfileForm(request.POST, instance=request.user)
+            profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
             if profile_form.is_valid():
                 profile_form.save()
                 messages.success(request, f'{owner} profile updated')
@@ -98,11 +108,9 @@ def profile(request):
         password_form = PasswordChangeForm(request.user)
         form = EditProfileForm(instance=request.user)
         user_history_session = request.session.get('user_history', [])
-        user_history_database = UserVisit.objects.filter(user=request.user)
+        user_history_database = UserVisit.objects.filter(user=request.user).order_by('-timestamp')
 
-        return render(request, 'profile.html',
-                      {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form,
-                       'password_form': password_form, 'user_history': user_history_database})
+        return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:15]})
 
 
 def update_user_history(request):

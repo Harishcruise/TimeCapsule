@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateForm() {
         const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
         const passwordsMatch = passwordField.value === confirmPasswordField.value;
-        signupButton.disabled = !(allFilled && passwordsMatch);
+        // signupButton.disabled = !(allFilled && passwordsMatch);
 
         // Enable the signup button if all conditions are met
         signupButton.disabled = !(allFilled && passwordsMatch);
