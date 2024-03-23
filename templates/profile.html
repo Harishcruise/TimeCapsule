@@ -3,32 +3,72 @@
 {% block title %}Home - TimeCapsule{% endblock %}
 
 {% block content %}
-{#    Profile imagee#}
-    {% if request.user.profilepic %}
-        <div class="profile-picture" style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
-            <img src="{{ request.user.profilepic.url }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-    {% else %}
-        <p>No Profile Picture</p>
-    {% endif %}
-    
-    <form method="post" enctype="multipart/form-data" action="{% url 'AuthenticationSystem:update_profile_picture' %}">
-        {% csrf_token %}
-        <input type="file" name="profilepic">
-        <button type="submit">Update Profile Picture</button>
-    </form>
-<div class="profile-header">
- <!-- User History Modal Trigger -->
-<button id="userHistoryBtn">User History</button>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profile-container">
+        {#    Top content#}
+        <div style="flex: 0.7;display: flex;flex-direction: column;gap: 20px">
+        <div class="profile-card">
+          <div class="profile-background">
+          </div>
+          <div class="profile-content">
+            <div class="profile-picture">
+              {% if request.user.profilepic %}
+                  <img src="{{ request.user.profilepic }}" alt="Profile Picture">
+{% else %}
+   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile Picture">
+{% endif %}
+            </div>
+              
+            <div class="profile-info">
+                <h3>Your Photo</h3>
+                <p>This will be displayed on your profile</p>
+            </div>
 
-<!-- User History Modal -->
-<div id="userHistoryModal" class="profile-modal" style="display:none;">
-    <div class="profile-modal-content">
-        <span class="profile-close">&times;</span>
-    
-    
-        <h2>User History</h2>
-        <div class="user-history-content">
+              <div class="button-container">
+{#            <button class="upload-button" type="button">Upload New</button>#}
+{#                  <input type="file" accept="image/png,image/jpg,image/jpeg" id="fileInput" style="display: none;" />#}
+                  {{ form.profilepic }}
+                <label for="fileInput" id="fileInputLabel" style="cursor: pointer;">Upload File</label>
+              </div>
+          </div>
+        </div>
+
+            <div class="user-info-container">
+                <h2>Personal Information</h2>
+                <div class="form-field-container" id="firstnameBlock">
+                                <label for="id_username" class="form-label" id="firstLabel">First Name </label>
+                                {{ form.first_name }}
+                </div>
+
+                <div class="form-field-container" id="lastnameBlock">
+                                <label for="id_username" class="form-label" id="lastnameLabel">Last Name </label>
+                                {{ form.last_name }}
+                </div>
+
+                <div class="form-field-container" id="usernameBlock">
+                    <label for="id_username" class="form-label" id="usernameLabel">Username </label>
+                                {{ form.username }}
+                </div>
+
+                 <div class="form-field-container" id="emailBlock">
+                    <label for="id_username" class="form-label" id="emailLabel">Email </label>
+                                {{ form.email }}
+                </div>
+
+                <div class="form-field-container" id="bioBlock">
+                    <label for="id_username" class="form-label" id="bioLabel">Bio </label>
+                                {{ form.bio }}
+                </div>
+
+                 <button class="primary-button" type="submit" name="profile_submit" style="width: 10%">Save</button>
+
+            </div>
+        </div>
+
+        <div class="user-history-container">
+            <h2 style="margin-left: 20px">User History</h2>
+            <div class="user-history-content">
             <ul>
               {% for visit in user_history %}
                 <li>
@@ -37,90 +77,13 @@
               {% endfor %}
             </ul>
         </div>
+        </div>
+
+
+
     </div>
-</div>
+</form>
+    
+    {% include "components/messages/messages.html" with message_length=5 %}
 
-
-
-</div>
-
-<div class="profile-container">
-    <div class="profile-left-container">
-        {% for post in posts %}
-            {% include 'components/card/capsule_card.html' with post=post %}
-        {% endfor %}
-    </div>
-
-    <div class="profile-right-container">
-        <!-- Edit Profile Modal Trigger -->
-        <button id="editProfileBtn">Edit Profile</button>
-        <!-- Password Change Modal Trigger -->
-        <button id="changePasswordBtn">Change Password</button>
-    </div>
-</div>
-
-<!-- Edit Profile Modal -->
-<div id="editProfileModal" class="profile-modal" style="display:none;">
-    <div class="profile-modal-content">
-        <span class="profile-close">&times;</span>
-        <h2>Edit Profile</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" name="profile_submit">Save Changes</button>
-        </form>
-    </div>
-</div>
-
-<!-- Change Password Modal -->
-<div id="changePasswordModal" class="profile-modal" style="display:none;">
-    <div class="profile-modal-content">
-        <span class="profile-close">&times;</span>
-        <h2>Password change</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ password_form.as_p }}
-            <button type="submit" name="password_submit">Change Password</button>
-        </form>
-    </div>
-</div>
-    <script>
-document.getElementById('editProfileBtn').onclick = function() {
-    document.getElementById('editProfileModal').style.display = "block";
-}
-
-document.getElementById('changePasswordBtn').onclick = function() {
-    document.getElementById('changePasswordModal').style.display = "block";
-}
-
-var closeButtons = document.getElementsByClassName('profile-close');
-for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].onclick = function() {
-        this.parentElement.parentElement.style.display = "none";
-    }
-}
-
-document.getElementById('userHistoryBtn').onclick = function() {
-    var history = document.getElementById('userHistory');
-    if (history.style.display === "none") {
-        history.style.display = "block";
-    } else {
-        history.style.display = "none";
-    }
-}
-
-document.getElementById('userHistoryBtn').onclick = function() {
-    document.getElementById('userHistoryModal').style.display = "block";
-}
-
-var closeButtons = document.getElementsByClassName('profile-close');
-for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].onclick = function() {
-        this.parentElement.parentElement.style.display = "none";
-    }
-}
-
-</script>
-{% include "components/messages/messages.html" with message_length=3 %}
 {% endblock %}
-

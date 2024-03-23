@@ -16,6 +16,53 @@
     height: 400px;
 }
 
+.post-media-blur{
+    position: relative;
+}
+
+.post-media-blur img,
+.post-media-blur video{
+    width: 100%;
+    /*height: auto;*/
+    height: 400px;
+    filter: blur(50px);
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px; /* Adjust icon size as needed */
+    color: white; /* Set color of the icon */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subscribe-button {
+    position: absolute;
+    top: 100%; /* Adjust bottom spacing as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #3897f0; /* Set button background color */
+    color: white; /* Set button text color */
+    border: none;
+    border-radius: 20px; /* Adjust border radius as needed */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.subscribe-button a{
+    color: white;
+    text-decoration: none;
+}
+
+.subscribe-button:hover{
+    opacity: 20%;
+}
+
 .post-head{
     display: flex;
     align-items: center;
@@ -118,4 +165,3 @@
 .sealed-capsule{
 
 }
-

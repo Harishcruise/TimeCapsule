@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added deployment files">
+    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Addition of Upload picture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/card/capsule_card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/card/capsule_card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/carousel/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/carousel/carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/card/capsule_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/card/capsule_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -60,7 +64,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ismailBranch&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;subscribe-feature&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -119,6 +123,8 @@
       <workItem from="1710703576876" duration="981000" />
       <workItem from="1710707528992" duration="3077000" />
       <workItem from="1710781324352" duration="4162000" />
+      <workItem from="1711145320363" duration="3050000" />
+      <workItem from="1711163630086" duration="4639000" />
     </task>
     <task id="LOCAL-00001" summary="Added LOGO">
       <option name="closed" value="true" />
@@ -152,7 +158,71 @@
       <option name="project" value="LOCAL" />
       <updated>1710990098820</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Addition of Subscribe to home capsules">
+      <option name="closed" value="true" />
+      <created>1711149615768</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711149615768</updated>
+    </task>
+    <task id="LOCAL-00006" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1711149850772</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711149850772</updated>
+    </task>
+    <task id="LOCAL-00007" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1711150947954</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711150947954</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update to profile">
+      <option name="closed" value="true" />
+      <created>1711163945617</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711163945617</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Profile style update">
+      <option name="closed" value="true" />
+      <created>1711164116334</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711164116334</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated Profile form">
+      <option name="closed" value="true" />
+      <created>1711164259290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711164259290</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updated Profile form">
+      <option name="closed" value="true" />
+      <created>1711169724945</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711169724945</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Addition of Upload picture">
+      <option name="closed" value="true" />
+      <created>1711169819687</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711169819687</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +233,13 @@
     <MESSAGE value="Added LOGO" />
     <MESSAGE value="Added Cover Image" />
     <MESSAGE value="Added deployment files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added deployment files" />
+    <MESSAGE value="Addition of Subscribe to home capsules" />
+    <MESSAGE value="minor changes" />
+    <MESSAGE value="Update to profile" />
+    <MESSAGE value="Profile style update" />
+    <MESSAGE value="Updated Profile form" />
+    <MESSAGE value="Addition of Upload picture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Addition of Upload picture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
