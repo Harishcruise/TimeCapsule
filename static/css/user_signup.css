@@ -187,3 +187,17 @@ body {
     right: 12px; /* Adjust based on your design needs */
     cursor: pointer;
 }
+
+.logo-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    /* align-items: center; */
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  border-radius: 5px;
+}

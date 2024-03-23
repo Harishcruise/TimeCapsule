@@ -15,11 +15,14 @@ from datetime import datetime
 
 @login_required
 def home(request):
-    posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+    # posts = Capsule.objects.prefetch_related('media').prefetch_related('comments')
+    posts = Capsule.objects.filter(subscribers__user=request.user)
     users = UserProfile.objects.all()
     comment_form = CommentForm()
     show_welcome = None
     message = None
+    for post in posts:
+        print(post.owner.profilepic)
     if request.user.is_authenticated:
         welcome_cookie = f'show_welcome_message_{request.user}'
         cookie_name = f'last_visit_{request.user.username}'

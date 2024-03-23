@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="../../static/LOGO.png" />
     <title>Time Capsule</title>
     <link rel="stylesheet" href="../../static/css/navBar/navBar.css">
     <link rel="stylesheet" href="../../static/css/button/button.css">
@@ -26,7 +27,7 @@
 <div class="container">
    <div class="sidebar">
   <div class="logo-wrapper">
-    <img src="{% static 'LOGO.gif' %}">
+    <img src="{% static 'LOGO.png' %}">
   </div>
   <ul class="sidebar-menu">
     <li>
@@ -64,7 +65,11 @@
     </li>
     <li>
       <a href="{% url 'AuthenticationSystem:profile' %}" {% if request.path == '/profile/' %}class="nav-link active" {% else %} class="nav-link" {% endif %}>
-        <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile icon">
+        {% if request.user.profilepic %}
+                  <img class="icon rounded-circle" src="{{ request.user.profilepic.url }}" alt="Profile Picture">
+        {% else %}
+           <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile Picture">
+        {% endif %}
         Profile
       </a>
     </li>

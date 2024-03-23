@@ -13,8 +13,8 @@
           </div>
           <div class="profile-content">
             <div class="profile-picture">
-              {% if request.user.profilepic %}
-                  <img src="{{ request.user.profilepic }}" alt="Profile Picture">
+              {% if cur_user.profilepic %}
+                  <img src="{{ cur_user.profilepic.url }}" alt="Profile Picture">
 {% else %}
    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile Picture">
 {% endif %}
@@ -72,8 +72,11 @@
             <ul>
               {% for visit in user_history %}
                 <li>
-                    {{ visit.page }} - {{ visit.timestamp }}
-                </li>
+                    Last Session Since :
+                <br>
+                    <br>
+                  {{ visit.timestamp }}
+                  </li>
               {% endfor %}
             </ul>
         </div>

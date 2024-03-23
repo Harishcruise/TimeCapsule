@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Time Capsule - Register</title>
+    <link rel="icon" href="../static/LOGO.png" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="stylesheet" href="../static/css/messages/messages.css">
@@ -19,8 +20,11 @@
         <div class="container">
              <div class="right-content">
                 <div class="login-form">
-                    <div class="modal-heading">
-                        <h2>Time Capsule</h2>
+{#                    <div class="modal-heading">#}
+{#                        <h2>Time Capsule</h2>#}
+{#                    </div>#}
+                    <div class="logo-wrapper">
+                        <img src="{% static 'LOGO.png' %}">
                     </div>
                     <div class="form-style">
                         <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
