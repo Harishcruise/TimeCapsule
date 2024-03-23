@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/card/capsule_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/card/capsule_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,8 @@
       <workItem from="1710703576876" duration="981000" />
       <workItem from="1710707528992" duration="3077000" />
       <workItem from="1710781324352" duration="4162000" />
-      <workItem from="1711145320363" duration="1855000" />
+      <workItem from="1711145320363" duration="3050000" />
+      <workItem from="1711163630086" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="Added LOGO">
       <option name="closed" value="true" />
@@ -168,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711149850772</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1711150947954</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711150947954</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
