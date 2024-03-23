@@ -3,6 +3,7 @@ from . import views
 from .views import (
     PasswordResetView,
     PasswordResetDoneView,
+    CustomPasswordResetConfirmView,
 )
 
 app_name = 'AuthenticationSystem'
@@ -14,4 +15,5 @@ urlpatterns = [
     path('edit_profile/', views.update_profile_picture, name='update_profile_picture'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 ]

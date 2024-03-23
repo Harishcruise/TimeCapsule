@@ -2,6 +2,7 @@ import os
 from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
@@ -150,4 +151,8 @@ class PasswordResetView(auth_views.PasswordResetView):
 class PasswordResetDoneView(auth_views.PasswordResetDoneView):
     template_name = 'registration/password_reset_done.html'
 
+
+class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('AuthenticationSystem:password_reset_complete')
 
