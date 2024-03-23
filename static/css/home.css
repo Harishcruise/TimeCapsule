@@ -43,13 +43,14 @@
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    /*border: 1px solid #ccc;*/
+    border-radius: 20px;
     background-color: var(--text-white-color);
     width: 300px;
-    height: 70vh;
+    height: 75vh;
     position: fixed;
     right: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-popup-modal{

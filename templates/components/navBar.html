@@ -64,7 +64,7 @@
     </li>
     <li>
       <a href="{% url 'AuthenticationSystem:profile' %}" {% if request.path == '/profile/' %}class="nav-link active" {% else %} class="nav-link" {% endif %}>
-        <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile icon">
+        <img class="icon rounded-circle" src="{{ request.user.profilepic }}" alt="Profile icon">
         Profile
       </a>
     </li>

@@ -15,7 +15,8 @@ from datetime import datetime
 
 @login_required
 def home(request):
-    posts = Capsule.objects.prefetch_related('media').prefetch_related('comments').all()
+    # posts = Capsule.objects.prefetch_related('media').prefetch_related('comments')
+    posts = Capsule.objects.filter(subscribers__user=request.user)
     users = UserProfile.objects.all()
     comment_form = CommentForm()
     show_welcome = None
