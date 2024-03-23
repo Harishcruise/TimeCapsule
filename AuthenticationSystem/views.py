@@ -79,7 +79,7 @@ def profile(request):
         #     return redirect('AuthenticationSystem:profile')
 
         if 'profile_submit' in request.POST:  # Check if profile form is submitted
-            profile_form = EditProfileForm(request.POST, instance=request.user)
+            profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
             if profile_form.is_valid():
                 profile_form.save()
                 messages.success(request, f'{owner} profile updated')
@@ -108,11 +108,11 @@ def profile(request):
         password_form = PasswordChangeForm(request.user)
         form = EditProfileForm(instance=request.user)
         user_history_session = request.session.get('user_history', [])
-        user_history_database = UserVisit.objects.filter(user=request.user)
+        user_history_database = UserVisit.objects.filter(user=request.user).order_by('-timestamp')
 
-        return render(request, 'profile.html',
+        return render(request, 'user.html',
                       {'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form,
-                       'password_form': password_form, 'user_history': user_history_database})
+                       'password_form': password_form, 'user_history': user_history_database[:15]})
 
 
 def update_user_history(request):

@@ -31,6 +31,8 @@
             <div class="user-info-container">
                 <h2>Personal Information</h2>
 
+                <form method="post">
+                    {% csrf_token %}
                 <div class="form-field-container" id="firstnameBlock">
                                 <label for="id_username" class="form-label" id="firstLabel">First Name </label>
                                 {{ form.first_name }}
@@ -56,8 +58,8 @@
                                 {{ form.bio }}
                 </div>
 
-                 <button class="primary-button" type="button" style="width: 10%">Save</button>
-
+                 <button class="primary-button" type="submit" style="width: 10%" name="profile_submit">Save</button>
+                </form>
             </div>
         </div>
 

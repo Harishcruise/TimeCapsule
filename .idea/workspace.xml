@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Profile style update">
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/forms.py" afterDir="false" />
+    <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Updated Profile form">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +122,7 @@
       <workItem from="1710707528992" duration="3077000" />
       <workItem from="1710781324352" duration="4162000" />
       <workItem from="1711145320363" duration="3050000" />
-      <workItem from="1711163630086" duration="555000" />
+      <workItem from="1711163630086" duration="2631000" />
     </task>
     <task id="LOCAL-00001" summary="Added LOGO">
       <option name="closed" value="true" />
@@ -192,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711164116334</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated Profile form">
+      <option name="closed" value="true" />
+      <created>1711164259290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711164259290</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +219,8 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Update to profile" />
     <MESSAGE value="Profile style update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile style update" />
+    <MESSAGE value="Updated Profile form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Profile form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
