@@ -4,7 +4,11 @@
     {% if request.path != '/my-capsules/' %}
         <div class="post-head">
             <div>
-                <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile icon">
+                {% if post.owner.profilepic %}
+                  <img class="icon rounded-circle" src="{{ post.owner.profilepic.url }}" alt="Profile Picture">
+                {% else %}
+                   <img class="icon rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhsJ2D692LXEDT04mefdqZtznqnIg31FnmX5-aETP1O-rA40rRhSYbMrmMTfTVHHwoCk&usqp=CAU" alt="Profile Picture">
+                {% endif %}
                 <p>{{ post.owner }}</p>
             </div>
 

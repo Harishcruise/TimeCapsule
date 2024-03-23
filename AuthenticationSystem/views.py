@@ -110,7 +110,7 @@ def profile(request):
         user_history_session = request.session.get('user_history', [])
         user_history_database = UserVisit.objects.filter(user=request.user).order_by('-timestamp')
 
-        return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:15]})
+        return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:7]})
 
 
 def update_user_history(request):

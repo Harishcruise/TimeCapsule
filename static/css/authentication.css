@@ -200,3 +200,17 @@ body {
     color: var(--text-red-color); /* Example red color for error text */
     font-size: 0.875rem;
 }
+
+.logo-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    /* align-items: center; */
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  border-radius: 5px;
+}

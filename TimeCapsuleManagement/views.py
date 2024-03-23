@@ -21,6 +21,8 @@ def home(request):
     comment_form = CommentForm()
     show_welcome = None
     message = None
+    for post in posts:
+        print(post.owner.profilepic)
     if request.user.is_authenticated:
         welcome_cookie = f'show_welcome_message_{request.user}'
         cookie_name = f'last_visit_{request.user.username}'
