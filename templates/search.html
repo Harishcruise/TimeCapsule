@@ -86,12 +86,12 @@
 <div class="search-results-container">
     <div class="left-container">
         {% for post in posts %}
-            {% include 'components/card/search_card.html' with post=post %}
+            {% include 'components/card/capsule_card.html' with post=post %}
         {% endfor %}
     </div>
 </div>
 
-
+{% include 'components/messages/messages.html' with message_length=3 %}
 
 <!-- Modal & Dropdown Scripts -->
 <script>
