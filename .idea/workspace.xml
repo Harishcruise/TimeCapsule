@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Addition of Upload picture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/card/capsule_card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/card/capsule_card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/carousel/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/carousel/carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/card/capsule_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/card/capsule_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from .forms import SearchForm
+from TimeCapsuleManagement.forms import CommentForm
 from django.db.models import Q
 from TimeCapsuleManagement.models import Capsule, Subscription, UserProfile
 from django.utils import timezone
@@ -11,6 +12,7 @@ from django.http import HttpResponseRedirect
 
 
 def search(request):
+    comment_form = CommentForm()
     # Handle the toggle subscription action within the search request
     if 'toggle_subscription' in request.GET and request.user.is_authenticated:
         capsule_id = request.GET.get('capsule_id')
@@ -79,6 +81,7 @@ def search(request):
     context = {
         'form': form,
         'posts': capsules,
+        'comment_form': comment_form
     }
 
     return render(request, 'search.html', context)
@@ -103,4 +106,3 @@ def toggle_subscription(request, capsule_id):
 
     # Redirect to the previous page or a specific page after toggling the subscription
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
