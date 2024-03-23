@@ -4,5 +4,6 @@ from . import views
 app_name = 'SearchCapsule'
 urlpatterns = [
     path('search/', views.search, name='capsule_search'),
-    # Add other URL patterns as needed
+    path('toggle_subscription/<int:capsule_id>/', views.toggle_subscription, name='toggle_subscription'),
+
 ]

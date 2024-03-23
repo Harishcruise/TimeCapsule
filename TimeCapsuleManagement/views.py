@@ -32,6 +32,12 @@ def home(request):
             else:
                 message = "Welcome to our site!"
 
+    if request.user.is_authenticated:
+        user_profile = request.user  # Direct use since UserProfile is the user model
+        for capsule in posts:
+            capsule.is_subscribed = Subscription.objects.filter(user=user_profile, capsule=capsule).exists()
+            print(capsule.is_subscribed)
+
     response = render(request, 'home.html',
                       {'posts': posts, 'users': users,
                        'comment_form': comment_form, 'message': message})
@@ -47,7 +53,7 @@ def home(request):
 
         last_visit_cookie_name = f'last_visit_{request.user}'
         response.set_cookie(last_visit_cookie_name, datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                            max_age=int(max_age))     # Expires at the end of the day
+                            max_age=int(max_age))  # Expires at the end of the day
 
     return response
 
@@ -89,7 +95,8 @@ def my_capsules(request):
             return HttpResponse(f'error|{redirect_url}')
     else:
         form = CapsuleForm()
-    return render(request, 'my_capsules.html', {'form': form, 'capsule_list': capsule_list,'comment_form': comment_form})
+    return render(request, 'my_capsules.html',
+                  {'form': form, 'capsule_list': capsule_list, 'comment_form': comment_form})
 
 
 @login_required

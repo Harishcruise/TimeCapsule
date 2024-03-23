@@ -41,4 +41,12 @@ class CustomSignupForm(forms.Form):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'bio', 'first_name', 'last_name']
+        fields = ['username', 'email', 'bio', 'first_name', 'last_name', 'profilepic']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-input'}),
+            'email': forms.EmailInput(attrs={'class': 'form-input'}),
+            'bio': forms.Textarea(attrs={'class': 'form-input'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-input'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-input'}),
+            'profilepic': forms.FileInput(attrs={'id': 'fileInput', 'style': 'display: none;', 'accept': 'image/png,image/jpg,image/jpeg,image/avif'})
+        }
