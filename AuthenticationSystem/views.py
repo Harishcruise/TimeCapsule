@@ -1,8 +1,7 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm
@@ -11,6 +10,7 @@ from TimeCapsuleManagement.models import Capsule
 from AuthenticationSystem.models import UserProfile, UserVisit
 from TimeCapsuleManagement.forms import CommentForm
 from AuthenticationSystem.crud_operations.auth_operations import create_user
+from django.contrib.auth.decorators import login_required
 
 
 def user_login(request):
@@ -41,6 +41,7 @@ def user_login(request):
     return render(request, 'user_login.html', {'form': form})
 
 
+@login_required
 def user_logout(request):
     logout(request)
     return redirect('SearchCapsule:capsule_search')
@@ -68,6 +69,7 @@ def user_signup(request):
     return render(request, 'user_signup.html', {'form': form})
 
 
+@login_required
 def profile(request):
     update_user_history(request)
     if request.method == 'POST':
@@ -113,6 +115,7 @@ def profile(request):
         return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:15]})
 
 
+@login_required
 def update_user_history(request):
     if request.user.is_authenticated:
         # Store visit history in the session
@@ -122,6 +125,7 @@ def update_user_history(request):
         UserVisit.objects.create(user=request.user, page=request.path)
 
 
+@login_required
 def update_profile_picture(request):
     if request.method == "POST" and request.FILES.get('profilepic'):
         user_profile = request.user
@@ -133,9 +137,4 @@ def update_profile_picture(request):
             os.remove(old_profilepic_path)
     return render(request, 'profile.html')
 
-
-def edit_profile(request):
-
-def testView(request):
-    return render(request, '')
 
