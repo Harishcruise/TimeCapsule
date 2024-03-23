@@ -42,3 +42,10 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['username', 'email', 'bio', 'first_name', 'last_name']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-input'}),
+            'email': forms.EmailInput(attrs={'class': 'form-input'}),
+            'bio': forms.Textarea(attrs={'class': 'form-input'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-input'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-input'})
+        }
