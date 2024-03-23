@@ -200,3 +200,15 @@ body {
     color: var(--text-red-color); /* Example red color for error text */
     font-size: 0.875rem;
 }
+
+#password_reset_login{
+    margin-bottom: 20px !important;
+}
+
+#send-reset-email-button, #new-password-button{
+    width: 100%;
+}
+
+.reset-done{
+    padding: 50px;
+}
