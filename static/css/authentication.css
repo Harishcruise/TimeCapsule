@@ -76,8 +76,12 @@ body {
     margin-bottom: 20px;
 }
 
-#confirmPasswordBlock{
+#confirmPasswordBlock, #newPasswordBlock, #confirmNewPasswordBlock{
     margin-bottom: 0;
+}
+
+#confirmNewPasswordBlock{
+    margin-top: 20px;
 }
 
 .form-label {
@@ -90,7 +94,8 @@ body {
     color: var(--text-grey-color);
 }
 
-#passwordBlock .form-label, #confirmPasswordBlock .form-label {
+#passwordBlock .form-label, #confirmPasswordBlock .form-label,
+#newPasswordBlock .form-label, #confirmNewPasswordBlock .form-label{
     top: 16px;
 }
 
@@ -199,4 +204,16 @@ body {
 .error-message {
     color: var(--text-red-color); /* Example red color for error text */
     font-size: 0.875rem;
+}
+
+#password_reset_login{
+    margin-bottom: 20px !important;
+}
+
+#send-reset-email-button, #new-password-button{
+    width: 100%;
+}
+
+.reset-done{
+    padding: 50px;
 }
