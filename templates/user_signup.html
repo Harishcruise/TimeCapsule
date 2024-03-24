@@ -26,7 +26,7 @@
                     <div class="form-style">
                         <form method="post" action="{% url 'AuthenticationSystem:user_signup' %}">
                             {% csrf_token %}
-                            <div class="form-field-container" id="usernameBlock">
+                            <div class="form-field-container margin-bottom-28" id="usernameBlock">
                                 <label for="id_username" class="form-label" id="usernameLabel">Username *</label>
                                 {{ form.username }}
                             </div>
@@ -34,7 +34,7 @@
                                 <label for="id_email" class="form-label" id="emailLabel">Email *</label>
                                 {{ form.email }}
                             </div>
-                            <div class="form-field-container password-container" id="passwordBlock">
+                            <div class="form-field-container password-container margin-bottom-12" id="passwordBlock">
                                 <label for="id_password" class="form-label" id="passwordLabel">Password *</label>
                                 {{ form.password }}
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>

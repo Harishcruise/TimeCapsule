@@ -133,7 +133,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 20px 0;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
 
 .division {
@@ -206,8 +206,8 @@ body {
     display: flex;
     margin-bottom: 20px;
     justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
 }
 
 .logo-wrapper img {
@@ -221,4 +221,28 @@ body {
 
 #newPasswordLabel, #confirmNewPasswordLabel{
     top: 16px;
+}
+
+#send-reset-email-button, #new-password-button{
+    width: 100%;
+}
+
+#password_reset_login{
+    margin-bottom: 20px;
+}
+
+.margin-bottom-28{
+    margin-bottom: 28px;
+}
+
+.margin-bottom-12{
+    margin-bottom: 12px;
+}
+
+.margin-top-12{
+    margin-top: 12px !important;
+}
+
+.margin-top-0{
+    margin-top: 0;
 }
