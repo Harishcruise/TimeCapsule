@@ -32,9 +32,13 @@
 
     <div class="home-container">
         <div class="left-home-container">
+        {% if posts %}
             {% for post in posts %}
                 {% include 'components/card/capsule_card.html' with post=post %}
             {% endfor %}
+        {% else %}
+            <p>Please subscribe to the users to view the contents.</p>
+        {% endif %}
         </div>
 
         <div class="right-container">

@@ -26,9 +26,9 @@
 <body>
 <div class="container">
    <div class="sidebar">
-  <div class="logo-wrapper">
+  <a href="{% url 'TimeCapsuleManagement:home' %}" class="logo-wrapper">
     <img src="{% static 'LOGO.png' %}">
-  </div>
+  </a>
   <ul class="sidebar-menu">
     <li>
       <a href="{% url 'TimeCapsuleManagement:home' %}" {% if request.path == '/' %}class="nav-link active" {% else %} class="nav-link" {% endif %}>
