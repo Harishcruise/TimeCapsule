@@ -1,6 +1,5 @@
 from django import forms
-from django.forms import DateTimeInput
-from .models import Capsule, CapsuleContent, Comment
+from .models import Capsule, Comment
 
 
 class CapsuleForm(forms.ModelForm):

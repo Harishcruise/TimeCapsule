@@ -5,10 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7929ab29-3301-461f-8a9c-636d81a6afca" name="Changes" comment="Added Files">
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/10_FAj9xGN.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/13_Df8TeiD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/14_zIep3j4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/7_Xb8rgSx.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/7_kHikOda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/8_CxvclcK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/8_OXhCfr6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/23/9_Kp7oxbC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/10_tzWd4Vp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/12_N26kTlJ.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/12_dAqGCT4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/13_OBhK56C.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/13_WdAaf0H.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/13_n2MNSQd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/14_T6g8EKY.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/14_UpRYtko.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/15_IQLxa17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/240_F_36942622_9SUXpSuE5JlfxLFKB1jHu5Z07eVIWQ2W.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/NoImage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/Screenshot_2024-03-23_at_11.36.55PM.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/diego-ph-fIq0tET6llw-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/dylan-ferreira-TT5HB9mF07U-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/easylife-designs-bj6fp3AGSbM-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/capsule_content/2024/03/24/igor-omilaev-LdJLgZ0rrvA-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/10/15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/11/zdenek-machacek-ZN4CzqizIyI-unsplash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/12/neom-zYy15TtlgGk-unsplash.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticationSystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticationSystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchCapsule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchCapsule/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsule/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsule/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCapsuleManagement/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/authentication.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/authentication.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/card/capsule_card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/card/capsule_card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/carousel/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/carousel/carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/messages/messages.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/messages/messages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/my_capsules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my_capsules.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/navBar/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/navBar/navBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/user_signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/user_signup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/my_capsules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/my_capsules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/password_reset.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/password_reset.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/password_reset_confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/password_reset_confirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascript/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascript/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/messages/messages.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/messages/messages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/my_capsules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/my_capsules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/settings.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +132,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "harish",
+    "git-widget-placeholder": "ismailBranch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

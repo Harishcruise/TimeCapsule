@@ -1,7 +1,6 @@
 .carousel {
   position: relative;
   width: 100%;
-  /*max-width: 600px; !* Adjust the width as needed *!*/
   margin: auto;
 }
 
@@ -17,7 +16,6 @@
 
 .carousel-item img {
   width: 100%;
-  /*height: auto;*/
   height: 400px;
 }
 

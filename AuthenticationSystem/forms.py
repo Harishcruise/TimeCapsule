@@ -1,3 +1,4 @@
+import re
 from django import forms
 from .models import UserProfile
 from django.core.exceptions import ValidationError
@@ -22,7 +23,7 @@ class CustomSignupForm(forms.Form):
         if len(password) < 8:
             raise ValidationError("Password must be at least 8 characters long.")
 
-        # Check for password complexity (example: requiring at least one digit)
+        # Check for password complexity (requiring at least one digit)
         if not any(char.isdigit() for char in password):
             raise ValidationError("Password must contain at least one digit.")
 
@@ -33,6 +34,10 @@ class CustomSignupForm(forms.Form):
         # At least one lowercase letter
         if not any(char.islower() for char in password):
             raise ValidationError("Password must contain at least one lowercase letter.")
+
+        # At least one special character
+        if not re.search(r"[!@#$%^&*()_+-=\[\]{}|;:'\",.<>?/~`]", password):
+            raise ValidationError("Password must contain at least one special character.")
 
         # Return the cleaned data
         return password

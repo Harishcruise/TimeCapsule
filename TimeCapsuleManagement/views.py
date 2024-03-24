@@ -1,16 +1,16 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
-from .models import Capsule, CapsuleContent, Comment, Subscription
-from AuthenticationSystem.models import UserProfile
-from .forms import CapsuleForm, CommentForm
 import mimetypes
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from django.utils import timezone
 from django.views import View
+from django.urls import reverse
+from django.utils import timezone
+from django.contrib import messages
+from .forms import CapsuleForm, CommentForm
+from AuthenticationSystem.models import UserProfile
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from .models import Capsule, CapsuleContent, Subscription
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 
 # Create your views here.
@@ -19,6 +19,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class Index(LoginRequiredMixin, View):
     login_url = '/login/'
     redirect_field_name = 'next'
+
     def get(self, request, *args, **kwargs):
         # Logic to fetch posts, similar to your FBV
         posts = Capsule.objects.filter(subscribers__user=request.user).exclude(is_published=False).order_by('name')
@@ -26,11 +27,9 @@ class Index(LoginRequiredMixin, View):
         comment_form = CommentForm()
         show_welcome = None
         message = None
-
         # Process each post
         for post in posts:
             print(post.owner.profilepic)
-
         # Welcome message and last visit handling
         if request.user.is_authenticated:
             welcome_cookie = f'show_welcome_message_{request.user}'
@@ -43,35 +42,29 @@ class Index(LoginRequiredMixin, View):
                     message = f"Welcome back {request.user.username}! Your last visit today was: {last_visit_time.strftime('%I:%M %p')}"
                 else:
                     message = "Welcome to our site!"
-
         # Subscription checking
         if request.user.is_authenticated:
             user_profile = request.user
             for capsule in posts:
                 capsule.is_subscribed = Subscription.objects.filter(user=user_profile, capsule=capsule).exists()
                 print(capsule.is_subscribed)
-
         response = render(request, 'home.html', {
             'posts': posts,
             'users': users,
             'comment_form': comment_form,
             'message': message
         })
-
         # Cookie handling for welcome message and last visit
         if show_welcome:
             welcome_cookie = f'show_welcome_message_{request.user}'
             response.delete_cookie(welcome_cookie)
-
             now = timezone.now()
             end_of_day = timezone.datetime(now.year, now.month, now.day, 23, 59, 59,
                                            tzinfo=timezone.get_default_timezone())
             max_age = (end_of_day - now).total_seconds()
-
             last_visit_cookie_name = f'last_visit_{request.user}'
             time_now = now.astimezone(timezone.get_default_timezone())
             response.set_cookie(last_visit_cookie_name, time_now.strftime('%Y-%m-%d %H:%M:%S'), max_age=int(max_age))
-
         return response
 
 
@@ -86,12 +79,11 @@ def my_capsules(request):
         form = CapsuleForm(data, request.FILES)
         if form.is_valid():
             capsule = form.save()
-
             # Handle the uploaded files for CapsuleContent
             files = request.FILES.getlist('capsule_contents')
             for file in files:
                 mime_type, _ = mimetypes.guess_type(file.name)
-                file_type = 'text'  # Default file type
+                file_type = 'photo'  # Default file type
                 if mime_type:
                     if mime_type.startswith('image/'):
                         file_type = 'photo'
@@ -119,7 +111,6 @@ def my_capsules(request):
 @login_required
 def edit_capsule(request, capsule_id):
     capsule = get_object_or_404(Capsule, id=capsule_id, owner=request.user)
-
     if request.method == 'GET':
         data = {
             'name': capsule.name,
@@ -129,7 +120,6 @@ def edit_capsule(request, capsule_id):
             'is_published': capsule.is_published,
         }
         return JsonResponse(data)
-
     elif request.method == 'POST':
         data = request.POST.copy()
         data['owner'] = request.user.id
@@ -152,7 +142,6 @@ def edit_capsule(request, capsule_id):
                     capsule=updated_capsule,
                     file_type=file_type
                 )
-
             messages.success(request, 'Capsule updated successfully!')
             redirect_url = reverse('TimeCapsuleManagement:my_capsules')
             return HttpResponse(f'success|{redirect_url}')
@@ -196,11 +185,8 @@ def post_comment(request, capsule_id):
             comment.user = request.user
             comment.save()
             messages.success(request, "Comment saved successfully!")
-            # return redirect('TimeCapsuleManagement:home')
             referer_url = request.META.get('HTTP_REFERER', '/')
             return HttpResponseRedirect(referer_url)
     else:
-        form = CommentForm()
-        # return redirect('TimeCapsuleManagement:home')
         referer_url = request.META.get('HTTP_REFERER', '/')
         return HttpResponseRedirect(referer_url)

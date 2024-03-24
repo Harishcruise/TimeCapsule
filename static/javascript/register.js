@@ -24,12 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateForm() {
         const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
         const passwordsMatch = passwordField.value === confirmPasswordField.value;
-        // signupButton.disabled = !(allFilled && passwordsMatch);
 
         // Enable the signup button if all conditions are met
         signupButton.disabled = !(allFilled && passwordsMatch);
 
-        // Optionally, provide real-time feedback about password match
+        // Provide real-time feedback about password match
         if (!passwordsMatch && confirmPasswordField.value.trim() !== '') {
             // This condition checks if the confirm password field is not empty and passwords do not match
             // Update this to show your error message or indication as needed

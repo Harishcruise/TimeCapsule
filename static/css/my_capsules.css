@@ -1,7 +1,7 @@
 .my-capsules-first-row {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Adjusted to space-between to push the button to the left */
+    justify-content: space-between;
     padding: 20px;
     background-color: var(--text-white-color);
     border-radius: 5px;
@@ -15,7 +15,7 @@
 }
 
 .create-capsule-button {
-    margin-left: 0; /* Ensure there's no additional margin pushing it away from the left */
+    margin-left: 0;
 }
 
 .capsule-modal {
@@ -221,16 +221,15 @@ div.file-item{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start; /* This will push the right capsule to the far right */
+    justify-content: flex-start;
     padding: 20px;
 }
 
 .my-capsules-second-row > div {
-    flex: 1 1 calc(50% - 20px); /* Adjust based on the gap to ensure even distribution */
-    max-width: calc(50% - 20px); /* Ensures that items do not stretch beyond the calculated width */
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
 }
 
-/* Target the second capsule directly if possible, otherwise use nth-child */
 .my-capsules-second-row > div:nth-child(2) {
-    margin-right: auto; /* This pushes the second item to the right */
+    margin-right: auto;
 }
