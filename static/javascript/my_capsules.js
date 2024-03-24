@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
     let yyyy = today.getFullYear();
 
     const minDate = `${yyyy}-${mm}-${dd}T00:00`; // Template literal for clarity
@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateFileListDisplay();
 
         // Change the button text to "Submit"
-        document.getElementById('form-button').textContent = 'Submit'; //
+        document.getElementById('form-button').textContent = 'Submit';
+        document.getElementById('capsule-form-header').textContent = 'Create your Time Capsule!';
     }
     // When the user clicks the button, open the modal
     if(btn != null) { // Check if the button was found
@@ -114,9 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteIcon.addEventListener('click', () => {
                 selectedFiles = selectedFiles.filter((_, i) => i !== index); // Remove the file from the array
                 updateFileListDisplay(); // Refresh the displayed file list
-                // checkFileInput();
             });
-
             fileElement.appendChild(fileName);
             fileElement.appendChild(deleteIcon);
             fileListContainer.appendChild(fileElement);
@@ -129,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalText = dropZoneText.textContent; // Save the original text
         dropZoneText.innerHTML = '<div class="spinner"></div>'; // Add your spinner HTML here
         selectedFiles = selectedFiles.concat(Array.from(files)); // Add new files to the array
-
         setTimeout(() => {
             updateFileListDisplay(); // Update the list display
             dropZoneText.textContent = originalText;
@@ -143,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update selected files when user selects files
     fileInput.addEventListener('change', function() {
         handleFiles(this.files);
-        // fileInput.value = ''; // Clear the file input to allow re-uploading the same file
     });
 
     // Handle file drop
@@ -258,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     console.log(data)
                     document.getElementById('form-button').textContent = 'Update';
+                    document.getElementById('capsule-form-header').textContent = 'Update your Time Capsule';
                     // Populate the form fields with the capsule data
                     document.getElementById('nameBlock').classList.add('active');
                     document.getElementById('nameLabel').classList.add('active');

@@ -1,7 +1,7 @@
 .header{
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Adjusted to space-between to push the button to the left */
+    justify-content: space-between;
     padding: 20px;
     background-color: var(--text-white-color);
     border-radius: 5px;
@@ -24,26 +24,11 @@
     margin-top: 100px;
 }
 
-.left-container{
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*flex-wrap: wrap;*/
-    /*gap: 20px;*/
-    /*justify-content: flex-start; !* This will push the right capsule to the far right *!*/
-    /*padding: 20px 0;*/
-}
-
-.left-container > div{
-    /*flex: 1 1 calc(50% - 20px); !* Adjust based on the gap to ensure even distribution *!*/
-    /*max-width: calc(50% - 20px); !* Ensures that items do not stretch beyond the calculated width *!*/
-}
-
 .right-container{
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    /*border: 1px solid #ccc;*/
     border-radius: 20px;
     background-color: var(--text-white-color);
     width: 300px;

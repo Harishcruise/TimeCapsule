@@ -1,5 +1,5 @@
-# forms.py
 from django import forms
+
 
 class SearchForm(forms.Form):
     q = forms.CharField(
@@ -34,4 +34,3 @@ class SearchForm(forms.Form):
             'class': 'checkbox-input',
         })
     )
-

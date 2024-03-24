@@ -1,19 +1,18 @@
 import os
 from django.utils import timezone
-from datetime import datetime
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse_lazy
-from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
-from django.contrib.auth.forms import PasswordChangeForm
+from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
 from TimeCapsuleManagement.models import Capsule
-from AuthenticationSystem.models import UserProfile, UserVisit
-from TimeCapsuleManagement.forms import CommentForm
-from AuthenticationSystem.crud_operations.auth_operations import create_user
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
+from TimeCapsuleManagement.forms import CommentForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from AuthenticationSystem.models import UserProfile, UserVisit
+from AuthenticationSystem.crud_operations.auth_operations import create_user
+from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
 
 
 def user_login(request):
@@ -77,12 +76,6 @@ def profile(request):
     update_user_history(request)
     if request.method == 'POST':
         owner = UserProfile.objects.get(id=request.user.id)
-        # form = EditProfileForm(request.POST, instance=request.user)
-        # if form.is_valid():
-        #     form.save()
-        #     messages.success(request, f'{owner} profile updated')
-        #     return redirect('AuthenticationSystem:profile')
-
         if 'profile_submit' in request.POST:  # Check if profile form is submitted
             profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
             if profile_form.is_valid():
@@ -91,9 +84,6 @@ def profile(request):
                 return redirect('AuthenticationSystem:profile')
         elif 'password_submit' in request.POST:  # Check if password form is submitted
             password_form = PasswordChangeForm(request.user, request.POST)
-            print("hjje", password_form.is_valid())
-            print(password_form.cleaned_data)
-
             if password_form.is_valid():
                 user = password_form.save()
                 update_session_auth_hash(request, user)  # Important for keeping the user logged in
@@ -112,10 +102,12 @@ def profile(request):
         comment_form = CommentForm()
         password_form = PasswordChangeForm(request.user)
         form = EditProfileForm(instance=request.user)
-        user_history_session = request.session.get('user_history', [])
+        # user_history_session = request.session.get('user_history', [])
         user_history_database = UserVisit.objects.filter(user=request.user).order_by('-timestamp')
-
-        return render(request, 'profile.html',{'posts': posts, 'users': users, 'cur_user': owner, 'comment_form': comment_form, 'form': form, 'password_form': password_form, 'user_history': user_history_database[:7]})
+        return render(request, 'profile.html',{'posts': posts, 'users': users,
+                                               'cur_user': owner, 'comment_form': comment_form,
+                                               'form': form, 'password_form': password_form,
+                                               'user_history': user_history_database[:7]})
 
 
 @login_required
@@ -133,7 +125,6 @@ def update_profile_picture(request):
     if request.method == "POST" and request.FILES.get('profilepic'):
         user_profile = request.user
         old_profilepic_path = user_profile.profilepic.path if user_profile.profilepic else None
-        # user_profile.profilepic.upload_to = f"static/images/{user_profile.id}/"
         user_profile.profilepic = request.FILES['profilepic']
         user_profile.save()
         if old_profilepic_path and os.path.exists(old_profilepic_path):
