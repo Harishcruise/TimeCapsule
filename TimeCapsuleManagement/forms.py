@@ -17,10 +17,10 @@ class CapsuleForm(forms.ModelForm):
     )
 
     STATUS = [
-        (True, 'Sealed'),
-        (False, 'Unsealed')
+        (True, 'Published'),
+        (False, 'Unpublished')
     ]
-    status = forms.ChoiceField(
+    is_published = forms.ChoiceField(
         choices=STATUS,
         widget=forms.Select(
             attrs={'class': 'form-input'}

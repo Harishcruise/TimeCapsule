@@ -35,7 +35,7 @@ def search(request):
 
     # Continue with search functionality if not toggling a subscription
     form = SearchForm(request.GET)
-    capsules = Capsule.objects.prefetch_related('media', 'comments', 'subscribers').all()
+    capsules = Capsule.objects.prefetch_related('media', 'comments', 'subscribers').filter(is_published=True)
 
     if form.is_valid():
         query = form.cleaned_data.get('q', '')
@@ -85,6 +85,7 @@ def search(request):
     }
 
     return render(request, 'search.html', context)
+
 
 @login_required
 def toggle_subscription(request, capsule_id):

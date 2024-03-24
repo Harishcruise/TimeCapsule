@@ -8,6 +8,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.utils import timezone
 
 
 # Create your views here.
@@ -16,7 +17,7 @@ from datetime import datetime
 @login_required
 def home(request):
     # posts = Capsule.objects.prefetch_related('media').prefetch_related('comments')
-    posts = Capsule.objects.filter(subscribers__user=request.user)
+    posts = Capsule.objects.filter(subscribers__user=request.user).exclude(is_published=False).order_by('name')
     users = UserProfile.objects.all()
     comment_form = CommentForm()
     show_welcome = None
@@ -50,12 +51,13 @@ def home(request):
         response.delete_cookie(welcome_cookie)
 
         # Calculate max_age for the cookie to expire at the end of the day
-        now = datetime.now()
-        end_of_day = datetime(now.year, now.month, now.day, 23, 59, 59)
+        now = timezone.now()
+        end_of_day = timezone.datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=timezone.get_default_timezone())
         max_age = (end_of_day - now).total_seconds()
 
         last_visit_cookie_name = f'last_visit_{request.user}'
-        response.set_cookie(last_visit_cookie_name, datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        time_now = now.astimezone(timezone.get_default_timezone())
+        response.set_cookie(last_visit_cookie_name, time_now.strftime('%Y-%m-%d %H:%M:%S'),
                             max_age=int(max_age))  # Expires at the end of the day
 
     return response
@@ -112,7 +114,7 @@ def edit_capsule(request, capsule_id):
             'description': capsule.description,
             'unsealing_date': capsule.unsealing_date.strftime('%Y-%m-%dT%H:%M'),
             'is_public': capsule.is_public,
-            'status': capsule.status,
+            'is_published': capsule.is_published,
         }
         return JsonResponse(data)
 

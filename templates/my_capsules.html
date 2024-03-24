@@ -19,9 +19,13 @@
     </div>
 
     <div class="my-capsules-second-row">
-        {% for capsules in capsule_list %}
-                {% include 'components/card/capsule_card.html' with post=capsules %}
-        {% endfor %}
+        {% if capsule_list %}
+            {% for capsule in capsule_list %}
+                {% include 'components/card/capsule_card.html' with post=capsule %}
+            {% endfor %}
+        {% else %}
+            <p style="padding: 20px; width: 100%">You do not have any capsules! Please create one by clicking on the create button</p>
+        {% endif %}
     </div>
 
     <!-- Form Modal -->
@@ -63,12 +67,12 @@
                                 <div class="form-column-three">
                                     <div class="form-field-container" id="statusBlock">
                                         <label for="id_status" class="form-label">Status</label>
-                                        {{ form.status }}
+                                        {{ form.is_published }}
                                     </div>
                                 </div>
                             </div>
                             <div class="text-row">
-                                <p> <b> NOTE:</b> A sealed capsule cannot be edited or unsealed. </p>
+                                <p> <b> NOTE:</b> A published capsule cannot be edited or unpublished. </p>
                             </div>
                         </div>
                         <div class="capsule-content-section">
