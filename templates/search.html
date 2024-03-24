@@ -18,6 +18,7 @@
         <!-- Sort Dropdown Button -->
         {% include 'components/buttons/button.html' with button_text="Sort By" button_id="sort-btn" button_class="primary-button sort-button" %}
     </div>
+<<<<<<< HEAD
     <!-- Filter Modal -->
     <div id="filter-modal" class="modal">
         <div class="modal-content">
@@ -75,6 +76,80 @@
         </div>
     </div>
     {% include 'components/messages/messages.html' with message_length=3 %}
+=======
+</div>
+
+
+<!-- Sort Options Dropdown -->
+<div id="sort-options" class="sort-options">
+    <a href="?sort=date&q={{ request.GET.q }}">Date</a>
+    <a href="?sort=name&q={{ request.GET.q }}">Name</a>
+</div>
+
+<!-- Search Results -->
+<div class="search-results-container">
+    {% if posts %}
+        <div class="left-container">
+            {% for post in posts %}
+                {% include 'components/card/capsule_card.html' with post=post %}
+            {% endfor %}
+        </div>
+    {% else %}
+            <p>No capsules to view the content.</p>
+    {% endif %}
+</div>
+
+{% include 'components/messages/messages.html' with message_length=3 %}
+
+<!-- Modal & Dropdown Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var filterModal = document.getElementById('filter-modal');
+    var filterBtn = document.getElementById('filter-btn');
+    var closeFilter = document.getElementsByClassName('search-close')[0];
+    var sortBtn = document.getElementById('sort-btn');
+    var sortOptions = document.getElementById('sort-options');
+
+    // Function to toggle modal display
+    var toggleModal = function() {
+        filterModal.style.display = filterModal.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // Function to toggle sort options display
+    var toggleSortOptions = function() {
+        if (sortOptions.style.display === 'block') {
+            sortOptions.style.display = 'none';
+        } else {
+            sortOptions.style.display = 'block';
+            // When opening sort options, make sure filter modal is closed
+            filterModal.style.display = 'none';
+        }
+    };
+
+    filterBtn.onclick = toggleModal;
+    closeFilter.onclick = toggleModal;
+
+    // Prevent the filter modal from closing when clicking inside it
+    filterModal.onclick = function(event) {
+        event.stopPropagation();
+    };
+
+    sortBtn.onclick = toggleSortOptions;
+
+    // Event listener for window to handle closing modals when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target !== filterModal && event.target !== filterBtn) {
+            filterModal.style.display = 'none';
+        }
+        if (event.target !== sortBtn && event.target.closest('#sort-options') === null) {
+            sortOptions.style.display = 'none';
+        }
+    });
+});
+
+</script>
+{% endblock %}
+>>>>>>> master
 
     <!-- Modal & Dropdown Scripts -->
     <script>
