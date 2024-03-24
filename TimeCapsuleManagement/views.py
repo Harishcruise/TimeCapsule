@@ -9,58 +9,70 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils import timezone
+from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
 
 
-@login_required
-def home(request):
-    # posts = Capsule.objects.prefetch_related('media').prefetch_related('comments')
-    posts = Capsule.objects.filter(subscribers__user=request.user).exclude(is_published=False).order_by('name')
-    users = UserProfile.objects.all()
-    comment_form = CommentForm()
-    show_welcome = None
-    message = None
-    for post in posts:
-        print(post.owner.profilepic)
-    if request.user.is_authenticated:
-        welcome_cookie = f'show_welcome_message_{request.user}'
-        cookie_name = f'last_visit_{request.user.username}'
-        show_welcome = request.COOKIES.get(welcome_cookie, 'false') == 'true'
-        last_visit = request.COOKIES.get(cookie_name)
+class Index(LoginRequiredMixin, View):
+    login_url = '/login/'
+    redirect_field_name = 'next'
+    def get(self, request, *args, **kwargs):
+        # Logic to fetch posts, similar to your FBV
+        posts = Capsule.objects.filter(subscribers__user=request.user).exclude(is_published=False).order_by('name')
+        users = UserProfile.objects.all()
+        comment_form = CommentForm()
+        show_welcome = None
+        message = None
+
+        # Process each post
+        for post in posts:
+            print(post.owner.profilepic)
+
+        # Welcome message and last visit handling
+        if request.user.is_authenticated:
+            welcome_cookie = f'show_welcome_message_{request.user}'
+            cookie_name = f'last_visit_{request.user.username}'
+            show_welcome = request.COOKIES.get(welcome_cookie, 'false') == 'true'
+            last_visit = request.COOKIES.get(cookie_name)
+            if show_welcome:
+                if last_visit:
+                    last_visit_time = datetime.strptime(last_visit, '%Y-%m-%d %H:%M:%S')
+                    message = f"Welcome back {request.user.username}! Your last visit today was: {last_visit_time.strftime('%I:%M %p')}"
+                else:
+                    message = "Welcome to our site!"
+
+        # Subscription checking
+        if request.user.is_authenticated:
+            user_profile = request.user
+            for capsule in posts:
+                capsule.is_subscribed = Subscription.objects.filter(user=user_profile, capsule=capsule).exists()
+                print(capsule.is_subscribed)
+
+        response = render(request, 'home.html', {
+            'posts': posts,
+            'users': users,
+            'comment_form': comment_form,
+            'message': message
+        })
+
+        # Cookie handling for welcome message and last visit
         if show_welcome:
-            if last_visit:
-                last_visit_time = datetime.strptime(last_visit, '%Y-%m-%d %H:%M:%S')
-                message = f"Welcome back {request.user.username}! Your last visit today was: {last_visit_time.strftime('%I:%M %p')}"
-            else:
-                message = "Welcome to our site!"
+            welcome_cookie = f'show_welcome_message_{request.user}'
+            response.delete_cookie(welcome_cookie)
 
-    if request.user.is_authenticated:
-        user_profile = request.user  # Direct use since UserProfile is the user model
-        for capsule in posts:
-            capsule.is_subscribed = Subscription.objects.filter(user=user_profile, capsule=capsule).exists()
-            print(capsule.is_subscribed)
+            now = timezone.now()
+            end_of_day = timezone.datetime(now.year, now.month, now.day, 23, 59, 59,
+                                           tzinfo=timezone.get_default_timezone())
+            max_age = (end_of_day - now).total_seconds()
 
-    response = render(request, 'home.html',
-                      {'posts': posts, 'users': users,
-                       'comment_form': comment_form, 'message': message})
+            last_visit_cookie_name = f'last_visit_{request.user}'
+            time_now = now.astimezone(timezone.get_default_timezone())
+            response.set_cookie(last_visit_cookie_name, time_now.strftime('%Y-%m-%d %H:%M:%S'), max_age=int(max_age))
 
-    if show_welcome:
-        welcome_cookie = f'show_welcome_message_{request.user}'
-        response.delete_cookie(welcome_cookie)
-
-        # Calculate max_age for the cookie to expire at the end of the day
-        now = timezone.now()
-        end_of_day = timezone.datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=timezone.get_default_timezone())
-        max_age = (end_of_day - now).total_seconds()
-
-        last_visit_cookie_name = f'last_visit_{request.user}'
-        time_now = now.astimezone(timezone.get_default_timezone())
-        response.set_cookie(last_visit_cookie_name, time_now.strftime('%Y-%m-%d %H:%M:%S'),
-                            max_age=int(max_age))  # Expires at the end of the day
-
-    return response
+        return response
 
 
 @login_required
