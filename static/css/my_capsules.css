@@ -107,11 +107,20 @@
     color: var(--text-grey-color);
 }
 
+.profile{
+    padding: 0 10px 0 4px;
+}
+
 .form-field-container.active .form-label,
 .form-input:focus + .form-label {
     top: -8px;
     font-size: 0.75em;
     color: var(--form-label-blue-color);
+}
+
+.form-field-container.active .profile,
+.form-input:focus + .profile {
+    top: 0;
 }
 
 #is_publicBlock .form-label, #statusBlock .form-label {

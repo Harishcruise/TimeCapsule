@@ -37,27 +37,27 @@
             <div class="user-info-container">
                 <h2>Personal Information</h2>
                 <div class="form-field-container" id="firstnameBlock">
-                                <label for="id_username" class="form-label" id="firstLabel">First Name </label>
+                                <label for="id_username" class="form-label profile" id="firstLabel">First Name </label>
                                 {{ form.first_name }}
                 </div>
 
                 <div class="form-field-container" id="lastnameBlock">
-                                <label for="id_username" class="form-label" id="lastnameLabel">Last Name </label>
+                                <label for="id_username" class="form-label profile" id="lastnameLabel">Last Name </label>
                                 {{ form.last_name }}
                 </div>
 
                 <div class="form-field-container" id="usernameBlock">
-                    <label for="id_username" class="form-label" id="usernameLabel">Username </label>
+                    <label for="id_username" class="form-label profile" id="usernameLabel">Username </label>
                                 {{ form.username }}
                 </div>
 
                  <div class="form-field-container" id="emailBlock">
-                    <label for="id_username" class="form-label" id="emailLabel">Email </label>
+                    <label for="id_username" class="form-label profile" id="emailLabel">Email </label>
                                 {{ form.email }}
                 </div>
 
                 <div class="form-field-container" id="bioBlock">
-                    <label for="id_username" class="form-label" id="bioLabel">Bio </label>
+                    <label for="id_username" class="form-label profile" id="bioLabel">Bio </label>
                                 {{ form.bio }}
                 </div>
 
@@ -72,7 +72,7 @@
             <ul>
               {% for visit in user_history %}
                 <li>
-                    Last Session Since :
+                    <b>Last Visited Profile Page :</b>
                 <br>
                     <br>
                   {{ visit.timestamp }}

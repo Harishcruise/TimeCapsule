@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('id_is_public').value = 'False';
 
-        document.getElementById('id_status').value = 'False';
+        document.getElementById('id_is_published').value = 'False';
 
         // Clear the uploaded files list UI and the arrays tracking the files
         const fileListContainer = document.querySelector('.new-uploaded-capsule-content-section');
@@ -274,8 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     let is_public = data.is_public ? 'True' : 'False';
                     document.getElementById('id_is_public').value = is_public;
 
-                    let status = data.status ? 'True' : 'False';
-                    document.getElementById('id_status').value = status;
+                    let is_published = data.is_published ? 'True' : 'False';
+                    document.getElementById('id_is_published').value = is_published;
 
                     // Change the form action to update the capsule
                     document.querySelector('#capsuleForm').action = `/edit/${capsuleId}/`;
