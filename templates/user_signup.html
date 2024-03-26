@@ -29,6 +29,7 @@
                             <div class="form-field-container margin-bottom-28" id="usernameBlock">
                                 <label for="id_username" class="form-label" id="usernameLabel">Username *</label>
                                 {{ form.username }}
+                                <span style="font-size: 10px;" id="username-message"></span>
                             </div>
                             <div class="form-field-container" id="emailBlock">
                                 <label for="id_email" class="form-label" id="emailLabel">Email *</label>
@@ -56,5 +57,25 @@
             </div>
         </div>
     </div>
+<script>
+        document.getElementById('id_username').addEventListener('input', function() {
+            var username = this.value;
+            fetch('/check-username-availability/?username=' + username)
+            .then(response => response.json())
+            .then(data => {
+                 var um = document.getElementById('username-message');
+                if (username.trim() === '') {
+                        um.innerText = '';
+                }
+                else if (data.available) {
+                    um.innerText = 'Username available';
+                    um.style.color = 'green';
+                } else {
+                    um.innerText = 'Username already exists';
+                    um.style.color = 'red';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
