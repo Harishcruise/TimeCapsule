@@ -13,7 +13,16 @@ from django.contrib.auth import authenticate, login, logout
 from AuthenticationSystem.models import UserProfile, UserVisit
 from AuthenticationSystem.crud_operations.auth_operations import create_user
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
+from django.http import JsonResponse
 
+def check_username_availability(request):
+    if request.method == 'GET' and 'username' in request.GET:
+        username = request.GET['username']
+        if UserProfile.objects.filter(username__iexact=username).exists():
+            return JsonResponse({'available': False})
+        else:
+            return JsonResponse({'available': True})
+    return JsonResponse({'error': 'Invalid request'})
 
 def user_login(request):
     if request.method == 'POST':
@@ -57,6 +66,13 @@ def user_signup(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
+            if UserProfile.objects.filter(username__iexact=username).exists():
+                messages.error(request, 'A user with that username already exists.')
+                return redirect('AuthenticationSystem:user_signup')
+
+            if UserProfile.objects.filter(email__iexact=email).exists():
+                messages.error(request, 'A user with that email already exists.')
+                return redirect('AuthenticationSystem:user_signup')
             create_user(username, password, email)
             messages.success(request, 'User created successfully')
             return redirect('AuthenticationSystem:user_login')
