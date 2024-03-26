@@ -19,9 +19,13 @@
     </div>
 
     <div class="my-capsules-second-row">
-        {% for capsules in capsule_list %}
-                {% include 'components/card/capsule_card.html' with post=capsules %}
-        {% endfor %}
+        {% if capsule_list %}
+            {% for capsule in capsule_list %}
+                {% include 'components/card/capsule_card.html' with post=capsule %}
+            {% endfor %}
+        {% else %}
+            <p style="padding: 20px; width: 100%">You do not have any capsules! Please create one by clicking on the create button.</p>
+        {% endif %}
     </div>
 
     <!-- Form Modal -->
@@ -30,7 +34,7 @@
         <div class="capsule-modal-right">
             <div class="capsule-modal-form">
                 <div class="capsule-modal-heading">
-                    <h2>Create your Time Capsule!</h2>
+                    <h2 id="capsule-form-header">Create your Time Capsule!</h2>
                 </div>
                 <div class="capsule-modal-content">
                     <span class="close">
@@ -63,17 +67,17 @@
                                 <div class="form-column-three">
                                     <div class="form-field-container" id="statusBlock">
                                         <label for="id_status" class="form-label">Status</label>
-                                        {{ form.status }}
+                                        {{ form.is_published }}
                                     </div>
                                 </div>
                             </div>
                             <div class="text-row">
-                                <p> <b> NOTE:</b> A sealed capsule cannot be edited or unsealed. </p>
+                                <p> <b> NOTE:</b> A published capsule cannot be edited or unpublished. </p>
                             </div>
                         </div>
                         <div class="capsule-content-section">
                             <div id="dropZone" class="drop-zone">
-                                <p>Drag and drop files here, or click to select files</p>
+                                <p>Drag and drop files here, or click to select files *</p>
                                 <input type="file" name="capsule_contents" id="capsule_contents" multiple hidden accept=".jpg, .png, .hpeg, .mp4" />
                             </div>
                         </div>

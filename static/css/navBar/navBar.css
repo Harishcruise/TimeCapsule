@@ -26,7 +26,6 @@
     display: flex;
     width: 90%;
     margin-bottom: 20px;
-    /* align-items: center; */
     justify-content: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -51,10 +50,6 @@
 .sidebar-menu.bottom {
   flex-grow: 0;
   margin-bottom: 40px;
-}
-
-.sidebar-menu li {
-  /*margin-bottom: 10px;*/
 }
 
 .sidebar-menu li a.nav-link {

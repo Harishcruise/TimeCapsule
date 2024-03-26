@@ -1,4 +1,3 @@
-// carousel.js
 let carouselState = {};
 
 function showSlide(carouselId, slideIndex) {

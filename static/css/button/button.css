@@ -31,3 +31,14 @@
 .x-button:hover {
   background-color: var(--text-red-color);
 }
+
+button:disabled,
+button:disabled:hover {
+    background-color: #cccccc;
+    color: var(--text-white-color);
+    cursor: not-allowed;
+}
+
+#welcome-button {
+  font-size: 20px !important;
+}

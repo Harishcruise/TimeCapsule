@@ -1,6 +1,5 @@
 from django import forms
-from django.forms import DateTimeInput
-from .models import Capsule, CapsuleContent, Comment
+from .models import Capsule, Comment
 
 
 class CapsuleForm(forms.ModelForm):
@@ -17,10 +16,10 @@ class CapsuleForm(forms.ModelForm):
     )
 
     STATUS = [
-        (True, 'Sealed'),
-        (False, 'Unsealed')
+        (True, 'Published'),
+        (False, 'Unpublished')
     ]
-    status = forms.ChoiceField(
+    is_published = forms.ChoiceField(
         choices=STATUS,
         widget=forms.Select(
             attrs={'class': 'form-input'}

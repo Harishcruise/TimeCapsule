@@ -1,7 +1,6 @@
-from django.db import models
-# from django.contrib.auth.models import User
-from AuthenticationSystem.models import UserProfile
 from django.utils import timezone
+from django.db import models
+from AuthenticationSystem.models import UserProfile
 
 # Create your models here.
 
@@ -9,11 +8,11 @@ from django.utils import timezone
 class Capsule(models.Model):
     owner = models.ForeignKey(UserProfile, related_name='capsules', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
     is_public = models.BooleanField(default=False)
-    status = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
     unsealing_date = models.DateTimeField()
 
     def is_unsealed(self):

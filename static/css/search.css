@@ -1,20 +1,16 @@
 .search-bar{
     width: 100%;
-    padding: 10px 0; /* Gives some vertical space around the form */
-    background-color: #f8f9fa; /* Light grey background, adjust as necessary */
-    border-bottom: 1px solid #eaeaea; /* Slight separation from content below */
+    padding: 10px 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .left-container{
-    /*width: 80%; !* Adjust based on your design preference *!*/
-    /*margin: 0 auto; !* Center the container if it doesn't take full width *!*/
     display: flex;
-    flex-direction: column; /* Stacks the posts vertically */
+    flex-direction: column;
     align-items: center;
 }
 
-
-/* Add this to your styles.css or within a <style> tag in the head of your base template */
 .search-container {
     display: flex;
     justify-content: center;
@@ -25,20 +21,20 @@
     position: relative;
     display: flex;
     width: 100%;
-    max-width: 640px; /* Adjust based on your design preference */
+    max-width: 640px;
     background: #FFFFFF;
-    border: 1px solid var(--line-grey-color); /* Slight border for definition */
-    border-radius: 50px; /* Rounded corners for modern look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 1px solid var(--line-grey-color);
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
     width: 100%;
     border: none;
     padding: 15px 20px;
-    font-size: 16px; /* Adjust font size as needed */
+    font-size: 16px;
     border-radius: 50px;
-    outline: none; /* Removes the outline to keep the design clean */
+    outline: none;
 }
 
 .search-button {
@@ -48,18 +44,17 @@
     background: none;
     padding: 12px 20px;
     cursor: pointer;
-    outline: none; /* Keeps the button seamlessly integrated */
+    outline: none;
 }
 
 .search-button svg {
-    color: #707070; /* Icon color, adjust as needed */
+    color: #707070;
 }
 
 .search-button:hover svg {
-    color: #333333; /* Darker color on hover for feedback */
+    color: #333333;
 }
 
-/* Filter & Sort Buttons */
 .filter-button, .sort-button {
     min-width: fit-content;
     width: 70px;
@@ -87,7 +82,7 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -102,27 +97,25 @@
 
 .show {display: block;}
 
-/* Filter Modal */
-/* Additional CSS for filter modal and sort options */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
-    z-index: 1000; /* High z-index to be on top */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
 
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* Adjust as needed */
+    margin: 10% auto;
     padding: 20px;
     border: 2px solid #888;
-    width: 30%; /* Adjust as needed */
+    width: 30%;
     border-radius: 8px;
 
 }
@@ -132,29 +125,11 @@
     right: 530px;
 }
 
-/*.close {*/
-/*    color: #aaa;*/
-/*    float: right;*/
-/*    font-size: 28px;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.close:hover,*/
-/*.close:focus {*/
-/*    color: black;*/
-/*    text-decoration: none;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/* Sort options dropdown */
 .sort-options {
-    /*display: none; !* Hidden by default *!*/
     position: absolute;
-    right: 50px; /* Align to the right */
-    /*background-color: #f9f9f9;*/
+    right: 50px;
     min-width: 160px;
-    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
-    z-index: 1000; /* High z-index to be on top */
+    z-index: 1000;
 }
 
 .sort-options a {
@@ -166,34 +141,18 @@
 
 .sort-options a:hover { background-color: #f1f1f1; }
 
-/* Filter options styling */
 .filter-option {
-    margin-bottom: 10px; /* Space between each filter option */
+    margin-bottom: 10px;
 }
 
-/* Styling for the 'Apply Filters' button */
 .apply-filters-btn {
-    /*background-color: #007bff; !* Example: blue background *!*/
-    /*color: white; !* White text *!*/
-    /*padding: 10px 20px; !* Padding around the text *!*/
-    /*border: none; !* No border *!*/
-    /*border-radius: 5px; !* Rounded corners *!*/
-    /*cursor: pointer; !* Cursor indicates it's clickable *!*/
-    /*display: block; !* Make the button block to occupy the full width *!*/
-    /*width: 30%; !* Full width *!*/
-    /*margin-top: 20px;*/
     margin-left: 35%;
-    /* Space from the last filter option */
 }
-
-/*.apply-filters-btn:hover {*/
-/*    background-color: #0056b3; !* Darker shade on hover *!*/
-/*}*/
 
 .search-results-container{
     padding: 40px;
     display: flex;
-    justify-content: center; /* This centers the child horizontally */
+    justify-content: center;
     align-items: center;
 }
 
@@ -206,4 +165,25 @@
 
 .modal h3{
     text-align: center;
+}
+
+.subscribe-btn{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn a{
+    text-decoration: none;
+    color: var(--text-white-color);
+}
+
+.subscribe-btn:hover{
+    background-color: var(--text-black-color);
 }
