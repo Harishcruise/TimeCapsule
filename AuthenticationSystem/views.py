@@ -67,11 +67,11 @@ def user_signup(request):
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
             if UserProfile.objects.filter(username__iexact=username).exists():
-                messages.error(request, 'Username already exists.')
+                messages.error(request, 'A user with that username already exists.')
                 return redirect('AuthenticationSystem:user_signup')
 
             if UserProfile.objects.filter(email__iexact=email).exists():
-                messages.error(request, 'Email already exists.')
+                messages.error(request, 'A user with that email already exists.')
                 return redirect('AuthenticationSystem:user_signup')
             create_user(username, password, email)
             messages.success(request, 'User created successfully')
