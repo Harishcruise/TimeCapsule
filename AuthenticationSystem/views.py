@@ -25,40 +25,25 @@ User = get_user_model()
 
 def verify_email(request, verification_token):
     try:
-        # Get the user with the provided verification token
         user = UserProfile.objects.get(email_verification_token=verification_token)
-        # Mark the user's email as verified
         user.email_verified = True
         user.save()
-        # Redirect to a success page
         messages.success(request, 'Your email has been successfully verified.')
-        return redirect('AuthenticationSystem:user_login')  # Redirect to home or any other page
+        return redirect('AuthenticationSystem:user_login')
     except UserProfile.DoesNotExist:
-        # If the token is invalid or the user does not exist, show an error message
         messages.error(request, 'Invalid verification token.')
         return redirect('AuthenticationSystem:user_login')
 
 
 def send_verification_email(user):
-    # Generate a unique verification token
     verification_token = get_random_string(length=32)
-
-    # Set the user's verification token
     user.email_verification_token = verification_token
     user.save()
-
-    # Construct the verification URL
     verification_url = '/verify_email/{}/'.format(verification_token)
-
-    # Compose the verification email
     subject = 'Verify your email address'
     message = f'Click the following link to verify your email address: http://localhost:8000{verification_url}'
     recipient_list = [user.email]
-
-    # Send the verification email
     send_mail(subject, message, settings.EMAIL_HOST_USER, recipient_list)
-
-    # Optionally, you can return the verification URL if needed
     return verification_url
 
 
