@@ -1,6 +1,8 @@
 import os
 from django.utils import timezone
 from django.contrib import messages
+from django.urls import reverse
+from django.utils.crypto import get_random_string
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from TimeCapsuleManagement.models import Capsule
@@ -14,6 +16,51 @@ from AuthenticationSystem.models import UserProfile, UserVisit
 from AuthenticationSystem.crud_operations.auth_operations import create_user
 from .forms import CustomLoginForm, CustomSignupForm, EditProfileForm, CustomPasswordResetForm
 from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
+from django.conf import settings
+
+User = get_user_model()
+
+
+def verify_email(request, verification_token):
+    try:
+        # Get the user with the provided verification token
+        user = UserProfile.objects.get(email_verification_token=verification_token)
+        # Mark the user's email as verified
+        user.email_verified = True
+        user.save()
+        # Redirect to a success page
+        messages.success(request, 'Your email has been successfully verified.')
+        return redirect('AuthenticationSystem:user_login')  # Redirect to home or any other page
+    except UserProfile.DoesNotExist:
+        # If the token is invalid or the user does not exist, show an error message
+        messages.error(request, 'Invalid verification token.')
+        return redirect('AuthenticationSystem:user_login')
+
+
+def send_verification_email(user):
+    # Generate a unique verification token
+    verification_token = get_random_string(length=32)
+
+    # Set the user's verification token
+    user.email_verification_token = verification_token
+    user.save()
+
+    # Construct the verification URL
+    verification_url = '/verify_email/{}/'.format(verification_token)
+
+    # Compose the verification email
+    subject = 'Verify your email address'
+    message = f'Click the following link to verify your email address: http://localhost:8000{verification_url}'
+    recipient_list = [user.email]
+
+    # Send the verification email
+    send_mail(subject, message, settings.EMAIL_HOST_USER, recipient_list)
+
+    # Optionally, you can return the verification URL if needed
+    return verification_url
+
 
 def check_username_availability(request):
     if request.method == 'GET' and 'username' in request.GET:
@@ -24,6 +71,7 @@ def check_username_availability(request):
             return JsonResponse({'available': True})
     return JsonResponse({'error': 'Invalid request'})
 
+
 def user_login(request):
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)
@@ -31,7 +79,7 @@ def user_login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
-            if user is not None:
+            if user is not None and user.email_verified:
                 login(request, user)
                 response = redirect('TimeCapsuleManagement:home')
 
@@ -46,7 +94,10 @@ def user_login(request):
                                     max_age=int(max_age))  # Expires at the end of the day
                 return response
             else:
-                messages.error(request, 'Invalid username or password')
+                if user is None:
+                    messages.error(request, 'Invalid username or password')
+                elif not user.email_verified:
+                    messages.error(request, 'Email is not verified. Please verify your email.')
                 return redirect('AuthenticationSystem:user_login')
     else:
         form = CustomLoginForm()
@@ -66,6 +117,7 @@ def user_signup(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
+
             if UserProfile.objects.filter(username__iexact=username).exists():
                 messages.error(request, 'A user with that username already exists.')
                 return redirect('AuthenticationSystem:user_signup')
@@ -73,8 +125,17 @@ def user_signup(request):
             if UserProfile.objects.filter(email__iexact=email).exists():
                 messages.error(request, 'A user with that email already exists.')
                 return redirect('AuthenticationSystem:user_signup')
-            create_user(username, password, email)
-            messages.success(request, 'User created successfully')
+
+            # Create user but mark email as not verified
+            user = create_user(username, password, email)
+            user.email_verified = False
+            user.save()
+
+            # Send verification email
+            verification_url = send_verification_email(user)
+
+            messages.success(request, 'User created successfully. Please verify your email.')
+
             return redirect('AuthenticationSystem:user_login')
         else:
             for error in form.non_field_errors():
@@ -120,10 +181,10 @@ def profile(request):
         form = EditProfileForm(instance=request.user)
         # user_history_session = request.session.get('user_history', [])
         user_history_database = UserVisit.objects.filter(user=request.user).order_by('-timestamp')
-        return render(request, 'profile.html',{'posts': posts, 'users': users,
-                                               'cur_user': owner, 'comment_form': comment_form,
-                                               'form': form, 'password_form': password_form,
-                                               'user_history': user_history_database[:7]})
+        return render(request, 'profile.html', {'posts': posts, 'users': users,
+                                                'cur_user': owner, 'comment_form': comment_form,
+                                                'form': form, 'password_form': password_form,
+                                                'user_history': user_history_database[:7]})
 
 
 @login_required
